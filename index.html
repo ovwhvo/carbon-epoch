@@ -70,6 +70,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   background:rgba(20,20,30,0.6);
 }
 .btn-option.locked:hover{transform:none;box-shadow:none;border-color:rgba(255,255,255,0.03);background:rgba(20,20,30,0.6)}
+.btn-option.locked{pointer-events:none!important}
 .btn-option .opt-title{font-family:var(--font-title);font-size:1.05rem;color:var(--accent);margin-bottom:0.3rem}
 .btn-option.locked .opt-title{color:#666}
 .btn-option .opt-desc{color:var(--text-secondary);font-size:0.88rem}
@@ -617,7 +618,7 @@ const ERAS = [
 碳排放大幅减少，生态得到保护。`,
             effects:{carbon:5,tech:18,population:15,happiness:8,knowledge:15,ecology:12},
             requirements:{ecology:50,tech:50}},
-          {id:'d',title:'铁器改良',desc:'研发更耐用的铁器，减少更换频率',requirements:{techs:['高炉技术']},
+          {id:'d',title:'铁器改良',desc:'研发更耐用的铁器，减少更换频率',
             result:`你鼓励工匠打造更耐用的铁器。
 虽然研发消耗了碳，但铁器寿命延长三倍，
 长期来看总碳排放反而减少。
@@ -783,7 +784,7 @@ const ERAS = [
 这改变了人类看待发展的方式。`,
             effects:{carbon:3,tech:20,population:10,happiness:8,knowledge:25,ecology:12},
             requirements:{ecology:40,tech:80}},
-          {id:'d',title:'泥炭过渡',desc:'使用泥炭作为木材和煤炭之间的过渡能源',requirements:{techs:['农业轮作']},
+          {id:'d',title:'泥炭过渡',desc:'使用泥炭作为木材和煤炭之间的过渡能源',
             result:`你选择了泥炭——比木材能量密度高，
 比煤炭开采容易。这是一种务实的折中。
 碳排放适中，为未来的能源转型赢得了时间。`,
@@ -828,7 +829,7 @@ const ERAS = [
 工业革命不再是血与泪的代名词。`,
             effects:{carbon:20,tech:25,population:40,happiness:15,knowledge:20,ecology:3},
             requirements:{happiness:65,tech:120}},
-          {id:'d',title:'工厂法规',desc:'制定工厂排放标准和工人保护法',requirements:{techs:['文艺复兴']},
+          {id:'d',title:'工厂法规',desc:'制定工厂排放标准和工人保护法',
             result:`你颁布了世界上第一部工厂法。
 限制了工作时间和排放量，保护了工人权益。
 发展速度稍慢，但社会更加稳定。
@@ -947,7 +948,7 @@ const ERAS = [
             result:`你选择了安全，放弃了可能。
 人类继续依赖煤炭和石油。`,
             effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}},
-          {id:'d',title:'国际监督',desc:'建立国际机构监督核技术使用',requirements:{techs:['国际合作']},
+          {id:'d',title:'国际监督',desc:'建立国际机构监督核技术使用',
             result:`你推动建立了国际原子能机构。
 核技术在严格监督下和平发展。
 碳排放适中，科技稳步提升，安全得到保障。
@@ -1086,7 +1087,7 @@ GDP不再是唯一的衡量标准，
 幸福指数和生态指数成为了新的指南针。`,
             effects:{carbon:-35,tech:22,population:0,happiness:20,knowledge:20,ecology:30},
             requirements:{ecology:70,happiness:75}},
-          {id:'d',title:'碳交易市场',desc:'建立全球碳交易市场，用经济手段减排',requirements:{techs:['可再生能源']},
+          {id:'d',title:'碳交易市场',desc:'建立全球碳交易市场，用经济手段减排',
             result:`你建立了碳排放交易体系。
 排放需要购买配额，减排可以出售。
 市场机制推动了技术创新。
@@ -1185,7 +1186,7 @@ GDP不再是唯一的衡量标准，
 碳排放归零，人类进入了无限能源时代。`,
             effects:{carbon:-80,tech:35,population:0,happiness:20,knowledge:30,ecology:40},
             requirements:{tech:350,knowledge:250}},
-          {id:'d',title:'混合方案',desc:'核聚变与可再生能源并行发展',requirements:{techs:['核聚变改良']},
+          {id:'d',title:'混合方案',desc:'核聚变与可再生能源并行发展',
             result:`你没有把所有希望押在核聚变上。
 太阳能、风能、核聚变同时推进。
 虽然效率不如专精一路，但风险最低。
@@ -4433,7 +4434,7 @@ function processDelayedEffects(){
     const container=document.getElementById('gameContent');
     const note=document.createElement('div');
     note.style.cssText='text-align:center;padding:0.5rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:8px;margin:1rem 2.5rem;color:#ef4444;font-size:0.9rem;animation:fadeIn 0.5s ease';
-    note.textContent='⏳ 延迟效应触发：'+de.name+' — '+de.desc;
+    note.textContent='⏳ '+de.desc;
     container.insertBefore(note,container.firstChild);
   });
   updateDashboard();
@@ -4823,7 +4824,7 @@ function showEventChoice(event){
   let optionsHtml='';
   event.choices.forEach((opt,i)=>{
     const hintHtml=buildEffectHints(opt.effects);
-    const delayHint=opt.delayedEffects?'<div style="margin-top:0.3rem;font-size:0.75rem;color:#f97316;font-style:italic">⚠️ 此选择可能有后续影响...</div>':'';
+    const delayHint='';
     optionsHtml+=`<button class="btn-option slide-up" style="animation-delay:${i*0.1}s" onclick="chooseEventOption('${event.id}',${i})">
       <div class="opt-title">${opt.title}</div>
       <div class="opt-desc">${opt.desc}</div>
@@ -4844,7 +4845,7 @@ function showEventChoice(event){
 
 function chooseEventOption(eventId,optIdx){
   const event=window._currentEventChoice;
-  if(!event)return;
+  if(!event){console.error('No event choice found');continueToNextEra();return;}
   const opt=event.choices[optIdx];
   if(!opt)return;
   // Apply immediate effects
@@ -4875,7 +4876,7 @@ function chooseEventOption(eventId,optIdx){
   container.innerHTML=`<div class="result-section">
     <div class="result-text">${resultText}</div>
     <div class="result-effects">${buildEffectCards(e)}</div>
-    ${opt.delayedEffects?'<div style="margin-top:1rem;padding:0.8rem;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:8px;color:#f97316;font-size:0.85rem">⏳ 这个选择将在未来产生影响...</div>':''}
+''
     <div style="text-align:center;margin-top:2rem"><button class="btn" onclick="continueToNextEra()">继续</button></div>
   </div>`;
 }
