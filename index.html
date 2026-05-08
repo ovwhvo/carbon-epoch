@@ -2203,12 +2203,15 @@ const RANDOM_EVENTS=[
 每一颗子弹、每一辆坦克、每一架飞机，
 都在向大气中注入碳。
 
-战后的重建更是碳排放的狂欢。
-废墟上的钢铁需要重新冶炼，
-混凝土需要重新浇筑。
-
-战争没有赢家。碳排放，也没有赢家。`,
-    effects:{carbon:20,population:-10,happiness:-10,tech:5,ecology:-8},percentEffects:{population:25,happiness:35}},
+你面临一个艰难的选择：`,
+    effects:{carbon:20,population:-10,happiness:-10,tech:5,ecology:-8},
+    choices:[
+      {title:'全力投入战争',desc:'动员一切资源，速战速决',effects:{carbon:30,population:-15,happiness:-15,tech:10,ecology:-10},result:'你选择了全力出击。战争迅速结束，但代价惨重。城市的废墟需要重建，而重建需要更多的碳排放。'},
+      {title:'有限战争',desc:'控制冲突规模，减少伤亡和碳排放',effects:{carbon:10,population:-5,happiness:-8,tech:3,ecology:-3},result:'你选择了克制。战争持续了更长时间，但伤亡和碳排放都得到了控制。'},
+      {title:'和平谈判',desc:'尝试通过外交手段结束冲突',effects:{carbon:5,population:-2,happiness:5,ecology:2},
+        delayedEffects:[{delay:2,effects:{happiness:-15,carbon:15},desc:'和平协议的脆弱性暴露，冲突再次爆发，但这次更加激烈'}],
+        result:'你选择了和平。协议签署了，人们欢呼雀跃。但历史告诉我们——脆弱的和平，往往酝酿着更大的战争。'}
+    ]},
   {id:'drought',name:'☀️ 大旱灾',minEra:2,maxEra:10,baseChance:0.35,cat:'environment',
     cond:()=>true,
     narrative:`河流干涸，土地龟裂，庄稼枯萎在田间。
@@ -2217,9 +2220,15 @@ const RANDOM_EVENTS=[
 饥荒蔓延，社会动荡。
 人们涌向城市，城市不堪重负。
 
-气候科学告诉我们，全球变暖正在让干旱更加频繁、更加严重。
-碳排放的代价，由最脆弱的人承担。`,
-    effects:{population:0,happiness:-5,ecology:-5},percentEffects:{population:18,happiness:25}},
+你必须决定如何应对这场灾难：`,
+    effects:{population:0,happiness:-5,ecology:-5},
+    choices:[
+      {title:'大规模灌溉工程',desc:'建造巨型水坝和灌溉系统，用技术对抗干旱',effects:{carbon:25,population:5,happiness:10,ecology:-8,tech:5},
+        delayedEffects:[{delay:3,effects:{ecology:-15,carbon:10},desc:'灌溉工程导致地下水枯竭，河流断流，生态灾难降临'}],
+        result:'水坝建成了，河流被改道，农田重新灌溉。人们欢呼——技术拯救了他们。但地下水位在悄悄下降。'},
+      {title:'节水政策',desc:'强制限水，配给制度，减少浪费',effects:{carbon:0,population:-3,happiness:-10,ecology:5},result:'严格的节水政策让社会不满，但水资源得到了保护。人们学会了珍惜每一滴水。'},
+      {title:'接受干旱',desc:'让自然自行恢复，人们迁移到水源充足的地方',effects:{carbon:0,population:-10,happiness:-5,ecology:10},result:'大规模迁移开始了。人们离开了祖辈生活的土地，向有水的地方迁徙。痛苦，但尊重了自然的节奏。'}
+    ]},
   {id:'oil_spill',name:'🛢️ 巨型石油泄漏',minEra:7,maxEra:10,baseChance:0.3,cat:'environment',
     cond:()=>STATE.stats.carbon>250,
     narrative:`一艘巨型油轮在海岸附近断裂。
@@ -2240,8 +2249,17 @@ const RANDOM_EVENTS=[
 医院人满为患，老人和孩子在高温中倒下。
 这不是自然的馈赠——这是碳排放的回旋镖。
 
-每一度升温，都在压缩人类的生存空间。`,
-    effects:{population:0,happiness:-8,tech:0},percentEffects:{population:15,happiness:30}},
+你必须立即采取行动：`,
+    effects:{population:0,happiness:-8,tech:0},
+    choices:[
+      {title:'全面开空调',desc:'开放所有公共设施的空调，提供免费避暑所',effects:{carbon:35,population:3,happiness:15,tech:0},
+        delayedEffects:[{delay:2,effects:{carbon:20,happiness:-5},desc:'空调需求激增导致电网过载，更多燃煤电厂被启用'}],
+        result:'人们涌入了凉爽的避暑所。暂时得救了。但空调在消耗更多电力，电力在排放更多碳。这是一个恶性循环。'},
+      {title:'城市绿化计划',desc:'大规模植树造林，建设绿色走廊降温',effects:{carbon:-5,population:0,happiness:5,ecology:15},result:'树木开始生长，城市温度下降了2度。这是最慢但最正确的解决方案。'},
+      {title:'人工降雨',desc:'用飞机播撒化学物质制造人工降雨降温',effects:{carbon:10,population:0,happiness:8,ecology:-10,tech:5},
+        delayedEffects:[{delay:2,effects:{ecology:-15,happiness:-8},desc:'人工降雨的化学残留污染了水源，引发了新的健康危机'}],
+        result:'雨水降下了，温度下降了。但化学物质渗入了土壤和水源。短期的舒适，换来了长期的代价。'}
+    ]},
   {id:'flood',name:'🌊 超级洪水',minEra:7,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>true,
     narrative:`暴雨连续下了七天七夜。
@@ -2943,13 +2961,15 @@ AI没有发动战争——
 人类突然发现——
 他们对技术的依赖程度，远超想象。
 
-没有网络，就没有智能电网。
-没有智能电网，可再生能源无法并网。
-没有可再生能源，人类被迫回到化石能源。
-
-碳排放飙升了。
-因为数字化是碳中和的基础设施。`,
-    effects:{tech:-35,happiness:-25,carbon:30,knowledge:-15}},
+你必须决定如何应对：`,
+    effects:{tech:-35,happiness:-25,carbon:30,knowledge:-15},
+    choices:[
+      {title:'快速恢复网络',desc:'不惜一切代价恢复互联网',effects:{carbon:25,tech:-10,happiness:10,knowledge:-5},
+        delayedEffects:[{delay:2,effects:{tech:-15,carbon:15},desc:'匆忙恢复的网络存在安全漏洞，第二次攻击更加致命'}],
+        result:'网络在72小时内恢复了。人们欢呼雀跃。但匆忙中留下的安全漏洞，像一颗定时炸弹。'},
+      {title:'重建去中心化网络',desc:'用更安全的分布式架构重建',effects:{carbon:-10,tech:-20,happiness:-5,knowledge:10,ecology:5},result:'重建花了更长时间，但新的网络更安全、更节能。有时候，慢就是快。'},
+      {title:'回归模拟时代',desc:'减少对网络的依赖，发展线下基础设施',effects:{carbon:-15,tech:-25,happiness:-10,knowledge:-10,ecology:10},result:'你选择了一条少有人走的路。纸张替代了屏幕，信件替代了邮件。碳排放下降了，但文明也倒退了。'}
+    ]},
   {id:'asteroid_impact',name:'☄️ 小行星撞击',minEra:5,maxEra:11,baseChance:0.40,cat:'environment',
     cond:()=>true,
     narrative:`一颗直径500米的小行星撞击了印度洋。
@@ -3194,7 +3214,7 @@ const STATE = {
   history:[],unlockedTechs:[],
   carbonHistory:[{era:'起点',value:0}],
   startTime:null,fastMode:false,hardMode:false,
-  triggeredEvents:[],gameFlags:{}
+  triggeredEvents:[],gameFlags:{},delayedEffects:[]
 };
 
 // ===========================
@@ -3211,7 +3231,7 @@ function startGame(){
   STATE.stats.happiness=50;STATE.stats.ecology=50;STATE.stats.knowledge=5;STATE.stats.population=10;
   STATE.history=[];STATE.unlockedTechs=[];
   STATE.carbonHistory=[{era:'起点',value:0}];
-  STATE.triggeredEvents=[];STATE.gameFlags={};
+  STATE.triggeredEvents=[];STATE.gameFlags={};STATE.delayedEffects=[];
   showScreen('gameScreen');
   document.getElementById('menuBtn').classList.remove('hidden');
   showTransition(0,()=>loadEra(0));
@@ -4397,7 +4417,30 @@ function proceedToNextEra(){
   }
   continueToNextEra();
 }
+function processDelayedEffects(){
+  const currentEra=STATE.currentEraIndex;
+  const pending=STATE.delayedEffects.filter(d=>d.triggerEra<=currentEra);
+  STATE.delayedEffects=STATE.delayedEffects.filter(d=>d.triggerEra>currentEra);
+  pending.forEach(de=>{
+    const e=de.effects;
+    if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
+    if(e.tech)STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech)));
+    if(e.population)STATE.stats.population=Math.max(1,Math.min(500000,Number(STATE.stats.population||0)+Number(e.population)));
+    if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
+    if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(500,Number(STATE.stats.knowledge||0)+Number(e.knowledge)));
+    if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
+    // Show delayed effect notification
+    const container=document.getElementById('gameContent');
+    const note=document.createElement('div');
+    note.style.cssText='text-align:center;padding:0.5rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:8px;margin:1rem 2.5rem;color:#ef4444;font-size:0.9rem;animation:fadeIn 0.5s ease';
+    note.textContent='⏳ 延迟效应触发：'+de.name+' — '+de.desc;
+    container.insertBefore(note,container.firstChild);
+  });
+  updateDashboard();
+}
+
 function continueToNextEra(){
+  processDelayedEffects();
   const next=STATE.currentEraIndex+1;
   if(next<ERAS.length)showTransition(next,()=>loadEra(next));
   else determineEnding();
@@ -4756,6 +4799,11 @@ function showEventInterlude(event){
   STATE.triggeredEvents.push(event.id);
   STATE.phase='event';
   if(event.flag)STATE.gameFlags[event.flag]=true;
+  // If event has choices, show decision UI instead of auto-apply
+  if(event.choices&&event.choices.length>0){
+    showEventChoice(event);
+    return;
+  }
   STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:event.name,option:event.cat,effects:{...event.effects},timestamp:Date.now()});
   const container=document.getElementById('gameContent');
   const badgeColor=event.cat==='easter_egg'?'rgba(6,182,212,0.2)':'rgba(245,158,11,0.15)';
@@ -4765,6 +4813,70 @@ function showEventInterlude(event){
     <div class="narrative-text visible" style="white-space:pre-line">${event.narrative}</div>
     <div class="result-effects" style="max-width:600px;margin-top:2rem">${buildEffectCards(event.effects)}</div>
     <div style="text-align:center;margin-top:2rem"><button class="btn" onclick="applyEventAndContinue('${event.id}')">继续</button></div>
+  </div>`;
+}
+
+function showEventChoice(event){
+  const container=document.getElementById('gameContent');
+  const badgeColor=event.cat==='easter_egg'?'rgba(6,182,212,0.2)':'rgba(245,158,11,0.15)';
+  const badgeText=event.cat==='easter_egg'?'🌠 稀有事件':event.cat==='environment'?'🌍 环境事件':'📜 历史事件';
+  let optionsHtml='';
+  event.choices.forEach((opt,i)=>{
+    const hintHtml=buildEffectHints(opt.effects);
+    const delayHint=opt.delayedEffects?'<div style="margin-top:0.3rem;font-size:0.75rem;color:#f97316;font-style:italic">⚠️ 此选择可能有后续影响...</div>':'';
+    optionsHtml+=`<button class="btn-option slide-up" style="animation-delay:${i*0.1}s" onclick="chooseEventOption('${event.id}',${i})">
+      <div class="opt-title">${opt.title}</div>
+      <div class="opt-desc">${opt.desc}</div>
+      <div class="opt-hint">${hintHtml}</div>
+      ${delayHint}
+    </button>`;
+  });
+  container.innerHTML=`<div class="narrative-section">
+    <div style="text-align:center;margin-bottom:1.5rem"><span style="background:${badgeColor};color:var(--accent);padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem">${badgeText} · ${event.name}</span></div>
+    <div class="narrative-text visible" style="white-space:pre-line">${event.narrative}</div>
+    <div class="decision-section" style="padding-left:0;padding-right:0">
+      <div class="decision-title">你的选择</div>
+      <div class="decision-options">${optionsHtml}</div>
+    </div>
+  </div>`;
+  window._currentEventChoice=event;
+}
+
+function chooseEventOption(eventId,optIdx){
+  const event=window._currentEventChoice;
+  if(!event)return;
+  const opt=event.choices[optIdx];
+  if(!opt)return;
+  // Apply immediate effects
+  const e=opt.effects;
+  STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon||0));
+  STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech||0)));
+  STATE.stats.population=Math.max(1,Math.min(500000,Number(STATE.stats.population||0)+Number(e.population||0)));
+  STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness||0)));
+  STATE.stats.knowledge=Math.max(0,Math.min(500,Number(STATE.stats.knowledge||0)+Number(e.knowledge||0)));
+  STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology||0)));
+  // Register delayed effects
+  if(opt.delayedEffects){
+    opt.delayedEffects.forEach(de=>{
+      STATE.delayedEffects.push({
+        triggerEra:STATE.currentEraIndex+de.delay,
+        effects:de.effects,
+        name:event.name,
+        desc:de.desc
+      });
+    });
+  }
+  if(opt.flag)STATE.gameFlags[opt.flag]=true;
+  STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:event.name,option:opt.title,effects:{...e},timestamp:Date.now()});
+  updateDashboard();
+  // Show result
+  const container=document.getElementById('gameContent');
+  const resultText=opt.result||'你的选择产生了影响。';
+  container.innerHTML=`<div class="result-section">
+    <div class="result-text">${resultText}</div>
+    <div class="result-effects">${buildEffectCards(e)}</div>
+    ${opt.delayedEffects?'<div style="margin-top:1rem;padding:0.8rem;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:8px;color:#f97316;font-size:0.85rem">⏳ 这个选择将在未来产生影响...</div>':''}
+    <div style="text-align:center;margin-top:2rem"><button class="btn" onclick="continueToNextEra()">继续</button></div>
   </div>`;
 }
 
