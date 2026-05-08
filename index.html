@@ -2964,6 +2964,9 @@ function toggleFast(){
   document.getElementById('fastBtn').classList.toggle('active',STATE.fastMode);
 }
 function toggleHard(){
+  if(!STATE.hardMode){
+    if(!confirm('🔥 困难模式警告！\n\n• 负面事件触发概率翻倍\n• 最多触发10个随机事件（普通模式5个）\n• 碳排放额外增加25%\n• 幸福值降低15%\n• 文明崩溃风险极高\n\n确定开启困难模式？'))return;
+  }
   STATE.hardMode=!STATE.hardMode;
   document.getElementById('hardBtn').classList.toggle('active',STATE.hardMode);
 }
@@ -4444,7 +4447,8 @@ showEnding = function(endingKey){
 // ===========================
 
 function checkRandomEvent(eraIndex){
-  if(STATE.triggeredEvents.length>=5)return null;
+  const maxEvents=STATE.hardMode?10:5;
+  if(STATE.triggeredEvents.length>=maxEvents)return null;
   const eligible=RANDOM_EVENTS.filter(e=>{
     if(eraIndex<e.minEra-1||eraIndex>e.maxEra-1)return false;
     if(!e.cond())return false;
@@ -4454,7 +4458,7 @@ function checkRandomEvent(eraIndex){
   });
   for(const ev of eligible){
     let chance=ev.baseChance;
-    chance*=Math.pow(0.85,STATE.triggeredEvents.length);
+    chance*=Math.pow(STATE.hardMode?0.92:0.85,STATE.triggeredEvents.length);
     if(ev.cat==='environment'&&STATE.triggeredEvents.includes('comet_near_miss'))chance*=0.5;
     const histCount=STATE.triggeredEvents.filter(id=>{const e=RANDOM_EVENTS.find(x=>x.id===id);return e&&e.cat==='history'}).length;
     if(ev.cat==='history'&&histCount>=2)chance*=0.3;
