@@ -1740,6 +1740,63 @@ const ENDINGS = {
 
 碳不再是问题。
 问题变成了：人类还有梦想吗？`},
+  silence_epoch:{name:'沉默纪元',stars:1,starStr:'★☆☆☆☆',color:'#57534e',
+    text:`你选择了沉默。
+
+不战斗，不重建，只是等待。
+辐射慢慢消退，森林慢慢恢复。
+几个世纪过去了。地球自行痊愈。
+
+一种新的人类从洞穴中出现——
+更小、更简单，但活着。
+
+碳排放？零。技术？零。
+但生命在延续。这是沉默纪元。`},
+  rewilding_epoch:{name:'回归纪元',stars:2,starStr:'★★☆☆☆',color:'#15803d',
+    text:`人类放弃了所有技术，回归了原始生活。
+碳排放随着技术一起消失了。
+没有人类干扰，生态系统慢慢恢复。
+
+这是回归纪元——人类回到了起点。
+也许是退步，也许是另一种智慧。`},
+  digital_escape:{name:'数字逃亡',stars:3,starStr:'★★★☆☆',color:'#7c3aed',
+    text:`人类意识被上传到数字网络中。
+肉体被留在了身后，地球恢复了。
+在机器内部，人类继续存在——
+无限的、无形的，碳排放归零。
+
+这是生存，还是一种美丽的死亡？`},
+  ai_coexist:{name:'人机共存',stars:4,starStr:'★★★★☆',color:'#0ea5e9',
+    text:`AI管理系统，人类过自己的生活。
+谁也不支配谁。碳管理得不错但不完美。
+人类保留了自由，也保留了缺陷。
+
+这是最人性化的方案——
+混乱的、不完美的，但诚实的。`},
+  mars_colony:{name:'火星殖民',stars:3,starStr:'★★★☆☆',color:'#ea580c',
+    text:`最后一艘飞船载着人类前往火星。
+一个小殖民地在红色土壤上扎根。
+碳排放最小化——没有足够的工业来污染。
+
+地球上的碳纪元结束。
+火星纪元开始。`},
+  symbiosis_epoch:{name:'共生纪元',stars:3,starStr:'★★★☆☆',color:'#84cc16',
+    text:`人类通过基因改造适应了新的环境。
+碳变得无关紧要——人类成为了生态系统的一部分。
+技术消退了。文明简化了。但人类延续了。
+
+共生纪元——人类不再是地球的寄生虫。`},
+  ocean_epoch:{name:'海洋纪元',stars:4,starStr:'★★★★☆',color:'#0284c7',
+    text:`人类把目光转向了深海。
+探索发现了没人想象过的生态系统。
+碳被海洋自然吸收。人类在自己的星球上发现了奇迹。
+
+海洋纪元——地球仍有秘密。`},
+  synthetic_epoch:{name:'合成纪元',stars:4,starStr:'★★★★☆',color:'#a855f7',
+    text:`工程生物遍布全球，碳排放深度为负。
+地球以前所未有的速度恢复。
+人类成为了地球的园匠——
+不论好坏，这是合成纪元。`},
   doomhousehold:{name:'末日幸存',stars:1,starStr:'★☆☆☆☆',color:'#78716c',
     text:`2060年。
 
@@ -3025,6 +3082,8 @@ function showCrisisBranch(){
     <div style="text-align:center;margin-top:2rem">
       <button class="btn" onclick="handleCrisisChoice('fight')" style="margin:0.5rem;border-color:rgba(34,197,94,0.5)">🌱 背水一战 — 动员一切力量挽救文明</button>
       <button class="btn" onclick="handleCrisisChoice('accept')" style="margin:0.5rem;border-color:rgba(239,68,68,0.5)">💀 接受命运 — 让文明自然走向终结</button>
+      <button class="btn" onclick="handleCrisisChoice('scattered')" style="margin:0.5rem;border-color:rgba(139,92,246,0.5)">🌀 分散撤离 — 化整为零，分散求生</button>
+      <button class="btn" onclick="handleCrisisChoice('preserve')" style="margin:0.5rem;border-color:rgba(6,182,212,0.5)">📦 知识封存 — 将人类知识保存给未来</button>
     </div>
   </div>`;
 }
@@ -3037,6 +3096,20 @@ function handleCrisisChoice(choice){
     STATE.stats.knowledge+=10;
     STATE.gameFlags.foughtCrisis=true;
     STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'背水一战',effects:{happiness:10,ecology:10,carbon:-50,knowledge:10},timestamp:Date.now()});
+  }else if(choice==='scattered'){
+    STATE.stats.population=Math.round(STATE.stats.population*0.5);
+    STATE.stats.ecology+=5;
+    STATE.stats.carbon=Math.max(0,STATE.stats.carbon-30);
+    STATE.stats.happiness+=5;
+    STATE.gameFlags.scattered=true;
+    STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'分散撤离',effects:{population:-50,ecology:5,carbon:-30,happiness:5},timestamp:Date.now()});
+  }else if(choice==='preserve'){
+    STATE.stats.knowledge+=30;
+    STATE.stats.tech-=10;
+    STATE.stats.happiness-=5;
+    STATE.stats.carbon=Math.max(0,STATE.stats.carbon-20);
+    STATE.gameFlags.preserved=true;
+    STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'知识封存',effects:{knowledge:30,tech:-10,happiness:-5,carbon:-20},timestamp:Date.now()});
   }else{
     STATE.stats.happiness-=15;
     STATE.stats.ecology-=10;
@@ -3143,7 +3216,29 @@ Humanity had learned its lesson the hardest way possible.`:`你选择了最难�
 碳排放？它存在，但被谨慎管理。
 人类以最惨痛的方式学到了教训。`,
               effects:{carbon:-100,tech:-20,population:-30,happiness:5,ecology:15,knowledge:10},
-              ending:'rebirth_epoch'}
+              ending:'rebirth_epoch'},
+            {title:isEn?'Endure in Silence':'沉默忍耐',desc:isEn?'Accept the destruction, let nature take its course':'接受毁灭，让自然自行修复',
+              result:isEn?`You chose not to fight. Not to rebuild. Just to endure.
+The radiation slowly faded. Forests slowly grew back.
+Centuries passed. Earth healed itself.
+
+A new species of humans eventually emerged from the caves—
+smaller, simpler, but alive.
+Carbon emissions? Zero. Technology? Zero.
+But life persisted.
+
+This is the Silence Epoch.`:`你选择不战斗，不重建，只是忍耐。
+辐射慢慢消退。森林慢慢恢复。
+几个世纪过去了。地球自行痊愈。
+
+一种新的人类最终从洞穴中出现——
+更小、更简单，但活着。
+碳排放？零。技术？零。
+但生命在延续。
+
+这是沉默纪元。`,
+              effects:{carbon:-300,tech:-100,population:-70,happiness:15,ecology:40,knowledge:-60},
+              ending:'silence_epoch'}
           ]
         }
       ]
@@ -3211,7 +3306,43 @@ Not the same Earth—but alive.`:
 到2200年，地球再次活了过来。
 不是同一个地球——但活着。`,
               effects:{carbon:-60,tech:15,population:-20,happiness:10,ecology:40,knowledge:20},
-              ending:'terraformed_earth'}
+              ending:'terraformed_earth'},
+            {title:isEn?'Return to Nature':'回归原始',desc:isEn?'Abandon technology, live as nature intended':'放弃技术，回归自然状态',
+              result:isEn?`You abandoned the domes and the machines.
+Humans returned to the wild—hunting, gathering, living season by season.
+
+Carbon emissions vanished along with technology.
+The ecosystem slowly recovered without human interference.
+
+This is the Rewilding Epoch—humanity went back to the beginning.`:`你放弃了穹顶和机器。
+人类回到了野外——狩猎、采集、随季节生活。
+
+碳排放随着技术一起消失了。
+没有人类干扰，生态系统慢慢恢复。
+
+这是回归纪元——人类回到了起点。`,
+              effects:{carbon:-200,tech:-80,population:-40,happiness:10,ecology:35,knowledge:-40},
+              ending:'rewilding_epoch'},
+            {title:isEn?'Digital Escape':'数字逃亡',desc:isEn?'Upload human consciousness into computers, abandon physical bodies':'将人类意识上传到计算机，抛弃肉体',
+              result:isEn?`You chose to escape the dying world by leaving it.
+Human consciousness was uploaded into a vast digital network.
+Physical bodies were left behind.
+
+Carbon? Irrelevant to digital beings.
+The planet recovered without its most destructive species.
+
+Inside the machines, humanity lived on—infinite, bodiless, and wondering:
+was this survival, or a beautiful death?`:`你选择通过离开来逃离垂死的世界。
+人类意识被上传到庞大的数字网络中。
+肉体被留在了身后。
+
+碳？对数字生命来说无关紧要。
+没有了最具破坏性的物种，地球恢复了。
+
+在机器内部，人类继续存在——无限的、无形的，同时在想：
+这是生存，还是一种美丽的死亡？`,
+              effects:{carbon:-100,tech:30,population:-50,happiness:-5,knowledge:30,ecology:25},
+              ending:'digital_escape'}
           ]
         }
       ]
@@ -3315,7 +3446,27 @@ AI管理所有基础设施、能源和碳系统。
 当一切都被解决，还有什么值得追求？
 答案：群星。以及超越生存的意义追寻。`,
               effects:{carbon:-200,tech:40,knowledge:30,happiness:15,population:0,ecology:20},
-              ending:'ai_utopia'}
+              ending:'ai_utopia'},
+            {title:isEn?'Coexist':'共存',desc:isEn?'AI and humans coexist as separate entities, each with their own roles':'AI和人类作为独立实体共存，各自有各自的职责',
+              result:isEn?`Neither merging nor rejecting—you chose coexistence.
+AI managed the systems. Humans lived their lives.
+Neither dominated the other.
+
+Carbon was well-managed but not perfect.
+Humanity retained its freedom but also its flaws.
+
+This was the most human solution—messy, imperfect, but honest.
+The Carbon Epoch continued, slowly winding down.`:`既不融合也不拒绝——你选择了共存。
+AI管理系统。人类过自己的生活。
+谁也不支配谁。
+
+碳管理得很好但不完美。
+人类保留了自由，也保留了缺陷。
+
+这是最人性化的方案——混乱的、不完美的，但诚实的。
+碳纪元继续着，缓慢地走向终结。`,
+              effects:{carbon:-100,tech:20,knowledge:20,happiness:10,population:0,ecology:10},
+              ending:'ai_coexist'}
           ]
         }
       ]
@@ -3389,7 +3540,45 @@ The Carbon Epoch ended. Not with a bang, but with a click.`:
 
 碳纪元结束了。不是以一声巨响，而是以一声点击。`,
               effects:{carbon:-300,tech:-20,knowledge:50,happiness:-10,population:-20,ecology:30},
-              ending:'digital_ark'}
+              ending:'digital_ark'},
+            {title:isEn?'Expand to Stars':'向星辰扩张',desc:isEn:'Use remaining resources to colonize other planets':'用剩余资源殖民其他星球',
+              result:isEn?`With so few humans left, you gambled everything on one shot.
+A single ship carried the last of humanity to Mars.
+
+It was a desperate move. But it worked.
+A tiny colony took root in the red soil.
+Carbon emissions? Minimal—there wasn't enough industry to pollute.
+
+Humanity survived—not on Earth, but among the stars.
+The Carbon Epoch on Earth ended. The Mars Epoch began.`:`剩下的人类如此之少，你把一切都押在了一次尝试上。
+一艘飞船载着最后的人类前往火星。
+
+这是孤注一掷。但它成功了。
+一个小殖民地在红色土壤上扎根。
+碳排放？最小化——没有足够的工业来污染。
+
+人类活了下来——不是在地球上，而是在群星之间。
+地球上的碳纪元结束。火星纪元开始。`,
+              effects:{carbon:-150,tech:10,population:10,happiness:15,knowledge:5,ecology:10},
+              ending:'mars_colony'},
+            {title:isEn?'Merge with Nature':'与自然融合',desc:isEn?'Let humans evolve to coexist with the damaged ecosystem':'让人类进化以与受损的生态系统共存',
+              result:isEn?`You chose adaptation over resistance.
+Through careful genetic modification, humans adapted to the new environment—
+tolerating higher temperatures, breathing lower-oxygen air, eating different food.
+
+Carbon became irrelevant—humans were now part of the ecosystem, not outside it.
+Technology faded. Civilization simplified. But humanity endured.
+
+This is the Symbiosis Epoch—where humans stopped being Earth's parasite.`:`你选择了适应而非抵抗。
+通过精心的基因改造，人类适应了新环境——
+耐受更高温度、呼吸低氧空气、吃不同的食物。
+
+碳变得无关紧要——人类现在是生态系统的一部分，而非外来的。
+技术消退了。文明简化了。但人类延续了。
+
+这是共生纪元——人类不再是地球的寄生虫。`,
+              effects:{carbon:-120,tech:-40,population:15,happiness:10,knowledge:10,ecology:25},
+              ending:'symbiosis_epoch'}
           ]
         }
       ]
@@ -5237,6 +5426,33 @@ The universe waited, but humanity chose comfort.
 
 Carbon was no longer the problem.
 The problem became: does humanity still have dreams?`},
+  silence_epoch:{name:'Silence Epoch',stars:1,starStr:'★☆☆☆☆',color:'#57534e',
+    text:`You chose silence. Not to fight. Not to rebuild. Just to endure.
+Centuries passed. Earth healed itself. A new species of humans emerged from caves.
+Carbon? Zero. Technology? Zero. But life persisted.`},
+  rewilding_epoch:{name:'Rewilding Epoch',stars:2,starStr:'★★☆☆☆',color:'#15803d',
+    text:`Humans abandoned all technology and returned to primitive life.
+Carbon vanished with technology. The ecosystem slowly recovered.
+The Rewilding Epoch—back to the beginning.`},
+  digital_escape:{name:'Digital Escape',stars:3,starStr:'★★★☆☆',color:'#7c3aed',
+    text:`Human consciousness uploaded to digital networks. Bodies left behind.
+Carbon? Irrelevant. The planet recovered.
+Was this survival, or a beautiful death?`},
+  ai_coexist:{name:'AI Coexistence',stars:4,starStr:'★★★★☆',color:'#0ea5e9',
+    text:`AI managed systems. Humans lived their lives. Neither dominated.
+The most human solution—messy, imperfect, but honest.`},
+  mars_colony:{name:'Mars Colony',stars:3,starStr:'★★★☆☆',color:'#ea580c',
+    text:`The last ship carried humanity to Mars. A tiny colony took root.
+Carbon on Earth ended. The Mars Epoch began.`},
+  symbiosis_epoch:{name:'Symbiosis Epoch',stars:3,starStr:'★★★☆☆',color:'#84cc16',
+    text:`Humans adapted through genetic modification. Carbon became irrelevant.
+Humans became part of the ecosystem, not outside it.`},
+  ocean_epoch:{name:'Ocean Epoch',stars:4,starStr:'★★★★☆',color:'#0284c7',
+    text:`Humanity explored the deep oceans and discovered wonders.
+Carbon absorbed naturally. Earth still had secrets.`},
+  synthetic_epoch:{name:'Synthetic Epoch',stars:4,starStr:'★★★★☆',color:'#a855f7',
+    text:`Engineered organisms absorbed carbon at 10x natural rates.
+Humanity became Earth's gardener—for better or worse.`},
   doomhousehold:{name:'Doomsday Survival',stars:1,starStr:'★☆☆☆☆',color:'#78716c',
     text:`2060.
 
