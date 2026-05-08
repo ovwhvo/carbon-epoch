@@ -2929,7 +2929,7 @@ const ALIEN_SCENARIOS={
 
 const STATE = {
   currentEraIndex:0,phase:'narrative',
-  stats:{carbon:0,tech:0,population:10,happiness:50,knowledge:0,ecology:50},
+  stats:{carbon:0,tech:0,population:10,happiness:50,knowledge:5,ecology:50},
   history:[],unlockedTechs:[],
   carbonHistory:[{era:'起点',value:0}],
   startTime:null,fastMode:false,hardMode:false,
@@ -2944,7 +2944,7 @@ function startGame(){
   STATE.startTime=Date.now();
   STATE.currentEraIndex=0;
   STATE.phase='narrative';
-  STATE.stats={carbon:0,tech:0,population:10,happiness:50,knowledge:0,ecology:50};
+  STATE.stats={carbon:0,tech:0,population:10,happiness:50,knowledge:5,ecology:50};
   STATE.history=[];STATE.unlockedTechs=[];
   STATE.carbonHistory=[{era:'起点',value:0}];
   STATE.triggeredEvents=[];STATE.gameFlags={};
@@ -4695,7 +4695,7 @@ the fire-users rose, the fire-rejecters were marginalized.
 But those who refused the flame preserved an ancient wisdom—
 the wisdom of living in harmony with nature.`,
             effects:{carbon:-3,tech:-8,population:-5,happiness:-2,knowledge:-3,ecology:12},
-            requirements:{knowledge:5}}
+            requirements:{knowledge:3}}
         ]}
     ]},
   {id:'era02',name:'Age of Agriculture',subtitle:'Dawn of Settlement',year:'~8,000 BCE',eraLabel:'Chapter 2',
