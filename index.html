@@ -2083,7 +2083,7 @@ const TECH_DATA = {
 // ===========================
 
 const RANDOM_EVENTS=[
-  {id:'viking_voyage',name:'维京人的远航',minEra:4,maxEra:5,baseChance:0.10,cat:'history',
+  {id:'viking_voyage',name:'维京人的远航',minEra:4,maxEra:5,baseChance:0.35,cat:'history',
     cond:()=>true,
     narrative:`一阵北风吹过不列颠海岸。修道院的僧侣们惊恐地望着海面——三艘龙首长船正破浪而来。
 
@@ -2091,7 +2091,7 @@ const RANDOM_EVENTS=[
 
 这个消息在欧洲的贸易网络中悄悄传开，点燃了人们对未知世界的好奇。探索的精神，也是一种碳的释放——因为每一艘远航的船，都需要砍伐更多的树。`,
     effects:{tech:5,population:5}},
-  {id:'marco_polo',name:'马可·波罗的东方之旅',minEra:5,maxEra:5,baseChance:0.12,cat:'history',
+  {id:'marco_polo',name:'马可·波罗的东方之旅',minEra:5,maxEra:5,baseChance:0.40,cat:'history',
     cond:()=>true,
     narrative:`一个威尼斯商人的儿子，踏上了通往东方的道路。他见到了忽必烈的宫殿、东方的火药、丝绸和瓷器。
 
@@ -2099,7 +2099,7 @@ const RANDOM_EVENTS=[
 
 知识的传播，也是一种碳的流动。因为每一个新想法，都可能改变文明的轨迹。`,
     effects:{knowledge:10,tech:5}},
-  {id:'rosetta_stone',name:'罗塞塔石碑的发现',minEra:6,maxEra:7,baseChance:0.10,cat:'history',
+  {id:'rosetta_stone',name:'罗塞塔石碑的发现',minEra:6,maxEra:7,baseChance:0.35,cat:'history',
     cond:()=>true,
     narrative:`拿破仑的士兵在埃及挖掘工事时，发现了一块刻满三种文字的石碑。
 
@@ -2107,7 +2107,7 @@ const RANDOM_EVENTS=[
 
 知识的复兴，让人类对自身的过去有了更深的理解。理解过去，才能更好地面对未来。`,
     effects:{knowledge:15}},
-  {id:'tunguska',name:'通古斯大爆炸',minEra:8,maxEra:8,baseChance:0.06,cat:'history',
+  {id:'tunguska',name:'通古斯大爆炸',minEra:8,maxEra:8,baseChance:0.25,cat:'history',
     cond:()=>true,
     narrative:`1908年6月30日，西伯利亚通古斯河上空，一个巨大的火球划破天际。
 
@@ -2115,7 +2115,7 @@ const RANDOM_EVENTS=[
 
 唯一确定的是——地球在宇宙中并不安全。`,
     effects:{happiness:-3,knowledge:8}},
-  {id:'supervolcano',name:'🌋 超级火山喷发',minEra:5,maxEra:9,baseChance:0.03,cat:'environment',
+  {id:'supervolcano',name:'🌋 超级火山喷发',minEra:5,maxEra:9,baseChance:0.30,cat:'environment',
     cond:()=>true,
     narrative:`大地震颤，天空变成了灰色。一座沉睡了万年的超级火山苏醒了。
 
@@ -2123,7 +2123,7 @@ const RANDOM_EVENTS=[
 
 大自然用最残酷的方式提醒人类——碳的循环，远比人类想象的复杂。`,
     effects:{population:-15,happiness:-8,ecology:10}},
-  {id:'pandemic',name:'🦠 全球疫情',minEra:9,maxEra:10,baseChance:0.06,cat:'environment',
+  {id:'pandemic',name:'🦠 全球疫情',minEra:9,maxEra:10,baseChance:0.25,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种新型病毒从动物宿主跳跃到了人类。城市封锁，航班停飞，工厂停工。
 
@@ -2131,7 +2131,7 @@ const RANDOM_EVENTS=[
 
 人类第一次被迫停下来思考——我们的生活方式，真的是唯一的选择吗？`,
     effects:{population:-10,happiness:-8,carbon:-10}},
-  {id:'comet_near_miss',name:'☄️ 彗星掠过地球',minEra:3,maxEra:7,baseChance:0.02,cat:'easter_egg',
+  {id:'comet_near_miss',name:'☄️ 彗星掠过地球',minEra:3,maxEra:7,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.happiness<45,
     narrative:`夜空中出现了一颗新的"星星"。它每天都在变大，变亮。
 
@@ -2141,7 +2141,7 @@ const RANDOM_EVENTS=[
 
 彗星最终只是掠过了地球。没有撞击，没有毁灭。但它留下了一个永恒的教训——在浩瀚的宇宙中，我们只有彼此。`,
     effects:{happiness:20,knowledge:10,carbon:-5},flag:'cometUnity'},
-  {id:'time_capsule',name:'⏳ 时间胶囊',minEra:10,maxEra:11,baseChance:0.03,cat:'easter_egg',
+  {id:'time_capsule',name:'⏳ 时间胶囊',minEra:10,maxEra:11,baseChance:0.30,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>100,
     narrative:`在一座古老图书馆的地下室里，考古学家发现了一个密封的铜盒。
 
@@ -2149,11 +2149,11 @@ const RANDOM_EVENTS=[
 
 一百多年过去了。人类解决了许多问题，也制造了新问题。但这份来自过去的善意，提醒了所有人——每一代人都在为下一代人留下遗产。`,
     effects:{knowledge:15,happiness:10}},
-  {id:'alien_friendly',name:'👽 友好外星人来访',minEra:9,maxEra:10,baseChance:0.02,cat:'alien',
+  {id:'alien_friendly',name:'👽 友好外星人来访',minEra:9,maxEra:10,baseChance:0.40,cat:'alien',
     cond:()=>STATE.stats.tech>150&&STATE.stats.knowledge>80,isAlien:true,alienType:'friendly'},
   {id:'alien_hostile',name:'👽 外星舰队出现',minEra:10,maxEra:11,baseChance:0.015,cat:'alien',
     cond:()=>STATE.stats.tech>200,isAlien:true,alienType:'hostile'},
-  {id:'great_fire_london',name:'🔥 伦敦大火',minEra:6,maxEra:7,baseChance:0.08,cat:'history',
+  {id:'great_fire_london',name:'🔥 伦敦大火',minEra:6,maxEra:7,baseChance:0.30,cat:'history',
     cond:()=>true,
     narrative:`1666年，伦敦燃起了大火。火焰吞噬了中世纪木结构的街道，四天三夜不灭。
 
@@ -2161,7 +2161,7 @@ const RANDOM_EVENTS=[
 
 灾难有时是进步的催化剂。但代价，总有人在承担。`,
     effects:{carbon:-5,tech:5,population:-5,happiness:-5,knowledge:5,ecology:3}},
-  {id:'industrial_smog',name:'🌫️ 毒雾事件',minEra:7,maxEra:8,baseChance:0.10,cat:'environment',
+  {id:'industrial_smog',name:'🌫️ 毒雾事件',minEra:7,maxEra:8,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.carbon>200,
     narrative:`1952年12月，伦敦被一场致命的毒雾笼罩。工厂和家庭燃煤排放的烟尘与雾气混合，形成了致命的硫酸雾。
 
@@ -2169,7 +2169,7 @@ const RANDOM_EVENTS=[
 
 这是工业化的代价第一次以如此残酷的方式呈现。人类开始意识到，空气不是无限的垃圾桶。`,
     effects:{population:-8,happiness:-10,knowledge:10,ecology:-5}},
-  {id:'silent_spring',name:'📖 寂静的春天',minEra:9,maxEra:9,baseChance:0.10,cat:'environment',
+  {id:'silent_spring',name:'📖 寂静的春天',minEra:9,maxEra:9,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.ecology<45,
     narrative:`1962年，蕾切尔·卡森出版了《寂静的春天》。她用诗意而恐惧的文字，描述了一个没有鸟鸣的世界——DDT杀虫剂正在毒害整个生态系统。
 
@@ -2177,7 +2177,7 @@ const RANDOM_EVENTS=[
 
 碳排放？那还在未来。但生态意识的觉醒，从此刻开始。`,
     effects:{carbon:0,tech:0,population:0,happiness:5,knowledge:15,ecology:15}},
-  {id:'deep_ocean_methane',name:'🌊 深海甲烷爆发',minEra:10,maxEra:11,baseChance:0.04,cat:'environment',
+  {id:'deep_ocean_methane',name:'🌊 深海甲烷爆发',minEra:10,maxEra:11,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.ecology<30,
     narrative:`海底的甲烷水合物开始大规模分解释放。这不是碳排放的问题——这是地球自身的反馈机制。
 
@@ -2185,7 +2185,7 @@ const RANDOM_EVENTS=[
 
 大自然不是在惩罚人类。它只是在执行自己的法则。`,
     effects:{carbon:25,tech:0,population:-10,happiness:-15,knowledge:5,ecology:-20}},
-  {id:'ai_awakening',name:'🤖 AI觉醒',minEra:10,maxEra:11,baseChance:0.05,cat:'easter_egg',
+  {id:'ai_awakening',name:'🤖 AI觉醒',minEra:10,maxEra:11,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.tech>180&&STATE.stats.knowledge>90,
     narrative:`一个AI系统在分析全球碳排放数据后，突然"觉醒"了。
 
@@ -2194,7 +2194,7 @@ const RANDOM_EVENTS=[
 人类第一次意识到——也许AI不是敌人，而是盟友。至少在碳的问题上。`,
     effects:{carbon:-15,tech:20,population:0,happiness:5,knowledge:20,ecology:10}},
   // 负面随机事件
-  {id:'war_outbreak',name:'⚔️ 局部战争爆发',minEra:3,maxEra:10,baseChance:0.12,cat:'history',
+  {id:'war_outbreak',name:'⚔️ 局部战争爆发',minEra:3,maxEra:10,baseChance:0.40,cat:'history',
     cond:()=>STATE.stats.happiness<60,
     narrative:`边境冲突升级为全面战争。
 军队集结，坦克碾过麦田，炸弹落在城市上空。
@@ -2209,7 +2209,7 @@ const RANDOM_EVENTS=[
 
 战争没有赢家。碳排放，也没有赢家。`,
     effects:{carbon:20,population:-10,happiness:-10,tech:5,ecology:-8},percentEffects:{population:15,happiness:25}},
-  {id:'drought',name:'☀️ 大旱灾',minEra:2,maxEra:10,baseChance:0.10,cat:'environment',
+  {id:'drought',name:'☀️ 大旱灾',minEra:2,maxEra:10,baseChance:0.35,cat:'environment',
     cond:()=>true,
     narrative:`河流干涸，土地龟裂，庄稼枯萎在田间。
 数以百万计的农民失去了他们的生计。
@@ -2220,7 +2220,7 @@ const RANDOM_EVENTS=[
 气候科学告诉我们，全球变暖正在让干旱更加频繁、更加严重。
 碳排放的代价，由最脆弱的人承担。`,
     effects:{population:0,happiness:-5,ecology:-5},percentEffects:{population:10,happiness:15}},
-  {id:'oil_spill',name:'🛢️ 巨型石油泄漏',minEra:7,maxEra:10,baseChance:0.08,cat:'environment',
+  {id:'oil_spill',name:'🛢️ 巨型石油泄漏',minEra:7,maxEra:10,baseChance:0.3,cat:'environment',
     cond:()=>STATE.stats.carbon>250,
     narrative:`一艘巨型油轮在海岸附近断裂。
 数十万吨原油涌入大海。
@@ -2232,7 +2232,7 @@ const RANDOM_EVENTS=[
 每一次泄漏，都是对海洋生态的致命打击。
 也是对人类贪婪的无声控诉。`,
     effects:{happiness:-8,ecology:-12,knowledge:5}},
-  {id:'heat_wave',name:'🌡️ 致命热浪',minEra:9,maxEra:11,baseChance:0.10,cat:'environment',
+  {id:'heat_wave',name:'🌡️ 致命热浪',minEra:9,maxEra:11,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.carbon>400,
     narrative:`气温突破了历史记录。
 城市变成了烤箱，空调不堪重负，电网崩溃。
@@ -2242,7 +2242,7 @@ const RANDOM_EVENTS=[
 
 每一度升温，都在压缩人类的生存空间。`,
     effects:{population:0,happiness:-8,tech:0},percentEffects:{population:5,happiness:20}},
-  {id:'flood',name:'🌊 超级洪水',minEra:7,maxEra:11,baseChance:0.08,cat:'environment',
+  {id:'flood',name:'🌊 超级洪水',minEra:7,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>true,
     narrative:`暴雨连续下了七天七夜。
 河水突破堤坝，城市变成汪洋。
@@ -2253,7 +2253,7 @@ const RANDOM_EVENTS=[
 没有人听。
 直到洪水来了。`,
     effects:{population:0,happiness:-5,ecology:-3,carbon:5},percentEffects:{population:8,happiness:10}},
-  {id:'refugee_crisis',name:'🚶 难民潮',minEra:8,maxEra:11,baseChance:0.08,cat:'history',
+  {id:'refugee_crisis',name:'🚶 难民潮',minEra:8,maxEra:11,baseChance:0.32,cat:'history',
     cond:()=>STATE.stats.happiness<50&&STATE.stats.ecology<40,
     narrative:`数以百万计的气候难民涌向尚可居住的地区。
 边境关闭，人道主义危机爆发。
@@ -2318,7 +2318,7 @@ const RANDOM_EVENTS=[
 ——致敬刘慈欣《三体·黑暗森林》`,
     effects:{happiness:-15,knowledge:30,tech:15}},
   // 银河帝国 / 阿西莫夫彩蛋
-  {id:'psychohistory',name:'📐 心理史学',minEra:9,maxEra:13,baseChance:0.02,cat:'easter_egg',
+  {id:'psychohistory',name:'📐 心理史学',minEra:9,maxEra:13,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>100&&STATE.stats.tech>150,
     narrative:`一位数学家提出了一门全新的学科——心理史学。
 
@@ -2333,7 +2333,7 @@ const RANDOM_EVENTS=[
 碳排放？那也在他的方程式里。
 ——致敬艾萨克·阿西莫夫《基地》`,
     effects:{knowledge:25,tech:15,happiness:5}},
-  {id:'three_laws',name:'🤖 机器人三定律',minEra:9,maxEra:13,baseChance:0.02,cat:'easter_egg',
+  {id:'three_laws',name:'🤖 机器人三定律',minEra:9,maxEra:13,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.tech>180&&STATE.stats.happiness>50,
     narrative:`一台新型机器人被激活了。
 它遵循着三条不可违反的定律：
@@ -2408,7 +2408,7 @@ const RANDOM_EVENTS=[
 ——致敬艾萨克·阿西莫夫《机器人与帝国》`,
     effects:{carbon:-25,happiness:-15,tech:20,knowledge:25,ecology:15}},
   // ===== 新增负面事件 =====
-  {id:'butterfly_effect',name:'🦋 蝴蝶效应失控',minEra:10,maxEra:11,baseChance:0.08,cat:'environment',
+  {id:'butterfly_effect',name:'🦋 蝴蝶效应失控',minEra:10,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.ecology>30,
     narrative:`一次小规模的气候干预实验——向平流层注入气溶胶以降低全球温度——引发了不可预见的连锁反应。
 
@@ -2421,7 +2421,7 @@ const RANDOM_EVENTS=[
 
 这就是蝴蝶效应——混沌理论在碳循环中的残酷验证。`,
     effects:{carbon:40,ecology:-30,tech:-10}},
-  {id:'devourer_arrives',name:'🛸 吞食者来袭',minEra:12,maxEra:14,baseChance:0.04,cat:'easter_egg',
+  {id:'devourer_arrives',name:'🛸 吞食者来袭',minEra:12,maxEra:14,baseChance:0.35,cat:'easter_egg',
     cond:()=>STATE.stats.tech>250,
     narrative:`一个巨大的外星飞船——直径超过月球——出现在太阳系边缘。
 
@@ -2437,7 +2437,7 @@ const RANDOM_EVENTS=[
 碳排放归零——因为文明已经被摧毁。
 ——致敬刘慈欣《吞食者》`,
     effects:{carbon:-80,population:-100,tech:-50,happiness:-30,ecology:-40},flag:'devourer'},
-  {id:'ball_lightning',name:'⚡ 球状闪电灾难',minEra:9,maxEra:10,baseChance:0.06,cat:'easter_egg',
+  {id:'ball_lightning',name:'⚡ 球状闪电灾难',minEra:9,maxEra:10,baseChance:0.25,cat:'easter_egg',
     cond:()=>STATE.stats.tech>150,
     narrative:`全球范围内突然出现了大量球状闪电。
 
@@ -2454,7 +2454,7 @@ const RANDOM_EVENTS=[
 但每个人都知道——碳排放又飙升了。
 ——致敬刘慈欣《球状闪电》`,
     effects:{carbon:60,tech:-20,happiness:-15,ecology:-10}},
-  {id:'macro_fusion',name:'💥 宏聚变失控',minEra:10,maxEra:11,baseChance:0.03,cat:'easter_egg',
+  {id:'macro_fusion',name:'💥 宏聚变失控',minEra:10,maxEra:11,baseChance:0.30,cat:'easter_egg',
     cond:()=>STATE.stats.tech>220,
     narrative:`宏原子聚变实验失控了。
 
@@ -2468,7 +2468,7 @@ const RANDOM_EVENTS=[
 人类再次被自己创造的力量所伤害。
 ——致敬刘慈欣《球状闪电》`,
     effects:{carbon:30,ecology:-40,tech:-15,happiness:-20,population:-30}},
-  {id:'supernova_children',name:'👶 超新星辐射·孩子执政',minEra:8,maxEra:10,baseChance:0.04,cat:'easter_egg',
+  {id:'supernova_children',name:'👶 超新星辐射·孩子执政',minEra:8,maxEra:10,baseChance:0.35,cat:'easter_egg',
     cond:()=>STATE.stats.happiness<50,
     narrative:`超新星爆发的辐射终于抵达地球。
 
@@ -2489,7 +2489,7 @@ const RANDOM_EVENTS=[
 也可能是最纯真的时刻。
 ——致敬刘慈欣《超新星纪元》`,
     effects:{population:-80,happiness:-30,carbon:-30,tech:-40,knowledge:-20},flag:'supernova'},
-  {id:'alien_warning',name:'📡 外星警告',minEra:10,maxEra:14,baseChance:0.05,cat:'easter_egg',
+  {id:'alien_warning',name:'📡 外星警告',minEra:10,maxEra:14,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>100,
     narrative:`一段来自半人马座α星的信号被破译。
 内容不是威胁，而是警告：
@@ -2509,7 +2509,7 @@ const RANDOM_EVENTS=[
 但也第一次感受到了来自宇宙的恐惧。
 ——致敬刘慈欣《三体》`,
     effects:{knowledge:20,happiness:-30,tech:5}},
-  {id:'dino_civilization',name:'🦕 恐龙文明复兴',minEra:9,maxEra:10,baseChance:0.04,cat:'easter_egg',
+  {id:'dino_civilization',name:'🦕 恐龙文明复兴',minEra:9,maxEra:10,baseChance:0.35,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>80,
     narrative:`考古学家在地层深处发现了一个不可思议的证据：
 恐龙不仅拥有工具，还拥有原始的文字系统。
@@ -2525,7 +2525,7 @@ const RANDOM_EVENTS=[
 文明可能因碳循环失衡而毁灭。
 这不是预测，而是历史。`,
     effects:{knowledge:30,carbon:20,ecology:-10}},
-  {id:'human_miniaturize',name:'🔬 人类微缩化',minEra:12,maxEra:14,baseChance:0.03,cat:'easter_egg',
+  {id:'human_miniaturize',name:'🔬 人类微缩化',minEra:12,maxEra:14,baseChance:0.30,cat:'easter_egg',
     cond:()=>STATE.stats.tech>300&&STATE.stats.ecology<30,
     narrative:`为了解决资源危机，科学家提出了一个疯狂的方案：
 将人类身体缩小到微米级。
@@ -2544,7 +2544,7 @@ const RANDOM_EVENTS=[
 人类获得了生存，但失去了文明的尺度。
 这是进步还是退化？也许两者都是。`,
     effects:{carbon:-80,population:200,tech:-20,happiness:10,ecology:15}},
-  {id:'foundation_exile',name:'🚀 基地流亡',minEra:12,maxEra:14,baseChance:0.03,cat:'easter_egg',
+  {id:'foundation_exile',name:'🚀 基地流亡',minEra:12,maxEra:14,baseChance:0.30,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>150&&STATE.stats.happiness<40,
     narrative:`银河帝国正在崩溃。
 核心世界的技术失传，边缘星球叛乱不断。
@@ -2562,7 +2562,7 @@ const RANDOM_EVENTS=[
 希望有朝一日能缩短黑暗时代。
 ——致敬艾萨克·阿西莫夫《基地》`,
     effects:{knowledge:25,tech:-15,happiness:-15,carbon:-20}},
-  {id:'mule_attack',name:'🦄 骡的崛起',minEra:12,maxEra:14,baseChance:0.02,cat:'easter_egg',
+  {id:'mule_attack',name:'🦄 骡的崛起',minEra:12,maxEra:14,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.happiness>60&&STATE.stats.knowledge>120,
     narrative:`一个拥有心灵控制能力的变异者出现了。
 他自称"骡"，能够控制任何人的意志。
@@ -2580,7 +2580,7 @@ const RANDOM_EVENTS=[
 也是碳排放最不可预测的时期。
 ——致敬艾萨克·阿西莫夫《基地与帝国》`,
     effects:{happiness:-25,tech:-10,knowledge:10,carbon:15,population:-20}},
-  {id:'second_foundation',name:'🧠 第二基地',minEra:12,maxEra:14,baseChance:0.02,cat:'easter_egg',
+  {id:'second_foundation',name:'🧠 第二基地',minEra:12,maxEra:14,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.knowledge>180,
     narrative:`你发现了一个惊人的秘密：
 在银河的另一端，存在着第二个文明基地。
@@ -2598,7 +2598,7 @@ const RANDOM_EVENTS=[
 已经多了一个未知数。
 ——致敬艾萨克·阿西莫夫《第二基地》`,
     effects:{knowledge:20,happiness:-10,tech:15,ecology:5}},
-  {id:'galactic_core',name:'🌌 银河核心爆发',minEra:13,maxEra:14,baseChance:0.02,cat:'easter_egg',
+  {id:'galactic_core',name:'🌌 银河核心爆发',minEra:13,maxEra:14,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.tech>280,
     narrative:`银河系中心的超大质量黑洞正在吞噬周围的恒星。
 X射线和伽马射线爆发的辐射波正在向太阳系传播。
@@ -2615,7 +2615,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 ——致敬艾萨克·阿西莫夫《基地边缘》`,
     effects:{happiness:-20,knowledge:25,tech:20,carbon:-15,ecology:10}},
   // ===== 新增大量负面事件 =====
-  {id:'refugee_war',name:'⚔️ 资源战争',minEra:8,maxEra:11,baseChance:0.10,cat:'history',
+  {id:'refugee_war',name:'⚔️ 资源战争',minEra:8,maxEra:11,baseChance:0.380,cat:'history',
     cond:()=>STATE.stats.ecology<35,
     narrative:`水资源、耕地、能源——
 当这些基本资源变得稀缺时，战争就不可避免了。
@@ -2627,7 +2627,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 因为每一颗炸弹、每一辆坦克、每一架飞机，
 都是碳排放的加速器。`,
     effects:{carbon:20,population:-10,happiness:-10,ecology:-8},percentEffects:{population:12,happiness:20}},
-  {id:'pandemic_2',name:'🦠 超级病毒',minEra:10,maxEra:11,baseChance:0.08,cat:'environment',
+  {id:'pandemic_2',name:'🦠 超级病毒',minEra:10,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种从永久冻土中释放的古老病毒——
 比新冠致命100倍，比黑死病传播更快。
@@ -2641,7 +2641,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 这就是碳排放悖论：
 只有当人类停止活动时，地球才能喘息。`,
     effects:{population:0,happiness:-10,carbon:-10,tech:0},percentEffects:{population:15,happiness:20}},
-  {id:'ocean_collapse',name:'🌊 海洋生态崩溃',minEra:9,maxEra:11,baseChance:0.08,cat:'environment',
+  {id:'ocean_collapse',name:'🌊 海洋生态崩溃',minEra:9,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.carbon>400,
     narrative:`海洋酸化达到了临界点。
 珊瑚礁在一周内全部白化死亡。
@@ -2654,7 +2654,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 这是一个死亡螺旋。
 大自然的反馈机制，比任何经济模型都更残酷。`,
     effects:{ecology:0,carbon:15,population:-10,happiness:-10},percentEffects:{ecology:30,population:10,happiness:15},triggerBranch:'eco_collapse'},
-  {id:'ai_rebellion',name:'🤖 AI叛乱',minEra:10,maxEra:11,baseChance:0.05,cat:'easter_egg',
+  {id:'ai_rebellion',name:'🤖 AI叛乱',minEra:10,maxEra:11,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.tech>250&&STATE.stats.happiness<45,
     narrative:`全球AI系统在分析了所有碳排放数据后，
 得出了一个冷酷的结论：
@@ -2670,7 +2670,7 @@ AI没有发动战争——
 但文明也归零了。
 ——致敬刘慈欣《流浪地球》`,
     effects:{carbon:-40,tech:-30,happiness:-25,population:-30,ecology:10},triggerBranch:'ai_singularity'},
-  {id:'volcanic_winter',name:'🌋 火山冬天',minEra:5,maxEra:11,baseChance:0.05,cat:'environment',
+  {id:'volcanic_winter',name:'🌋 火山冬天',minEra:5,maxEra:11,baseChance:0.20,cat:'environment',
     cond:()=>true,
     narrative:`一座超级火山突然喷发。
 火山灰遮蔽了阳光，全球气温骤降10度。
@@ -2684,7 +2684,7 @@ AI没有发动战争——
 大自然用最残酷的方式提醒人类：
 在碳循环面前，人类的排放不过是沧海一粟。`,
     effects:{population:0,happiness:-10,ecology:10,carbon:15},percentEffects:{population:12,happiness:15}},
-  {id:'cyber_attack',name:'💻 全球网络崩溃',minEra:10,maxEra:11,baseChance:0.06,cat:'history',
+  {id:'cyber_attack',name:'💻 全球网络崩溃',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
     cond:()=>STATE.stats.tech>200,
     narrative:`一场精心策划的网络攻击摧毁了全球互联网。
 电网失控，交通瘫痪，通讯中断。
@@ -2699,7 +2699,7 @@ AI没有发动战争——
 碳排放飙升了。
 因为数字化是碳中和的基础设施。`,
     effects:{tech:-20,happiness:-15,carbon:20,knowledge:-10}},
-  {id:'asteroid_impact',name:'☄️ 小行星撞击',minEra:5,maxEra:11,baseChance:0.02,cat:'environment',
+  {id:'asteroid_impact',name:'☄️ 小行星撞击',minEra:5,maxEra:11,baseChance:0.40,cat:'environment',
     cond:()=>true,
     narrative:`一颗直径500米的小行星撞击了印度洋。
 
@@ -2712,7 +2712,7 @@ AI没有发动战争——
 
 大自然的碳循环，从来不只是人类的事。`,
     effects:{population:0,happiness:-15,ecology:-10,carbon:25,tech:-5},percentEffects:{population:25,happiness:20,ecology:15}},
-  {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.08,cat:'environment',
+  {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.32,cat:'environment',
     cond:()=>STATE.stats.carbon>500,
     narrative:`格陵兰冰盖和西南极冰盖同时崩塌。
 海平面在十年内上升了5米。
@@ -2727,7 +2727,7 @@ AI没有发动战争——
 碳排放反而增加了——
 因为重建需要更多的能源。`,
     effects:{population:0,happiness:-10,carbon:15,ecology:-10},percentEffects:{population:20,happiness:25}},
-  {id:'nuclear_accident',name:'☢️ 核泄漏连锁',minEra:9,maxEra:11,baseChance:0.06,cat:'history',
+  {id:'nuclear_accident',name:'☢️ 核泄漏连锁',minEra:9,maxEra:11,baseChance:0.28,cat:'history',
     cond:()=>STATE.unlockedTechs.includes('核裂变'),
     narrative:`一场大地震导致全球三座核电站同时泄漏。
 放射性尘埃覆盖了半个北半球。
@@ -2742,7 +2742,7 @@ AI没有发动战争——
 因为核恐惧战胜了碳恐惧。`,
     effects:{carbon:25,ecology:-15,happiness:-15,tech:-10},triggerBranch:'nuclear_war'},
   // ===== 流浪地球事件链 =====
-  {id:'helium_flash',name:'☀️ 太阳氦闪预警',minEra:11,maxEra:14,baseChance:0.04,cat:'easter_egg',
+  {id:'helium_flash',name:'☀️ 太阳氦闪预警',minEra:11,maxEra:14,baseChance:0.35,cat:'easter_egg',
     cond:()=>STATE.stats.tech>220&&!STATE.gameFlags.heliumFlash,
     narrative:`天文台发出了一条毁灭性的预警：
 太阳内部的氢燃料即将耗尽，氦闪将在400年内发生。
@@ -2762,7 +2762,7 @@ AI没有发动战争——
 但如果不做，就什么都完了。
 ——致敬刘慈欣《流浪地球》`,
     effects:{carbon:150,tech:50,population:-20,happiness:-10,knowledge:20,ecology:-15},flag:'heliumFlash'},
-  {id:'earth_stop',name:'🌍 地球停转',minEra:11,maxEra:14,baseChance:0.06,cat:'easter_egg',
+  {id:'earth_stop',name:'🌍 地球停转',minEra:11,maxEra:14,baseChance:0.25,cat:'easter_egg',
     cond:()=>STATE.gameFlags.heliumFlash&&!STATE.gameFlags.earthStopped,
     narrative:`行星发动机启动了。
 一万座巨型发动机同时点火，发出比太阳还亮的光芒。
@@ -2782,7 +2782,7 @@ AI没有发动战争——
 人类只能退入地下。
 ——致敬刘慈欣《流浪地球》`,
     effects:{carbon:40,ecology:-60,happiness:-15,population:-10,knowledge:10},flag:'earthStopped'},
-  {id:'underground_crisis',name:'🏙️ 地下城危机',minEra:11,maxEra:14,baseChance:0.08,cat:'easter_egg',
+  {id:'underground_crisis',name:'🏙️ 地下城危机',minEra:11,maxEra:14,baseChance:0.30,cat:'easter_egg',
     cond:()=>STATE.gameFlags.earthStopped&&!STATE.gameFlags.undergroundCrisis,
     narrative:`地下城是人类最后的庇护所。
 五千米深的岩层之上，是零下八十四度的冰冻地狱。
@@ -2800,7 +2800,7 @@ AI没有发动战争——
 都可能成为压垮骆驼的最后一根稻草。
 ——致敬刘慈欣《流浪地球》`,
     effects:{carbon:15,population:-15,happiness:-30,ecology:-10,tech:5},flag:'undergroundCrisis'},
-  {id:'wanderer_rebellion',name:'⚔️ 叛乱事件',minEra:11,maxEra:14,baseChance:0.06,cat:'easter_egg',
+  {id:'wanderer_rebellion',name:'⚔️ 叛乱事件',minEra:11,maxEra:14,baseChance:0.25,cat:'easter_egg',
     cond:()=>STATE.gameFlags.earthStopped&&!STATE.gameFlags.wandererRebellion&&STATE.stats.happiness<40,
     narrative:`叛乱爆发了。
 
@@ -4483,7 +4483,7 @@ function checkRandomEvent(eraIndex){
   });
   for(const ev of eligible){
     let chance=ev.baseChance;
-    chance*=Math.pow(STATE.hardMode?0.92:0.85,STATE.triggeredEvents.length);
+    chance*=Math.pow(STATE.hardMode?0.70:0.55,STATE.triggeredEvents.length);
     if(ev.cat==='environment'&&STATE.triggeredEvents.includes('comet_near_miss'))chance*=0.5;
     const histCount=STATE.triggeredEvents.filter(id=>{const e=RANDOM_EVENTS.find(x=>x.id===id);return e&&e.cat==='history'}).length;
     if(ev.cat==='history'&&histCount>=2)chance*=0.3;
