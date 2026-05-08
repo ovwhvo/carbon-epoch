@@ -3450,7 +3450,7 @@ function buildEffectHints(effects){
   ];
   items.forEach(item=>{
     const val=effects[item.key];
-    if(val===0)return;
+    if(val===0||val===undefined||val===null)return;
     const cls=val>0?(item.key==='carbon'?'hint-negative':'hint-positive'):(item.key==='carbon'?'hint-positive':'hint-negative');
     const sign=val>0?'+':'';
     html+=`<span class="${cls}">${item.icon} ${sign}${val}</span>`;
@@ -5008,7 +5008,7 @@ function buildEffectCards(effects){
   [{key:'carbon',label:'碳排放',icon:'🌡️'},{key:'tech',label:'科技',icon:'🔬'},
    {key:'population',label:'人口',icon:'👥'},{key:'happiness',label:'幸福',icon:'😊'},
    {key:'knowledge',label:'知识',icon:'📚'},{key:'ecology',label:'生态',icon:'🌿'}].forEach(item=>{
-    const val=effects[item.key];if(!val)return;
+    const val=effects[item.key];if(val===0||val===undefined||val===null)return;
     const cls=item.key==='carbon'?(val>0?'negative':'positive'):(val>0?'positive':'negative');
     const sign=val>0?'+':'';
     html+=`<div class="effect-item"><div class="effect-label">${item.icon} ${item.label}</div><div class="effect-value ${cls}">${sign}${val}</div></div>`;
