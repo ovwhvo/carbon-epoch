@@ -3149,12 +3149,16 @@ function buildEffectHints(effects){
 function applyDynamicModifiers(option){
   const s=STATE.stats;
   // Population scaling: higher pop = more impact from choices
-  const pop=s.population;
+  const pop=Math.max(0,s.population||0);
   let popScale=1.0;
-  if(pop<50)popScale=0.8;
-  else if(pop<150)popScale=1.0;
-  else if(pop<500)popScale=1.2;
-  else popScale=1.5;
+  if(pop<50)popScale=0.7;
+  else if(pop<500)popScale=0.9;
+  else if(pop<2000)popScale=1.0;
+  else if(pop<10000)popScale=1.15;
+  else if(pop<100000)popScale=1.3;
+  else if(pop<500000)popScale=1.5;
+  else if(pop<1000000)popScale=1.7;
+  else popScale=2.0;
   const base={...option.effects};
   const modifiers=[];
   // Low happiness makes cooperative options fail more
@@ -3208,10 +3212,10 @@ function makeChoice(eraId,decisionIndex,optionId){
 
   const {effects:e,modifiers}=applyDynamicModifiers(option);
   STATE.stats.carbon+=e.carbon;
-  STATE.stats.tech=Math.min(600,STATE.stats.tech+e.tech);
-  STATE.stats.population=Math.max(0,Math.min(2000000,STATE.stats.population+e.population));
+  STATE.stats.tech=Math.min(1000,STATE.stats.tech+e.tech);
+  STATE.stats.population=Math.max(0,Math.min(5000000,(STATE.stats.population||0)+e.population));
   STATE.stats.happiness=Math.max(0,Math.min(100,STATE.stats.happiness+e.happiness));
-  STATE.stats.knowledge=Math.min(400,STATE.stats.knowledge+e.knowledge);
+  STATE.stats.knowledge=Math.min(600,STATE.stats.knowledge+e.knowledge);
   STATE.stats.ecology=Math.max(0,Math.min(100,STATE.stats.ecology+e.ecology));
   STATE.stats.carbon=Math.max(0,STATE.stats.carbon);
 
