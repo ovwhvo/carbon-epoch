@@ -3274,6 +3274,13 @@ function loadEra(eraIndex){
 
   // Set population to era base
   if(era.population>0)STATE.stats.population=safeNum(era.population,10);
+  // Global stat clamp after era load
+  STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)));
+  STATE.stats.knowledge=Math.max(0,Math.min(500,Number(STATE.stats.knowledge||0)));
+  STATE.stats.population=Math.max(1,Math.min(500000,Number(STATE.stats.population||0)));
+  STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)));
+  STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)));
+  STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0));
 
   document.getElementById('eraLabel').textContent=era.eraLabel;
   document.getElementById('eraName').textContent=era.name;
@@ -3470,10 +3477,12 @@ function applyDynamicModifiers(option){
     base.carbon=Math.round(base.carbon*1.25);
     base.happiness=Math.round(base.happiness*0.85);
   }
-  // Apply population scaling: higher pop = higher tech gain but also higher carbon
+  // Apply population scaling ONLY to carbon (not tech/knowledge - those don't scale with population)
   if(base.carbon>0)base.carbon=Math.round(base.carbon*popScale);
-  if(base.tech>0)base.tech=Math.round(base.tech*popScale);
-  if(base.knowledge>0)base.knowledge=Math.round(base.knowledge*(popScale*0.8+0.2));
+  // Cap population gains to prevent explosion
+  if(base.population>0)base.population=Math.min(base.population,Math.round(era.population*0.15));
+  // Cap population gains to prevent explosion
+  if(base.population>0)base.population=Math.min(base.population,Math.round(safeNum(s.population,10)*0.1));
   return {effects:base,modifiers};
 }
 
@@ -3487,10 +3496,10 @@ function makeChoice(eraId,decisionIndex,optionId){
   // Ensure all current stats are valid numbers before applying
   for(const k of Object.keys(STATE.stats)){if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0;}
   STATE.stats.carbon=Number(STATE.stats.carbon)+Number(e.carbon||0);
-  STATE.stats.tech=Math.min(1000,Number(STATE.stats.tech)+Number(e.tech||0));
-  STATE.stats.population=Math.max(0,Math.min(5000000,safeAdd(STATE.stats.population,e.population)));
+  STATE.stats.tech=Math.min(600,Number(STATE.stats.tech)+Number(e.tech||0));
+  STATE.stats.population=Math.max(0,Math.min(500000,safeAdd(STATE.stats.population,e.population)));
   STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness)+Number(e.happiness||0)));
-  STATE.stats.knowledge=Math.min(600,Number(STATE.stats.knowledge)+Number(e.knowledge||0));
+  STATE.stats.knowledge=Math.min(500,Number(STATE.stats.knowledge)+Number(e.knowledge||0));
   STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology)+Number(e.ecology||0)));
   STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon));
 
@@ -4167,7 +4176,7 @@ function handleBranchChoice(branchId,choiceIdx,optIdx){
   const e=opt.effects;
   STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon||0));
   STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech||0)));
-  STATE.stats.population=Math.max(0,Math.min(2000000,safeAdd(STATE.stats.population,e.population)));
+  STATE.stats.population=Math.max(0,Math.min(500000,safeAdd(STATE.stats.population,e.population)));
   STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness||0)));
   STATE.stats.knowledge=Math.max(0,Math.min(400,safeAdd(STATE.stats.knowledge,e.knowledge)));
   STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology||0)));
@@ -4525,12 +4534,12 @@ function updateDashboard(){
   const popDisplay=formatPop(Number(s.population||0),era?.popUnit||'万');
 
   const statsData=[
-    {icon:'🔬',name:'科技',value:s.tech,max:600,color:'#8b5cf6'},
-    {icon:'👥',name:'人口',value:popDisplay,max:100,color:'#06b6d4',raw:Math.min(100,s.population/20000)},
-    {icon:'😊',name:'幸福',value:s.happiness+'%',max:100,color:'#22c55e',raw:s.happiness},
-    {icon:'📚',name:'知识',value:s.knowledge,max:400,color:'#f59e0b'},
-    {icon:'🌿',name:'生态',value:s.ecology+'%',max:100,color:'#10b981',raw:s.ecology},
-    {icon:'🌡️',name:'碳排放',value:s.carbon,max:1500,color:gaugeColor}
+    {icon:'🔬',name:'科技',value:Math.min(600,Number(s.tech||0)),max:600,color:'#8b5cf6'},
+    {icon:'👥',name:'人口',value:popDisplay,max:100,color:'#06b6d4',raw:Math.min(100,Number(s.population||0)/5000)},
+    {icon:'😊',name:'幸福',value:Math.min(100,Number(s.happiness||0))+'%',max:100,color:'#22c55e',raw:Number(s.happiness||0)},
+    {icon:'📚',name:'知识',value:Math.min(500,Number(s.knowledge||0)),max:500,color:'#f59e0b'},
+    {icon:'🌿',name:'生态',value:Math.min(100,Number(s.ecology||0))+'%',max:100,color:'#10b981',raw:Number(s.ecology||0)},
+    {icon:'🌡️',name:'碳排放',value:Number(s.carbon||0),max:1500,color:gaugeColor}
   ];
   document.getElementById('statsGrid').innerHTML=statsData.map(st=>{
     const pctVal=st.raw!==undefined?st.raw:Math.min(100,(st.value/st.max)*100);
@@ -4777,8 +4786,8 @@ function applyEventAndContinue(eventId){
     }
     // Apply flat effects
     if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
-    if(e.tech)STATE.stats.tech=Math.max(0,Math.min(1000,Number(STATE.stats.tech||0)+Number(e.tech)));
-    if(e.population)STATE.stats.population=Math.max(0,Math.min(5000000,safeAdd(STATE.stats.population,e.population)));
+    if(e.tech)STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech)));
+    if(e.population)STATE.stats.population=Math.max(0,Math.min(500000,safeAdd(STATE.stats.population,e.population)));
     if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
     if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,safeAdd(STATE.stats.knowledge,e.knowledge)));
     if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
