@@ -394,7 +394,13 @@ const ERAS = [
 但营地意味着定居，定居意味着更多的柴火，
 更多的砍伐，更多的碳。
 这是人类文明的第一笔碳债务。`,
-            effects:{carbon:20,tech:5,population:8,happiness:8,knowledge:3,ecology:-5}}
+            effects:{carbon:20,tech:5,population:8,happiness:8,knowledge:3,ecology:-5}},
+          {id:'d',title:'保存火种',desc:'建立火种保存制度，确保火永不熄灭但也不过度使用',
+            result:`你建立了火种管理制度。
+专人看守火堆，其他人远离火焰。
+火被保存但不被滥用。碳排放微量，科技缓慢积累。
+这是制度的萌芽——用规则驾驭力量。`,
+            effects:{carbon:3,tech:5,population:2,happiness:3,knowledge:4,ecology:2}}
         ]
       },
       {
@@ -420,7 +426,13 @@ const ERAS = [
 但那些拒绝火焰的人，保留了一种古老的智慧——
 与自然和谐共处的智慧。`,
             effects:{carbon:-3,tech:-8,population:-5,happiness:-2,knowledge:-3,ecology:12},
-            requirements:{knowledge:5}}
+            requirements:{knowledge:5}},
+          {id:'d',title:'探索替代',desc:'寻找比木材更清洁的燃料',
+            result:`你派族人寻找替代燃料。
+干草、兽骨、矿石……虽然效果不佳，
+但探索的过程本身就是科技的进步。
+碳排放最少，知识积累最多。`,
+            effects:{carbon:1,tech:4,population:0,happiness:0,knowledge:6,ecology:4}}
         ]
       }
     ]
@@ -466,7 +478,13 @@ const ERAS = [
 这种制度延续了数千年，
 成为后世可持续发展的雏形。`,
             effects:{carbon:5,tech:8,population:30,happiness:10,knowledge:10,ecology:8},
-            requirements:{happiness:55}}
+            requirements:{happiness:55}},
+          {id:'d',title:'轮作实验',desc:'尝试不同作物轮作，平衡产量和土地恢复',
+            result:`你让不同部落轮流种植和休耕。
+产量中等，但土地保持了肥力。
+碳排放有限，科技在实践中积累。
+平衡，有时比极端更持久。`,
+            effects:{carbon:8,tech:6,population:8,happiness:4,knowledge:5,ecology:2}}
         ]
       },
       {
@@ -486,7 +504,12 @@ const ERAS = [
 不仅烧制陶器，还开始尝试冶炼金属。
 这是青铜时代的先声。`,
             effects:{carbon:15,tech:20,population:10,happiness:3,knowledge:15,ecology:-3},
-            requirements:{tech:15}}
+            requirements:{tech:15}},
+          {id:'d',title:'陶器贸易',desc:'用陶器与其他部落交换资源',
+            result:`你没有增加窑的数量，而是用现有陶器进行贸易。
+碳排放不变，但资源和知识通过交换增长。
+贸易，是不增加碳排放的繁荣之路。`,
+            effects:{carbon:5,tech:4,population:5,happiness:6,knowledge:5,ecology:0}}
         ]
       }
     ]
@@ -524,7 +547,13 @@ const ERAS = [
 统一的度量衡、标准化的模具、系统化的质检。
 这不仅提高了效率，还为未来的帝国管理奠定了基础。`,
             effects:{carbon:10,tech:25,population:15,happiness:5,knowledge:18,ecology:0},
-            requirements:{knowledge:25,techs:['高效冶炼']}}
+            requirements:{knowledge:25,techs:['高效冶炼']}},
+          {id:'d',title:'合金研究',desc:'尝试不同金属配比，用更少资源获得更好工具',
+            result:`你投入大量精力研究合金配方。
+虽然消耗了更多时间和碳，但产出的工具
+质量远超普通青铜。科技大幅跃升。
+有时候，短期的碳投入能换来长期的效率提升。`,
+            effects:{carbon:18,tech:25,population:3,happiness:2,knowledge:12,ecology:-5}}
         ]
       },
       {
@@ -545,7 +574,13 @@ const ERAS = [
 帝国的版图不是用剑划定的，
 而是用知识和贸易连接的。`,
             effects:{carbon:5,tech:15,population:20,happiness:15,knowledge:25,ecology:5},
-            requirements:{happiness:60,knowledge:20}}
+            requirements:{happiness:60,knowledge:20}},
+          {id:'d',title:'城邦联盟',desc:'多个城邦结成联盟，共享资源和知识',
+            result:`你促成了城邦间的联盟。
+资源共享减少了重复开采，知识交流加速了创新。
+碳排放适中，科技和幸福都有提升。
+合作，比征服更高效。`,
+            effects:{carbon:12,tech:10,population:15,happiness:10,knowledge:10,ecology:-3}}
         ]
       }
     ]
@@ -581,7 +616,13 @@ const ERAS = [
 废铁回收、木炭替代、矿渣利用。
 碳排放大幅减少，生态得到保护。`,
             effects:{carbon:5,tech:18,population:15,happiness:8,knowledge:15,ecology:12},
-            requirements:{ecology:40,tech:40}}
+            requirements:{ecology:40,tech:40}},
+          {id:'d',title:'铁器改良',desc:'研发更耐用的铁器，减少更换频率',
+            result:`你鼓励工匠打造更耐用的铁器。
+虽然研发消耗了碳，但铁器寿命延长三倍，
+长期来看总碳排放反而减少。
+质量优于数量——这是可持续的智慧。`,
+            effects:{carbon:20,tech:20,population:5,happiness:5,knowledge:12,ecology:-3}}
         ]
       },
       {
@@ -599,7 +640,13 @@ const ERAS = [
           {id:'c',title:'📉 技术倒退',desc:'放弃部分技术，回归简单生活',
             result:`人们回到了田间。
 碳排放确实下降了——但这是以文明倒退为代价的。`,
-            effects:{carbon:-15,tech:-25,population:-100,happiness:-5,knowledge:-15,ecology:10}}
+            effects:{carbon:-15,tech:-25,population:-100,happiness:-5,knowledge:-15,ecology:10}},
+          {id:'d',title:'东西融合',desc:'将东方和西方的知识结合',
+            result:`丝绸之路成为了知识之路。
+东方的指南针遇上西方的几何学，
+中国的造纸术传播到罗马。
+碳排放适中，但知识大爆发。`,
+            effects:{carbon:12,tech:10,population:5,happiness:5,knowledge:20,ecology:0}}
         ]
       }
     ]
@@ -635,7 +682,13 @@ const ERAS = [
 清洁的水源、隔离的病区、系统的医学教育。
 黑死病不再可怕，因为人类学会了预防。`,
             effects:{carbon:10,tech:18,population:20,happiness:15,knowledge:30,ecology:5},
-            requirements:{knowledge:50}}
+            requirements:{knowledge:50}},
+          {id:'d',title:'混合重建',desc:'结合科学和信仰，温和地重建社会',
+            result:`你没有抛弃信仰，也没有忽视科学。
+修道院成为了研究中心，
+牧羊人和学者共同探索世界。
+碳排放适中，社会在和谐中重建。`,
+            effects:{carbon:12,tech:10,population:10,happiness:10,knowledge:10,ecology:0}}
         ]
       },
       {
@@ -657,7 +710,13 @@ const ERAS = [
 丝绸、瓷器、茶叶、香料在大洋上流动。
 和平贸易带来了前所未有的繁荣。`,
             effects:{carbon:15,tech:20,population:50,happiness:18,knowledge:20,ecology:-3},
-            requirements:{happiness:60,tech:50}}
+            requirements:{happiness:60,tech:50}},
+          {id:'d',title:'选择性开放',desc:'有限度地与外界交流，保持技术优势',
+            result:`你没有完全关闭国门，也没有全面开放。
+选择性地引进技术，限制资源出口。
+碳排放适中，科技稳步提升。
+适度开放，是最务实的策略。`,
+            effects:{carbon:10,tech:12,population:5,happiness:3,knowledge:12,ecology:-2}}
         ]
       }
     ]
@@ -695,7 +754,13 @@ const ERAS = [
 没有征服，没有奴役，只有互利的交换。
 原住民的知识和欧洲的技术相互融合。`,
             effects:{carbon:15,tech:18,population:40,happiness:15,knowledge:22,ecology:5},
-            requirements:{happiness:60,knowledge:55}}
+            requirements:{happiness:60,knowledge:55}},
+          {id:'d',title:'科学考察',desc:'以科学研究为目的探索新大陆',
+            result:`你派出的不是征服者，而是博物学家和地理学家。
+他们记录物种、绘制地图、研究气候。
+碳排放有限，但知识爆炸式增长。
+探索的价值，在于理解而非占有。`,
+            effects:{carbon:18,tech:12,population:8,happiness:8,knowledge:20,ecology:0}}
         ]
       },
       {
@@ -717,7 +782,12 @@ const ERAS = [
 将自然资源的价值计入经济成本。
 这改变了人类看待发展的方式。`,
             effects:{carbon:3,tech:20,population:10,happiness:8,knowledge:25,ecology:12},
-            requirements:{ecology:35,tech:60}}
+            requirements:{ecology:35,tech:60}},
+          {id:'d',title:'泥炭过渡',desc:'使用泥炭作为木材和煤炭之间的过渡能源',
+            result:`你选择了泥炭——比木材能量密度高，
+比煤炭开采容易。这是一种务实的折中。
+碳排放适中，为未来的能源转型赢得了时间。`,
+            effects:{carbon:15,tech:12,population:5,happiness:3,knowledge:8,ecology:-2}}
         ]
       }
     ]
@@ -757,7 +827,13 @@ const ERAS = [
 建立了工人保护法、公共教育体系和医疗保险。
 工业革命不再是血与泪的代名词。`,
             effects:{carbon:20,tech:25,population:40,happiness:15,knowledge:20,ecology:3},
-            requirements:{happiness:65,tech:80}}
+            requirements:{happiness:65,tech:80}},
+          {id:'d',title:'工厂法规',desc:'制定工厂排放标准和工人保护法',
+            result:`你颁布了世界上第一部工厂法。
+限制了工作时间和排放量，保护了工人权益。
+发展速度稍慢，但社会更加稳定。
+碳排放得到控制，科技仍在进步。`,
+            effects:{carbon:20,tech:15,population:10,happiness:12,knowledge:8,ecology:5}}
         ]
       },
       {
@@ -779,7 +855,13 @@ const ERAS = [
 法拉第的电磁感应、特斯拉的交流电——
 电力革命提前到来。`,
             effects:{carbon:15,tech:28,population:10,happiness:5,knowledge:25,ecology:10},
-            requirements:{knowledge:70}}
+            requirements:{knowledge:70}},
+          {id:'d',title:'混合能源',desc:'同时发展煤炭、石油和早期可再生能源',
+            result:`你没有押注单一能源。
+煤炭提供基础动力，石油驱动交通，
+早期的水电站开始运转。
+碳排放适中，科技全面发展。`,
+            effects:{carbon:35,tech:20,population:8,happiness:5,knowledge:15,ecology:-5}}
         ]
       },
       {
@@ -799,7 +881,13 @@ const ERAS = [
 煤炭、水力、风力、太阳能——各种发电方式都在研究。
 长远来看，这是最明智的选择。`,
             effects:{carbon:25,tech:22,population:12,happiness:8,knowledge:18,ecology:5},
-            requirements:{ecology:30,techs:['蒸汽机改良']}}
+            requirements:{ecology:30,techs:['蒸汽机改良']}},
+          {id:'d',title:'区域电网',desc:'建设区域性电力网络，优化发电效率',
+            result:`你建设了连接多个城市的电力网络。
+电力共享减少了重复建设，效率大幅提升。
+碳排放适中，科技和知识同步增长。
+互联互通，是文明进步的基础设施。`,
+            effects:{carbon:25,tech:18,population:8,happiness:8,knowledge:12,ecology:-3}}
         ]
       }
     ]
@@ -833,7 +921,13 @@ const ERAS = [
 公共交通为主，私人汽车为辅，
 智能调度减少拥堵和排放。`,
             effects:{carbon:35,tech:18,population:25,happiness:18,knowledge:12,ecology:5},
-            requirements:{tech:120,happiness:55}}
+            requirements:{tech:120,happiness:55}},
+          {id:'d',title:'电动交通',desc:'发展电动汽车和电气化铁路',
+            result:`你选择了电气化而非燃油。
+电动列车连接城市，电动车进入家庭。
+碳排放比燃油路线低，科技投资更高。
+早期的电气化，为未来奠定了基础。`,
+            effects:{carbon:30,tech:18,population:10,happiness:10,knowledge:10,ecology:5}}
         ]
       },
       {
@@ -852,7 +946,13 @@ const ERAS = [
           {id:'c',title:'⚛️ 核能禁令',desc:'完全禁止核能研究',
             result:`你选择了安全，放弃了可能。
 人类继续依赖煤炭和石油。`,
-            effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}}
+            effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}},
+          {id:'d',title:'国际监督',desc:'建立国际机构监督核技术使用',
+            result:`你推动建立了国际原子能机构。
+核技术在严格监督下和平发展。
+碳排放适中，科技稳步提升，安全得到保障。
+制度，比技术本身更重要。`,
+            effects:{carbon:15,tech:20,population:3,happiness:8,knowledge:12,ecology:3}}
         ]
       }
     ]
@@ -888,7 +988,13 @@ const ERAS = [
 从臭氧层到气候变化，从海洋污染到生物多样性。
 人类第一次作为一个整体，保护自己的家园。`,
             effects:{carbon:-20,tech:15,population:0,happiness:18,knowledge:20,ecology:35},
-            requirements:{ecology:50,happiness:65}}
+            requirements:{ecology:50,happiness:65}},
+          {id:'d',title:'分阶段禁令',desc:'给企业时间转型，逐步淘汰有害物质',
+            result:`你采取了渐进式禁令。
+企业有时间寻找替代品，经济没有剧烈波动。
+臭氧层保护稍慢，但社会接受度最高。
+务实的环保，比激进的禁令更可持续。`,
+            effects:{carbon:8,tech:8,population:0,happiness:5,knowledge:8,ecology:12}}
         ]
       },
       {
@@ -909,7 +1015,13 @@ const ERAS = [
 虽然短期内看不到成果，
 但这项研究将在几十年后改变世界。`,
             effects:{carbon:5,tech:25,population:0,happiness:0,knowledge:25,ecology:8},
-            requirements:{tech:150,techs:['核裂变']}}
+            requirements:{tech:150,techs:['核裂变']}},
+          {id:'d',title:'小型反应堆',desc:'发展小型模块化核反应堆，降低风险',
+            result:`你选择了小型化路线。
+每个反应堆功率小，但安全性极高。
+即使发生事故，影响也有限。
+碳排放较低，科技创新活跃。`,
+            effects:{carbon:-8,tech:18,population:0,happiness:3,knowledge:12,ecology:8}}
         ]
       },
       {
@@ -931,7 +1043,13 @@ const ERAS = [
 用信息技术监测和保护地球环境。
 卫星遥感、环境大数据、全球预警系统。`,
             effects:{carbon:10,tech:25,population:15,happiness:12,knowledge:30,ecology:15},
-            requirements:{knowledge:100,tech:160}}
+            requirements:{knowledge:100,tech:160}},
+          {id:'d',title:'边缘计算',desc:'推动边缘计算，减少大型数据中心需求',
+            result:`你推动了计算能力的去中心化。
+每个设备都参与计算，大型数据中心减少。
+碳排放较低，技术创新活跃。
+分布式，是未来的方向。`,
+            effects:{carbon:12,tech:15,population:3,happiness:3,knowledge:12,ecology:3}}
         ]
       }
     ]
@@ -967,7 +1085,13 @@ const ERAS = [
 GDP不再是唯一的衡量标准，
 幸福指数和生态指数成为了新的指南针。`,
             effects:{carbon:-35,tech:22,population:0,happiness:20,knowledge:20,ecology:30},
-            requirements:{ecology:55,happiness:70}}
+            requirements:{ecology:55,happiness:70}},
+          {id:'d',title:'碳交易市场',desc:'建立全球碳交易市场，用经济手段减排',
+            result:`你建立了碳排放交易体系。
+排放需要购买配额，减排可以出售。
+市场机制推动了技术创新。
+碳排放开始下降，科技因竞争而加速。`,
+            effects:{carbon:-8,tech:12,population:0,happiness:3,knowledge:8,ecology:10}}
         ]
       },
       {
@@ -989,7 +1113,13 @@ GDP不再是唯一的衡量标准，
 森林、湿地、海草床、红树林。
 大自然是最好的碳捕获机器。`,
             effects:{carbon:-20,tech:5,population:0,happiness:10,knowledge:8,ecology:30},
-            requirements:{ecology:60}}
+            requirements:{ecology:60}},
+          {id:'d',title:'自然碳汇',desc:'投资森林和海洋恢复，用自然方式吸收碳',
+            result:`你选择了最古老的方法——让自然来做。
+大规模植树造林，海洋生态修复。
+碳排放略有减少，生态系统显著改善。
+有时候，最好的技术是自然本身。`,
+            effects:{carbon:-10,tech:5,population:0,happiness:5,knowledge:5,ecology:15}}
         ]
       },
       {
@@ -1011,7 +1141,13 @@ GDP不再是唯一的衡量标准，
 气候变化、贫困、疾病——
 这些全球性问题，终于有了全球性的解决方案。`,
             effects:{carbon:-40,tech:20,population:0,happiness:25,knowledge:25,ecology:20},
-            requirements:{happiness:75,knowledge:120}}
+            requirements:{happiness:75,knowledge:120}},
+          {id:'d',title:'技术联盟',desc:'与志同道合的国家组建技术联盟',
+            result:`你没有等待全球共识，而是先与盟友行动。
+技术共享、联合研发、统一标准。
+碳排放有所减少，科技因合作而加速。
+小步快跑，比等待完美协议更有效。`,
+            effects:{carbon:-5,tech:12,population:0,happiness:5,knowledge:8,ecology:5}}
         ]
       }
     ]
@@ -1048,7 +1184,13 @@ GDP不再是唯一的衡量标准，
 能源不再是限制人类发展的瓶颈。
 碳排放归零，人类进入了无限能源时代。`,
             effects:{carbon:-80,tech:35,population:0,happiness:20,knowledge:30,ecology:40},
-            requirements:{tech:250,knowledge:150}}
+            requirements:{tech:250,knowledge:150}},
+          {id:'d',title:'混合方案',desc:'核聚变与可再生能源并行发展',
+            result:`你没有把所有希望押在核聚变上。
+太阳能、风能、核聚变同时推进。
+虽然效率不如专精一路，但风险最低。
+碳排放稳步下降，能源安全得到保障。`,
+            effects:{carbon:-25,tech:18,population:0,happiness:8,knowledge:12,ecology:15}}
         ]
       },
       {
@@ -1068,7 +1210,13 @@ GDP不再是唯一的衡量标准，
 太阳能供电，海水淡化，自给自足的海洋社区。
 人类的创造力，在危机中绽放了光芒。`,
             effects:{carbon:5,tech:25,population:30,happiness:15,knowledge:15,ecology:8},
-            requirements:{tech:260,happiness:65}}
+            requirements:{tech:260,happiness:65}},
+          {id:'d',title:'内陆迁移',desc:'帮助气候移民迁移到内陆安全地区',
+            result:`你组织了大规模的内陆迁移。
+新城市在高地和内陆平原拔地而起。
+碳排放适中，社会稳定。
+这是最务实的适应策略。`,
+            effects:{carbon:5,tech:8,population:5,happiness:8,knowledge:5,ecology:0}}
         ]
       },
       {
@@ -1099,7 +1247,13 @@ GDP不再是唯一的衡量标准，
           {id:'c',title:'放弃挣扎',desc:'认为气候危机无法逆转',
             result:`你耸了耸肩。"反正已经来不及了。"
 碳排放继续飙升，生态系统在崩溃。`,
-            effects:{carbon:60,tech:-10,population:-100,happiness:-25,knowledge:-10,ecology:-35}}
+            effects:{carbon:60,tech:-10,population:-100,happiness:-25,knowledge:-10,ecology:-35}},
+          {id:'d',title:'渐进减排',desc:'制定30年减排计划，稳步实现碳中和',
+            result:`你制定了渐进式减排路线图。
+每年减排3%，给经济足够时间转型。
+虽然不如全力冲刺激进，但社会接受度最高。
+30年后，碳中和终于实现。`,
+            effects:{carbon:-50,tech:15,population:0,happiness:8,knowledge:10,ecology:15}}
         ]
       }
     ]
