@@ -66,11 +66,10 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 }
 .btn-option:hover{border-color:var(--accent);background:var(--bg-card-hover);box-shadow:0 0 15px rgba(245,158,11,0.1);transform:translateX(5px)}
 .btn-option.locked{
-  opacity:0.45;cursor:not-allowed;border-color:rgba(255,255,255,0.03);
-  background:rgba(20,20,30,0.6);
+  opacity:0.35;cursor:not-allowed;border-color:rgba(255,255,255,0.03);
+  background:rgba(20,20,30,0.6);transform:none;box-shadow:none;
 }
-.btn-option.locked:hover{transform:none;box-shadow:none;border-color:rgba(255,255,255,0.03);background:rgba(20,20,30,0.6)}
-.btn-option.locked{pointer-events:none!important}
+.btn-option.locked:hover{opacity:0.35}
 .btn-option .opt-title{font-family:var(--font-title);font-size:1.05rem;color:var(--accent);margin-bottom:0.3rem}
 .btn-option.locked .opt-title{color:#666}
 .btn-option .opt-desc{color:var(--text-secondary);font-size:0.88rem}
@@ -3501,9 +3500,7 @@ function applyDynamicModifiers(option){
   // Apply population scaling ONLY to carbon (not tech/knowledge - those don't scale with population)
   if(base.carbon>0)base.carbon=Math.round(base.carbon*popScale);
   // Cap population gains to prevent explosion
-  if(base.population>0)base.population=Math.min(base.population,Math.round(era.population*0.15));
-  // Cap population gains to prevent explosion
-  if(base.population>0)base.population=Math.min(base.population,Math.round(safeNum(s.population,10)*0.1));
+  if(base.population>0)base.population=Math.min(base.population,Math.round(safeNum(s.population,10)*0.15));
   return {effects:base,modifiers};
 }
 
@@ -4876,7 +4873,6 @@ function chooseEventOption(eventId,optIdx){
   container.innerHTML=`<div class="result-section">
     <div class="result-text">${resultText}</div>
     <div class="result-effects">${buildEffectCards(e)}</div>
-''
     <div style="text-align:center;margin-top:2rem"><button class="btn" onclick="continueToNextEra()">继续</button></div>
   </div>`;
 }
