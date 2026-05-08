@@ -4190,6 +4190,7 @@ function showEnding(endingKey){
       <div class="ending-stat"><div class="ending-stat-label">科技值</div><div class="ending-stat-value">${STATE.stats.tech}</div></div>
       <div class="ending-stat"><div class="ending-stat-label">幸福值</div><div class="ending-stat-value">${STATE.stats.happiness}%</div></div>
     </div>
+    <div id="journeySummary" style="text-align:left;margin-bottom:2rem;padding:1.5rem;background:var(--bg-card);border-radius:12px;border:1px solid rgba(245,158,11,0.15);font-family:var(--font-title);line-height:2;color:var(--text-secondary);font-size:0.95rem;white-space:pre-line"></div>
     <div class="ending-buttons">
       <button class="btn" onclick="showHistoryScreen()">📜 查看历史</button>
       <button class="btn" onclick="startGame()">🔄 重新开始</button>
@@ -4575,6 +4576,89 @@ function buildEffectCards(effects){
   });
   return html;
 }
+
+// ===========================
+// JOURNEY SUMMARY GENERATOR
+// ===========================
+
+function generateJourneySummary(){
+  const s=STATE.stats;
+  const h=STATE.history;
+  const f=STATE.gameFlags;
+  const techs=STATE.unlockedTechs;
+  let lines=[];
+
+  // Opening - based on carbon level
+  if(s.carbon<100)lines.push('在碳的记忆中，你的文明是一首未被污染的诗篇。从第一簇火苗开始，你就懂得节制的智慧——火可以照亮黑夜，也可以吞噬森林，而你选择了在两者之间行走。');
+  else if(s.carbon<300)lines.push('碳记录了你文明的每一个脚印。有些轻盈，有些沉重，但总体而言，你让碳保持在了大地可以承受的范围之内。');
+  else if(s.carbon<600)lines.push('碳的天平在你的手中剧烈摇摆。繁荣与代价、进步与退让，每一次选择都在大气中留下了不可磨灭的痕迹。');
+  else if(s.carbon<900)lines.push('大气中的碳浓度已经攀升到了令人窒息的高度。每一次呼吸都带着工业时代的余味——煤烟、尾气、以及一种叫做"来不及了"的味道。');
+  else lines.push('碳的幽灵笼罩了整个文明。你用未来的气候换取了现在的繁荣，而账单已经到期。大气中多余的CO₂分子，每一个都是一个沉默的控诉。');
+
+  // Era-specific highlights
+  const eraChoices={};
+  h.forEach(e=>{if(!eraChoices[e.eraId])eraChoices[e.eraId]=[];eraChoices[e.eraId].push(e)});
+
+  // Check key patterns
+  const allOptions=h.map(e=>e.option).join(',');
+
+  // Development vs conservation pattern
+  let devCount=0,consCount=0;
+  h.forEach(e=>{
+    const eff=e.effects;
+    if(eff.carbon>30)devCount++;
+    if(eff.ecology>5||eff.carbon<0)consCount++;
+  });
+
+  if(devCount>consCount*2)lines.push('你的文明是一部征服者的史诗。你选择了速度而非方向，繁荣而非可持续。每一次技术跃进都伴随着碳的飙升，每一次人口爆发都以生态为代价。历史会记住你的成就，但也会记住你忽视的警告。');
+  else if(consCount>devCount*2)lines.push('你的文明是一部守护者的传说。你选择了慢一些但更稳健的道路。发展或许不够快，但森林还在呼吸，河流还在流淌，天空还是蓝色的。后代会感谢你的克制。');
+  else if(devCount>5)lines.push('你在发展与环境之间反复横跳——有时贪婪，有时明智，有时别无选择。这恰恰是最真实的文明写照：没有人在面对饥饿时会去计算碳排放。');
+
+  // Tech achievements
+  if(s.tech>500)lines.push(`科技是你的文明最耀眼的勋章。${techs.length}项关键技术的突破，让人类从篝火走到了核聚变。每一步都是碳排放与创新的博弈——有些技术让碳飙升，有些则成为了拯救的希望。`);
+  else if(s.tech>200)lines.push('科技在你的文明中稳步生长。虽然没有爆发式突破，但每一步都走得扎实。有时候，渐进比飞跃更可靠。');
+
+  // Happiness narrative
+  if(s.happiness>70)lines.push('而你的子民，总体上是幸福的。他们安居乐业，对未来充满希望。碳排放或许在增长，但至少增长的代价没有全部转嫁到最脆弱的人身上。');
+  else if(s.happiness<30)lines.push('但幸福从未真正降临。社会动荡、贫富分化、战争阴影——碳排放的代价从来不是平均分配的。最脆弱的人群承担了最沉重的负担，而他们的声音，往往被淹没在GDP的数字里。');
+
+  // Ecology narrative
+  if(s.ecology>60)lines.push('地球的生态系统在你的守护下大体完好。森林还在生长，珊瑚还在绽放，候鸟还在迁徙。碳循环没有被打破——虽然边缘已经被磨损得很薄。');
+  else if(s.ecology<20)lines.push('生态系统已经支离破碎。森林变成了农田，珊瑚变成了白骨，候鸟的迁徙路线被城市的灯光切断。大自然曾经默默地吸收着人类排放的碳，但现在，这个沉默的盟友也倒下了。');
+
+  // Carbon science fact (embedded naturally)
+  if(s.carbon>500)lines.push('\n你或许会好奇：多出来的碳到底去了哪里？答案是大气、海洋和土壤。大气中的CO₂让地球保温——这是好事。但太多了，就像盖了太厚的被子，海洋吸收了多余的CO₂后变得酸性，珊瑚和贝壳类生物的外壳开始溶解。碳没有消失，它只是换了一种形式，继续影响着这个星球的每一个角落。');
+  else if(s.carbon>200)lines.push('\n碳本身不是敌人。它是生命的骨架——每一个DNA分子、每一棵树、每一个你爱的人，都是碳做的。问题不在于碳的存在，而在于碳的去向。当亿万年沉积的碳在短短几百年内被释放回大气，地球的碳循环来不及处理，温度就开始上升。你在这场游戏中所做的每一个选择，本质上都是在决定：碳应该去哪里？');
+
+  // Events narrative
+  const events=h.filter(e=>e.eraId==='event');
+  if(events.length>3)lines.push(`你的文明还经历了${events.length}次意外——灾难、机遇、甚至来自宇宙的访客。每一次随机事件都在提醒你：碳排放的方程式里，有一个永远无法控制的变量——命运。`);
+
+  // Ending reflection
+  const ending=ENDINGS[STATE.lastEndingKey];
+  if(ending){
+    if(ending.stars>=4)lines.push(`\n最终，你的文明以"${ending.name}"的姿态落幕。${ending.stars>=5?'这是碳纪元最完美的终章。':'这已经是一种胜利。'}碳的故事还没有结束——只要人类还在呼吸，还在燃烧，还在选择，碳的天平就会继续摇摆。`);
+    else if(ending.stars>=3)lines.push(`\n最终，你的文明以"${ending.name}"的姿态落幕。不是最好，也不是最坏——就像真实的历史一样，大多数文明都在中间地带挣扎。碳的故事还在继续。`);
+    else lines.push(`\n最终，你的文明以"${ending.name}"的姿态落幕。碳赢了——不是碳元素本身赢了，而是人类的贪婪、短视和侥幸心理赢了。但故事还没有结束。只要地球上还有一个人在思考，碳纪元就还有被改写的可能。`);
+  }
+
+  // Closing
+  lines.push('\n碳不会消失。它是星辰的灰烬，是生命的基石，是文明的燃料。从篝火到核聚变，人类与碳的关系从未改变——我们依赖它，也被它改变。唯一改变的，是我们选择的重量。');
+
+  // Summary stats line
+  lines.push(`\n━━━━━━━━━━━━━━━━━━━\n🌡️ 最终碳排放：${s.carbon}　🔬 科技：${s.tech}　😊 幸福：${s.happiness}%　🌿 生态：${s.ecology}%　📚 知识：${s.knowledge}\n总决策数：${h.length}　已解锁科技：${techs.length}项　${STATE.hardMode?'🔥 困难模式':''}`);
+
+  const el=document.getElementById('journeySummary');
+  if(el)el.textContent=lines.join('\n\n');
+}
+
+// Patch showEnding to include journey summary
+const _origShowEndingForSummary = showEnding;
+showEnding = function(endingKey){
+  _origShowEndingForSummary.call(this, endingKey);
+  // Generate journey summary after DOM is updated
+  setTimeout(()=>generateJourneySummary(), 100);
+};
 
 // ===========================
 // PARTICLES
