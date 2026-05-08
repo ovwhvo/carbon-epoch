@@ -2990,8 +2990,11 @@ AI没有发动战争——
       {title:'精英避难',desc:'只保护科学家和技术人员，放弃大多数人',effects:{carbon:20,tech:5,happiness:-40,ecology:-10},
         result:'精英们活了下来，但大多数人在黑暗中死去。文明保留了技术，但失去了灵魂。幸存者的眼中，只剩下了愧疚。'},
       {title:'自生自灭',desc:'不采取任何措施，让自然选择',effects:{carbon:0,tech:-40,happiness:-30,ecology:20},
-        result:'你选择了放手。90%的人口在饥荒中死去。但大自然开始了自我修复。几百年后，幸存者从废墟中重新站起——这一次，他们学会了敬畏。'}
-    ]},
+        result:'你选择了放手。90%的人口在饥荒中死去。但大自然开始了自我修复。几百年后，幸存者从废墟中重新站起——这一次，他们学会了敬畏。'},
+      {title:'💀 文明崩塌',desc:'社会秩序彻底瓦解，政府崩溃，城市沦为废墟。这不是选择，而是此前所有决策的后果。',
+        effects:{carbon:120,tech:-60,happiness:-50,ecology:-30},
+        result:'灾难彻底摧毁了脆弱的社会秩序。没有任何储备，没有任何计划，没有任何希望。幸存者在废墟中争夺残存的食物和水源。曾经的文明变成了传说，曾经的城市变成了坟场。\n\n碳排放飙升——不是因为工业，而是因为人类在绝望中燃烧一切可以燃烧的东西。碳纪元，在一颗陨石的审判下，画上了句号。'}
+    ],
   {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.32,cat:'environment',
     cond:()=>STATE.stats.carbon>500,
     narrative:`格陵兰冰盖和西南极冰盖同时崩塌。
@@ -4834,13 +4837,14 @@ function showEventChoice(event){
   const badgeText=event.cat==='easter_egg'?'🌠 稀有事件':event.cat==='environment'?'🌍 环境事件':'📜 历史事件';
   let optionsHtml='';
   event.choices.forEach((opt,i)=>{
-    const hintHtml=buildEffectHints(opt.effects);
-    const delayHint='';
+    // Hide "文明崩塌" option unless happiness<30 or tech<80
+    if(opt.title.includes('文明崩塌')||opt.title.includes('Civilization Collapse')){
+      const s=STATE.stats;
+      if(s.happiness>=30&&s.tech>=80)return;
+    }
     optionsHtml+=`<button class="btn-option slide-up" style="animation-delay:${i*0.1}s" onclick="chooseEventOption('${event.id}',${i})">
       <div class="opt-title">${opt.title}</div>
       <div class="opt-desc">${opt.desc}</div>
-      <div class="opt-hint">${hintHtml}</div>
-      ${delayHint}
     </button>`;
   });
   container.innerHTML=`<div class="narrative-section">
@@ -4882,6 +4886,12 @@ function chooseEventOption(eventId,optIdx){
   STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:event.name,option:opt.title,effects:{...e},timestamp:Date.now()});
   updateDashboard();
   // Check catastrophe ending: if stats are critically bad after this event
+  // Check if this is the asteroid collapse option - instant extinction
+  if(opt.title&&(opt.title.includes('文明崩塌')||opt.title.includes('Civilization Collapse'))){
+    STATE.lastEndingKey='extinction';
+    setTimeout(()=>showEnding('extinction'),2000);
+    return;
+  }
   const catCatastrophes=['asteroid_impact','volcanic_winter','sea_level_rise','supervolcano','deep_ocean_methane'];
   if(catCatastrophes.includes(event.id)){
     const cs=STATE.stats;
