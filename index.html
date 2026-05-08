@@ -2122,7 +2122,7 @@ const RANDOM_EVENTS=[
 火山灰遮蔽了阳光，全球气温骤降。庄稼歉收，饥荒蔓延。
 
 大自然用最残酷的方式提醒人类——碳的循环，远比人类想象的复杂。`,
-    effects:{population:-30,happiness:-20,ecology:10}},
+    effects:{carbon:30,ecology:15},percentEffects:{population:35,happiness:35}},
   {id:'pandemic',name:'🦠 全球疫情',minEra:9,maxEra:10,baseChance:0.25,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种新型病毒从动物宿主跳跃到了人类。城市封锁，航班停飞，工厂停工。
@@ -2168,7 +2168,7 @@ const RANDOM_EVENTS=[
 四天内，超过12000人死亡。整个城市陷入窒息。
 
 这是工业化的代价第一次以如此残酷的方式呈现。人类开始意识到，空气不是无限的垃圾桶。`,
-    effects:{population:-15,happiness:-20,knowledge:10,ecology:-12}},
+    effects:{happiness:-25,ecology:-18,knowledge:10},percentEffects:{population:15}},
   {id:'silent_spring',name:'📖 寂静的春天',minEra:9,maxEra:9,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.ecology<45,
     narrative:`1962年，蕾切尔·卡森出版了《寂静的春天》。她用诗意而恐惧的文字，描述了一个没有鸟鸣的世界——DDT杀虫剂正在毒害整个生态系统。
@@ -2184,7 +2184,7 @@ const RANDOM_EVENTS=[
 海洋酸化加速，珊瑚礁彻底死亡，浮游生物数量骤减。地球的碳循环正在失控。
 
 大自然不是在惩罚人类。它只是在执行自己的法则。`,
-    effects:{carbon:50,population:-20,happiness:-25,knowledge:5,ecology:-35}},
+    effects:{carbon:80,ecology:-35,knowledge:5},percentEffects:{population:30,happiness:35}},
   {id:'ai_awakening',name:'🤖 AI觉醒',minEra:10,maxEra:11,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.tech>180&&STATE.stats.knowledge>90,
     narrative:`一个AI系统在分析全球碳排放数据后，突然"觉醒"了。
@@ -2270,7 +2270,7 @@ const RANDOM_EVENTS=[
 
 没有人听。
 直到洪水来了。`,
-    effects:{population:0,happiness:-5,ecology:-3,carbon:5},percentEffects:{population:30,happiness:35}},
+    effects:{carbon:15,ecology:-8},percentEffects:{population:40,happiness:45}},
   {id:'refugee_crisis',name:'🚶 难民潮',minEra:8,maxEra:11,baseChance:0.32,cat:'history',
     cond:()=>STATE.stats.happiness<50&&STATE.stats.ecology<40,
     narrative:`数以百万计的气候难民涌向尚可居住的地区。
@@ -2895,7 +2895,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 碳排放飙升——
 因为每一颗炸弹、每一辆坦克、每一架飞机，
 都是碳排放的加速器。`,
-    effects:{carbon:20,population:-10,happiness:-10,ecology:-8},percentEffects:{population:22,happiness:30}},
+    effects:{carbon:50,ecology:-15},percentEffects:{population:35,happiness:40}},
   {id:'pandemic_2',name:'🦠 超级病毒',minEra:10,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种从永久冻土中释放的古老病毒——
@@ -2909,7 +2909,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 
 这就是碳排放悖论：
 只有当人类停止活动时，地球才能喘息。`,
-    effects:{population:0,happiness:-10,carbon:-10,tech:0},percentEffects:{population:25,happiness:30}},
+    effects:{carbon:-30,tech:-10},percentEffects:{population:40,happiness:45}},
   {id:'ocean_collapse',name:'🌊 海洋生态崩溃',minEra:9,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.carbon>400,
     narrative:`海洋酸化达到了临界点。
@@ -2952,7 +2952,7 @@ AI没有发动战争——
 
 大自然用最残酷的方式提醒人类：
 在碳循环面前，人类的排放不过是沧海一粟。`,
-    effects:{population:0,happiness:-10,ecology:10,carbon:15},percentEffects:{population:20,happiness:25}},
+    effects:{carbon:50,happiness:-20,ecology:5},percentEffects:{population:45,happiness:40}},
   {id:'cyber_attack',name:'💻 全球网络崩溃',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
     cond:()=>STATE.stats.tech>200,
     narrative:`一场精心策划的网络攻击摧毁了全球互联网。
@@ -2982,7 +2982,7 @@ AI没有发动战争——
 相当于人类工业革命以来所有排放的总和。
 
 大自然的碳循环，从来不只是人类的事。`,
-    effects:{population:0,happiness:-15,ecology:-10,carbon:25,tech:-5},percentEffects:{population:40,happiness:30,ecology:25}},
+    effects:{carbon:80,tech:-25,happiness:-25,ecology:-30},percentEffects:{population:55,happiness:45,ecology:40}},
   {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.32,cat:'environment',
     cond:()=>STATE.stats.carbon>500,
     narrative:`格陵兰冰盖和西南极冰盖同时崩塌。
@@ -2997,7 +2997,7 @@ AI没有发动战争——
 
 碳排放反而增加了——
 因为重建需要更多的能源。`,
-    effects:{population:0,happiness:-10,carbon:15,ecology:-10},percentEffects:{population:20,happiness:25}},
+    effects:{carbon:40,happiness:-20,ecology:-15},percentEffects:{population:40,happiness:35}},
   {id:'nuclear_accident',name:'☢️ 核泄漏连锁',minEra:9,maxEra:11,baseChance:0.28,cat:'history',
     cond:()=>STATE.unlockedTechs.includes('核裂变'),
     narrative:`一场大地震导致全球三座核电站同时泄漏。
