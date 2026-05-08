@@ -394,7 +394,7 @@ const ERAS = [
 但营地意味着定居，定居意味着更多的柴火，
 更多的砍伐，更多的碳。
 这是人类文明的第一笔碳债务。`,
-            effects:{carbon:20,tech:5,population:8,happiness:8,knowledge:3,ecology:-5}},
+            effects:{carbon:20,tech:8,population:8,happiness:8,knowledge:3,ecology:-5}},
           {id:'d',title:'保存火种',desc:'建立火种保存制度，确保火永不熄灭但也不过度使用',
             result:`你建立了火种管理制度。
 专人看守火堆，其他人远离火焰。
@@ -3148,6 +3148,13 @@ function buildEffectHints(effects){
 
 function applyDynamicModifiers(option){
   const s=STATE.stats;
+  // Population scaling: higher pop = more impact from choices
+  const pop=s.population;
+  let popScale=1.0;
+  if(pop<50)popScale=0.8;
+  else if(pop<150)popScale=1.0;
+  else if(pop<500)popScale=1.2;
+  else popScale=1.5;
   const base={...option.effects};
   const modifiers=[];
   // Low happiness makes cooperative options fail more
@@ -3186,6 +3193,10 @@ function applyDynamicModifiers(option){
     base.carbon=Math.round(base.carbon*1.25);
     base.happiness=Math.round(base.happiness*0.85);
   }
+  // Apply population scaling: higher pop = higher tech gain but also higher carbon
+  if(base.carbon>0)base.carbon=Math.round(base.carbon*popScale);
+  if(base.tech>0)base.tech=Math.round(base.tech*popScale);
+  if(base.knowledge>0)base.knowledge=Math.round(base.knowledge*(popScale*0.8+0.2));
   return {effects:base,modifiers};
 }
 
