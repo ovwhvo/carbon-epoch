@@ -3106,17 +3106,21 @@ function showDecision(era,decisionIndex){
 
   const container=document.getElementById('gameContent');
   let optionsHtml='';
+  let visibleIndex=0;
   decision.options.forEach((opt,i)=>{
-    const isLocked=!checkRequirements(opt);
+    const isHiddenOpt=opt.isHidden;
+    const meetsReq=checkRequirements(opt);
+    // Hidden options: completely skip if requirements not met
+    if(isHiddenOpt&&!meetsReq)return;
+    const isLocked=!meetsReq;
     const lockReason=isLocked?getLockReason(opt):'';
     const hintHtml=buildEffectHints(opt.effects);
     const lockClass=isLocked?'locked':'';
-    const hiddenTag=opt.isHidden?'🔒 隐藏':'';
-    const titlePrefix=hiddenTag?`选项${String.fromCharCode(65+i)}：`:`选项${String.fromCharCode(65+i)}：`;
+    const idx=visibleIndex++;
 
     optionsHtml+=`
-      <button class="btn-option slide-up ${lockClass}" style="animation-delay:${i*0.1}s" ${isLocked?'':'onclick="makeChoice(\''+era.id+'\','+decisionIndex+',\''+opt.id+'\')"'}>
-        <div class="opt-title">${hiddenTag} ${opt.title}</div>
+      <button class="btn-option slide-up ${lockClass}" style="animation-delay:${idx*0.1}s" ${isLocked?'':'onclick="makeChoice(\''+era.id+'\','+decisionIndex+',\''+opt.id+'\')"'}>
+        <div class="opt-title">✨ ${opt.title}</div>
         <div class="opt-desc">${opt.desc}</div>
         <div class="opt-hint">${hintHtml}</div>
         ${isLocked?`<div class="opt-lock">🔒 ${lockReason}</div>`:''}
