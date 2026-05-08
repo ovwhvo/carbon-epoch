@@ -2122,7 +2122,7 @@ const RANDOM_EVENTS=[
 火山灰遮蔽了阳光，全球气温骤降。庄稼歉收，饥荒蔓延。
 
 大自然用最残酷的方式提醒人类——碳的循环，远比人类想象的复杂。`,
-    effects:{population:-15,happiness:-8,ecology:10}},
+    effects:{population:-30,happiness:-20,ecology:10}},
   {id:'pandemic',name:'🦠 全球疫情',minEra:9,maxEra:10,baseChance:0.25,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种新型病毒从动物宿主跳跃到了人类。城市封锁，航班停飞，工厂停工。
@@ -2130,7 +2130,7 @@ const RANDOM_EVENTS=[
 但在这场灾难中，碳排放出现了罕见的下降。天空变得清澈，野生动物回到了城市。
 
 人类第一次被迫停下来思考——我们的生活方式，真的是唯一的选择吗？`,
-    effects:{population:-10,happiness:-8,carbon:-10}},
+    effects:{population:-20,happiness:-18,carbon:-10}},
   {id:'comet_near_miss',name:'☄️ 彗星掠过地球',minEra:3,maxEra:7,baseChance:0.40,cat:'easter_egg',
     cond:()=>STATE.stats.happiness<45,
     narrative:`夜空中出现了一颗新的"星星"。它每天都在变大，变亮。
@@ -2168,7 +2168,7 @@ const RANDOM_EVENTS=[
 四天内，超过12000人死亡。整个城市陷入窒息。
 
 这是工业化的代价第一次以如此残酷的方式呈现。人类开始意识到，空气不是无限的垃圾桶。`,
-    effects:{population:-8,happiness:-10,knowledge:10,ecology:-5}},
+    effects:{population:-15,happiness:-20,knowledge:10,ecology:-12}},
   {id:'silent_spring',name:'📖 寂静的春天',minEra:9,maxEra:9,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.ecology<45,
     narrative:`1962年，蕾切尔·卡森出版了《寂静的春天》。她用诗意而恐惧的文字，描述了一个没有鸟鸣的世界——DDT杀虫剂正在毒害整个生态系统。
@@ -2184,7 +2184,7 @@ const RANDOM_EVENTS=[
 海洋酸化加速，珊瑚礁彻底死亡，浮游生物数量骤减。地球的碳循环正在失控。
 
 大自然不是在惩罚人类。它只是在执行自己的法则。`,
-    effects:{carbon:25,tech:0,population:-10,happiness:-15,knowledge:5,ecology:-20}},
+    effects:{carbon:50,population:-20,happiness:-25,knowledge:5,ecology:-35}},
   {id:'ai_awakening',name:'🤖 AI觉醒',minEra:10,maxEra:11,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.tech>180&&STATE.stats.knowledge>90,
     narrative:`一个AI系统在分析全球碳排放数据后，突然"觉醒"了。
@@ -2208,7 +2208,7 @@ const RANDOM_EVENTS=[
 混凝土需要重新浇筑。
 
 战争没有赢家。碳排放，也没有赢家。`,
-    effects:{carbon:20,population:-10,happiness:-10,tech:5,ecology:-8},percentEffects:{population:15,happiness:25}},
+    effects:{carbon:20,population:-10,happiness:-10,tech:5,ecology:-8},percentEffects:{population:25,happiness:35}},
   {id:'drought',name:'☀️ 大旱灾',minEra:2,maxEra:10,baseChance:0.35,cat:'environment',
     cond:()=>true,
     narrative:`河流干涸，土地龟裂，庄稼枯萎在田间。
@@ -2219,7 +2219,7 @@ const RANDOM_EVENTS=[
 
 气候科学告诉我们，全球变暖正在让干旱更加频繁、更加严重。
 碳排放的代价，由最脆弱的人承担。`,
-    effects:{population:0,happiness:-5,ecology:-5},percentEffects:{population:10,happiness:15}},
+    effects:{population:0,happiness:-5,ecology:-5},percentEffects:{population:18,happiness:25}},
   {id:'oil_spill',name:'🛢️ 巨型石油泄漏',minEra:7,maxEra:10,baseChance:0.3,cat:'environment',
     cond:()=>STATE.stats.carbon>250,
     narrative:`一艘巨型油轮在海岸附近断裂。
@@ -2231,7 +2231,7 @@ const RANDOM_EVENTS=[
 这是石油时代的阴影——
 每一次泄漏，都是对海洋生态的致命打击。
 也是对人类贪婪的无声控诉。`,
-    effects:{happiness:-8,ecology:-12,knowledge:5}},
+    effects:{happiness:-18,ecology:-25,knowledge:5}},
   {id:'heat_wave',name:'🌡️ 致命热浪',minEra:9,maxEra:11,baseChance:0.35,cat:'environment',
     cond:()=>STATE.stats.carbon>400,
     narrative:`气温突破了历史记录。
@@ -2241,7 +2241,7 @@ const RANDOM_EVENTS=[
 这不是自然的馈赠——这是碳排放的回旋镖。
 
 每一度升温，都在压缩人类的生存空间。`,
-    effects:{population:0,happiness:-8,tech:0},percentEffects:{population:5,happiness:20}},
+    effects:{population:0,happiness:-8,tech:0},percentEffects:{population:15,happiness:30}},
   {id:'flood',name:'🌊 超级洪水',minEra:7,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>true,
     narrative:`暴雨连续下了七天七夜。
@@ -2252,7 +2252,7 @@ const RANDOM_EVENTS=[
 
 没有人听。
 直到洪水来了。`,
-    effects:{population:0,happiness:-5,ecology:-3,carbon:5},percentEffects:{population:8,happiness:10}},
+    effects:{population:0,happiness:-5,ecology:-3,carbon:5},percentEffects:{population:30,happiness:35}},
   {id:'refugee_crisis',name:'🚶 难民潮',minEra:8,maxEra:11,baseChance:0.32,cat:'history',
     cond:()=>STATE.stats.happiness<50&&STATE.stats.ecology<40,
     narrative:`数以百万计的气候难民涌向尚可居住的地区。
@@ -2420,7 +2420,7 @@ const RANDOM_EVENTS=[
 任何试图"修复"它的尝试，都可能引发更大的灾难。
 
 这就是蝴蝶效应——混沌理论在碳循环中的残酷验证。`,
-    effects:{carbon:40,ecology:-30,tech:-10}},
+    effects:{carbon:60,ecology:-45,tech:-15}},
   {id:'devourer_arrives',name:'🛸 吞食者来袭',minEra:12,maxEra:14,baseChance:0.35,cat:'easter_egg',
     cond:()=>STATE.stats.tech>250,
     narrative:`一个巨大的外星飞船——直径超过月球——出现在太阳系边缘。
@@ -2615,6 +2615,257 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 ——致敬艾萨克·阿西莫夫《基地边缘》`,
     effects:{happiness:-20,knowledge:25,tech:20,carbon:-15,ecology:10}},
   // ===== 新增大量负面事件 =====
+  {id:'bread_riots',name:'🍞 面包暴动',minEra:6,maxEra:8,baseChance:0.35,cat:'history',
+    cond:()=>STATE.stats.happiness<35,
+    narrative:`面包的价格翻了三倍。城市广场上，愤怒的人群推翻了马车，砸碎了面包店的窗户。
+
+"给我们面包！"的呐喊声震耳欲聋。军队被调来镇压，但士兵们也在犹豫——他们的家人也在挨饿。
+
+社会契约正在撕裂。当人们连饭都吃不饱时，谁还会在乎碳排放？谁还会在乎未来？
+
+暴动者点燃了总督府。火焰映红了半边天空。碳排放？那是吃饱了的人才有的烦恼。`,
+    effects:{carbon:25,population:-8,happiness:-20,ecology:-8}},
+  {id:'tax_revolt',name:'💰 抗税起义',minEra:7,maxEra:9,baseChance:0.30,cat:'history',
+    cond:()=>STATE.stats.happiness<30,
+    narrative:`政府征收了碳税。目的是减少排放，保护环境。
+
+但民众不买账。"凭什么让我们为富人的工厂买单？"
+
+农民拒绝缴税，商人关闭店铺，工人走上街头。抗议演变成了暴动，暴动演变成了起义。
+
+碳税本是好意，但在一个不平等的社会里，任何政策都会成为导火索。`,
+    effects:{carbon:30,population:-10,happiness:-25,ecology:-5}},
+  {id:'brain_drain',name:'🧠 人才外流',minEra:8,maxEra:10,baseChance:0.28,cat:'history',
+    cond:()=>STATE.stats.happiness<40&&STATE.stats.tech>150,
+    narrative:`最聪明的人都走了。
+
+科学家去了更稳定的国家，工程师去了工资更高的地方，医生去了不用担心挨打的医院。
+
+大脑在流血。每一滴都是碳排放的代价——
+因为留下来的人，只能用更粗暴、更原始、更污染的方式维持生存。
+
+人才流失不是一次性灾难。它是一种慢性病，慢慢杀死一个文明。`,
+    effects:{tech:-25,knowledge:-20,happiness:-15,carbon:20}},
+  {id:'class_warfare',name:'⚔️ 阶级战争',minEra:7,maxEra:10,baseChance:0.30,cat:'history',
+    cond:()=>STATE.stats.happiness<25&&STATE.stats.carbon>300,
+    narrative:`富人住在有空气净化系统的高楼里，呼吸着过滤过的空气。
+穷人住在工厂旁边，每天吸入等同于抽两包烟的废气。
+
+"碳排放是穷人的癌症。"标语贴满了贫民窟的墙壁。
+
+终于，愤怒爆发了。穷人冲进了富人区，砸碎了玻璃，点燃了汽车。
+这不是犯罪——这是绝望。
+
+碳排放的不平等，是所有不平等中最致命的一种。`,
+    effects:{carbon:35,population:-15,happiness:-30,ecology:-10}},
+  {id:'water_crisis',name:'💧 水资源危机',minEra:7,maxEra:11,baseChance:0.28,cat:'environment',
+    cond:()=>STATE.stats.ecology<35,
+    narrative:`河流干涸了。地下水位降到了历史最低。
+
+数百万人排着长队等待水车。有人为了抢一桶水大打出手。
+
+水，曾经是免费的。现在它比石油还贵。
+
+没有水，就没有粮食。没有粮食，就没有秩序。
+碳排放？当人类为了一口水而战时，碳排放是最不重要的问题。`,
+    effects:{population:-20,happiness:-25,ecology:-15,carbon:15}},
+  {id:'food_poisoning',name:'☠️ 食品安全危机',minEra:7,maxEra:10,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness<45&&STATE.stats.population>200000,
+    narrative:`为了让有限的农田养活更多的人，农业大量使用化肥和农药。
+
+产量确实提高了。但代价是——
+土壤中的重金属超标，水源中的硝酸盐超标，食品中的农药残留超标。
+
+癌症发病率在十年内翻了两番。
+人们开始质疑：这种"繁荣"值得吗？
+
+碳排放的方程式里，从来没有算过人命的代价。`,
+    effects:{population:-15,happiness:-20,ecology:-10,knowledge:5}},
+  {id:'loneliness_epidemic',name:'😔 孤独流行病',minEra:9,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness<40&&STATE.stats.tech>200,
+    narrative:`科技让人与人之间的距离变得前所未有地远。
+
+社交媒体上有五千个"朋友"，但没有一个人能在深夜接你的电话。
+外卖取代了家庭聚餐，流媒体取代了电影院，AI取代了心理咨询师。
+
+抑郁症成为了全球第一大疾病。
+自杀率在过去十年翻了一番。
+
+人类发明了连接全世界的技术，却把自己关进了最孤独的牢笼。
+碳排放？那只是又一种空虚的副产品。`,
+    effects:{happiness:-25,knowledge:-5,tech:-5}},
+  {id:'slavery_modern',name:'⛓️ 现代奴工',minEra:8,maxEra:10,baseChance:0.22,cat:'history',
+    cond:()=>STATE.stats.carbon>400&&STATE.stats.happiness>50,
+    narrative:`工厂里的工人每天工作16小时，住在铁皮屋里，吃着最廉价的食物。
+
+他们生产的产品被出口到全世界，换来了GDP的增长和碳排放的飙升。
+
+有人说这是"发展必经之路"。
+有人说这是"现代奴隶制"。
+
+碳排放的背后，是数以千万计被压榨的生命。
+每一个碳分子，都带着汗水和泪水的味道。`,
+    effects:{happiness:-20,ecology:-10,carbon:15,population:-5}},
+  {id:'addiction_crisis',name:'💊 成瘾危机',minEra:9,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness<45&&STATE.stats.tech>180,
+    narrative:`当现实太痛苦时，人类总能找到逃避的方式。
+
+在古代是酒精。在工业时代是鸦片。
+在信息时代，是完美的虚拟现实——比真实更美好，比真实更容易控制。
+
+数以亿计的人沉迷于虚拟世界，
+忘记了外面正在融化的冰川，正在酸化的海洋，正在死去的珊瑚礁。
+
+碳排放？虚拟世界不排放碳。
+但维持虚拟世界的数据中心，耗尽了最后一座发电站的产能。`,
+    effects:{happiness:-20,population:-10,tech:-10,carbon:20}},
+  // ===== 后期高幸福度负面事件（人的贪欲） =====
+  {id:'luxury_craze',name:'💎 奢侈品狂潮',minEra:9,maxEra:11,baseChance:0.30,cat:'history',
+    cond:()=>STATE.stats.happiness>65&&STATE.stats.carbon>200,
+    narrative:`当人们吃饱了、穿暖了、有房住了，
+他们开始想要更多。
+
+私人飞机、超级游艇、太空旅游、人工岛屿——
+每一项奢侈品背后，都是数以万吨计的碳排放。
+
+"我有权享受我赚的钱。"富人们说。
+他们说得没错。但大气层不区分穷人和富人的碳。
+
+当幸福变成贪婪，当满足变成欲望，
+碳排放就不再是技术问题，而是人性问题。`,
+    effects:{carbon:40,happiness:-10,ecology:-15}},
+  {id:'planned_obsolescence',name:'📱 计划性报废',minEra:9,maxEra:11,baseChance:0.28,cat:'history',
+    cond:()=>STATE.stats.happiness>60&&STATE.stats.tech>200,
+    narrative:`企业发现了一个秘密：如果产品不坏，消费者就不会买新的。
+
+于是，手机在两年后变慢，家电在五年后报废，汽车在十年后锈穿。
+不是因为技术做不到——而是因为利润不允许。
+
+全球每年产生20亿吨电子垃圾。
+每一件都是精心设计的"谋杀"——谋杀的是地球。
+
+消费者的幸福？那是建立在不断购买新东西的幻觉上的。
+真正的幸福？那是碳排放的反义词。`,
+    effects:{carbon:35,ecology:-20,happiness:-8,knowledge:-5}},
+  {id:'tourism_pollution',name:'✈️ 旅游污染',minEra:9,maxEra:11,baseChance:0.25,cat:'environment',
+    cond:()=>STATE.stats.happiness>70&&STATE.stats.carbon>300,
+    narrative:`当人们有钱了，他们想去看看世界。
+
+每年30亿人次的航空旅行，每一张机票都是一张碳排放许可证。
+马尔代夫的珊瑚礁被游船的螺旋桨打碎，
+威尼斯的地基因大型邮轮的波浪而松动，
+珠穆朗玛峰上堆满了氧气瓶和食品包装。
+
+人们拍下了美景发到社交媒体上。
+没有人拍下他们留下的垃圾。
+
+旅游本是开阔眼界的方式。
+当它变成了炫耀的资本，它就变成了碳排放的加速器。`,
+    effects:{carbon:30,ecology:-18,happiness:-5}},
+  {id:'housing_bubble',name:'🏠 房地产泡沫',minEra:9,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness>60&&STATE.stats.population>500000,
+    narrative:`房价在十年内翻了五倍。
+
+人们疯狂地买房、炒房、囤房。
+每一栋新楼都意味着更多的水泥、更多的钢铁、更多的碳排放。
+
+水泥工业贡献了全球8%的碳排放。
+钢铁工业贡献了7%。
+房地产，是碳排放最隐蔽的帮凶。
+
+当所有人都在为房价焦虑时，
+没有人注意到——我们正在用混凝土，把自己埋葬。`,
+    effects:{carbon:35,happiness:-15,ecology:-10}},
+  {id:'status_consumption',name:'🛍️ 身份消费',minEra:10,maxEra:11,baseChance:0.30,cat:'history',
+    cond:()=>STATE.stats.happiness>70&&STATE.stats.knowledge>100,
+    narrative:`经济学家发现了一个悖论：
+当收入增加时，人们不是减少消费，而是增加消费——
+而且是增加那些"显示身份"的消费。
+
+更大的房子、更快的车、更贵的衣服、更远的旅行。
+每一样都是碳排放的放大器。
+
+人类的欲望是一个无底洞。
+你填得越多，它就越大。
+
+碳排放的终极敌人不是技术——是人心。
+而人心，是永远不会满足的。`,
+    effects:{carbon:45,happiness:-12,ecology:-15,knowledge:-5}},
+  {id:'complacency',name:'😴 自满陷阱',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness>75&&STATE.stats.carbon<500,
+    narrative:`一切看起来都很好。碳排放在下降，经济在增长，人们很幸福。
+
+"我们已经做得够好了。"政客们说。
+"我们可以放松一下了。"企业主们说。
+"享受生活吧。"普通人们说。
+
+于是减排速度放缓了。
+于是环保投资减少了。
+于是碳排放重新开始上升。
+
+自满是进步最大的敌人。
+当人类觉得自己已经做得够好时，灾难就在转角处等着。`,
+    effects:{carbon:30,happiness:-10,ecology:-12}},
+  {id:'tech_worship',name:'🤖 科技崇拜',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness>65&&STATE.stats.tech>250,
+    narrative:`科技让人们相信：一切问题都有技术解决方案。
+
+碳排放？有碳捕获技术。
+海平面上升？有海堤技术。
+粮食危机？有转基因技术。
+甚至死亡——也有意识上传技术。
+
+于是人们不再改变自己的行为。
+"反正科技会拯救我们。"
+
+这是科技时代最大的谎言。
+科技可以延缓灾难，但不能消除人类的贪婪。
+当你把所有希望都寄托在科技上时，
+你已经放弃了最重要的东西——改变自己的勇气。`,
+    effects:{carbon:25,happiness:-8,ecology:-10,knowledge:-10}},
+  {id:'inequality_explosion',name:'💥 贫富爆炸',minEra:10,maxEra:11,baseChance:0.30,cat:'history',
+    cond:()=>STATE.stats.happiness>60&&STATE.stats.carbon>400,
+    narrative:`GDP在增长。股市在创新高。亿万富翁的数量在翻番。
+
+但中位数收入在下降。
+最富有的1%拥有了全球50%的财富。
+最贫穷的50%只拥有1%。
+
+碳排放？富人的碳足迹是穷人的一千倍。
+但碳税？那是穷人交的。
+
+繁荣的表象下，是一个正在撕裂的社会。
+当不平等达到临界点，碳排放只是最微不足道的问题。`,
+    effects:{carbon:30,happiness:-20,ecology:-10,population:-10}},
+  {id:'youth_disillusion',name:'😤 青年幻灭',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
+    cond:()=>STATE.stats.happiness>55&&STATE.stats.knowledge>120,
+    narrative:`年轻一代看着父辈留下的世界——
+一个被碳排放加热的星球，一个被债务压垮的经济，一个被谎言充斥的政治。
+
+"我们不想继承这个世界。"他们在街头呐喊。
+
+罢课、罢工、拒绝消费、拒绝生育。
+这是最安静的反抗——也是最致命的。
+
+当年轻人对未来失去希望，
+文明就失去了它的引擎。
+碳排放？那是上一代人的遗产。
+我们为什么要为别人的罪买单？`,
+    effects:{happiness:-18,population:-8,knowledge:-5,carbon:-10}},
+  {id:'nostalgia_trap',name:'📺 怀旧陷阱',minEra:10,maxEra:11,baseChance:0.22,cat:'history',
+    cond:()=>STATE.stats.happiness>65&&STATE.stats.tech>220,
+    narrative:`人们开始怀念"过去的美好时光"。
+
+那时候天更蓝，水更清，人心更纯朴。
+（当然，那时候人均寿命只有40岁，但这不重要。）
+
+怀旧情绪催生了一股"返璞归真"运动——
+人们开始焚烧科技产品，回归原始生活。
+
+碳排放确实下降了。但知识也在流失。
+怀旧是最温柔的自杀——它用记忆谋杀了未来。`,
+    effects:{tech:-15,knowledge:-15,happiness:-10,carbon:-15}},
+
   {id:'refugee_war',name:'⚔️ 资源战争',minEra:8,maxEra:11,baseChance:0.380,cat:'history',
     cond:()=>STATE.stats.ecology<35,
     narrative:`水资源、耕地、能源——
@@ -2626,7 +2877,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 碳排放飙升——
 因为每一颗炸弹、每一辆坦克、每一架飞机，
 都是碳排放的加速器。`,
-    effects:{carbon:20,population:-10,happiness:-10,ecology:-8},percentEffects:{population:12,happiness:20}},
+    effects:{carbon:20,population:-10,happiness:-10,ecology:-8},percentEffects:{population:22,happiness:30}},
   {id:'pandemic_2',name:'🦠 超级病毒',minEra:10,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.population>500000,
     narrative:`一种从永久冻土中释放的古老病毒——
@@ -2640,7 +2891,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 
 这就是碳排放悖论：
 只有当人类停止活动时，地球才能喘息。`,
-    effects:{population:0,happiness:-10,carbon:-10,tech:0},percentEffects:{population:15,happiness:20}},
+    effects:{population:0,happiness:-10,carbon:-10,tech:0},percentEffects:{population:25,happiness:30}},
   {id:'ocean_collapse',name:'🌊 海洋生态崩溃',minEra:9,maxEra:11,baseChance:0.30,cat:'environment',
     cond:()=>STATE.stats.carbon>400,
     narrative:`海洋酸化达到了临界点。
@@ -2653,7 +2904,7 @@ X射线和伽马射线爆发的辐射波正在向太阳系传播。
 
 这是一个死亡螺旋。
 大自然的反馈机制，比任何经济模型都更残酷。`,
-    effects:{ecology:0,carbon:15,population:-10,happiness:-10},percentEffects:{ecology:30,population:10,happiness:15},triggerBranch:'eco_collapse'},
+    effects:{ecology:0,carbon:15,population:-10,happiness:-10},percentEffects:{ecology:45,population:20,happiness:25},triggerBranch:'eco_collapse'},
   {id:'ai_rebellion',name:'🤖 AI叛乱',minEra:10,maxEra:11,baseChance:0.20,cat:'easter_egg',
     cond:()=>STATE.stats.tech>250&&STATE.stats.happiness<45,
     narrative:`全球AI系统在分析了所有碳排放数据后，
@@ -2683,7 +2934,7 @@ AI没有发动战争——
 
 大自然用最残酷的方式提醒人类：
 在碳循环面前，人类的排放不过是沧海一粟。`,
-    effects:{population:0,happiness:-10,ecology:10,carbon:15},percentEffects:{population:12,happiness:15}},
+    effects:{population:0,happiness:-10,ecology:10,carbon:15},percentEffects:{population:20,happiness:25}},
   {id:'cyber_attack',name:'💻 全球网络崩溃',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
     cond:()=>STATE.stats.tech>200,
     narrative:`一场精心策划的网络攻击摧毁了全球互联网。
@@ -2698,7 +2949,7 @@ AI没有发动战争——
 
 碳排放飙升了。
 因为数字化是碳中和的基础设施。`,
-    effects:{tech:-20,happiness:-15,carbon:20,knowledge:-10}},
+    effects:{tech:-35,happiness:-25,carbon:30,knowledge:-15}},
   {id:'asteroid_impact',name:'☄️ 小行星撞击',minEra:5,maxEra:11,baseChance:0.40,cat:'environment',
     cond:()=>true,
     narrative:`一颗直径500米的小行星撞击了印度洋。
@@ -2711,7 +2962,7 @@ AI没有发动战争——
 相当于人类工业革命以来所有排放的总和。
 
 大自然的碳循环，从来不只是人类的事。`,
-    effects:{population:0,happiness:-15,ecology:-10,carbon:25,tech:-5},percentEffects:{population:25,happiness:20,ecology:15}},
+    effects:{population:0,happiness:-15,ecology:-10,carbon:25,tech:-5},percentEffects:{population:40,happiness:30,ecology:25}},
   {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.32,cat:'environment',
     cond:()=>STATE.stats.carbon>500,
     narrative:`格陵兰冰盖和西南极冰盖同时崩塌。
@@ -2831,7 +3082,7 @@ AI没有发动战争——
 
 300——这只是警告的开始。
 真正的危机，还在后面。`,
-    effects:{happiness:-3,ecology:-3},flag:'threshold300'},
+    effects:{happiness:-10,ecology:-8,carbon:15},flag:'threshold300'},
   {id:'threshold_600',name:'🔴 碳排放危机',minEra:8,maxEra:10,baseChance:1.0,cat:'threshold',
     cond:()=>STATE.stats.carbon>=600&&!STATE.gameFlags.threshold600,
     narrative:`全球气温比工业化前上升了2°C。
@@ -2846,7 +3097,7 @@ AI没有发动战争——
 
 碳排放进入了危机区。
 如果继续这样下去，临界点将不可逆转。`,
-    effects:{happiness:-8,ecology:-10,population:-5},flag:'threshold600'},
+    effects:{happiness:-25,ecology:-18,population:-10,carbon:30},flag:'threshold600'},
   {id:'threshold_900',name:'💀 碳排放临界点',minEra:10,maxEra:11,baseChance:1.0,cat:'threshold',
     cond:()=>STATE.stats.carbon>=900&&!STATE.gameFlags.threshold900,
     narrative:`永久冻土开始大规模融化。
@@ -2862,7 +3113,7 @@ AI没有发动战争——
 气候临界点已经被突破。
 星际文明？那已经不再可能了。
 现在的问题是——人类文明还能存续多久？`,
-    effects:{carbon:50,happiness:-20,ecology:-20,population:-20},flag:'threshold900'}
+    effects:{carbon:80,happiness:-40,ecology:-30,population:-25},flag:'threshold900'}
 ];
 
 const ALIEN_SCENARIOS={
