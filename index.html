@@ -2947,12 +2947,17 @@ AI没有发动战争——
 庄稼在七月结冰。
 饥荒席卷了每一个大陆。
 
-碳排放反而增加了——
-因为人类疯狂地燃烧一切可燃物来取暖。
-
-大自然用最残酷的方式提醒人类：
-在碳循环面前，人类的排放不过是沧海一粟。`,
-    effects:{carbon:50,happiness:-20,ecology:5},percentEffects:{population:45,happiness:40}},
+你必须决定如何度过这个冬天：`,
+    effects:{carbon:50,happiness:-20,ecology:5},
+    choices:[
+      {title:'燃烧一切取暖',desc:'砍伐森林，燃烧所有可燃物，先活过今天',effects:{carbon:60,happiness:-10,ecology:-25},
+        delayedEffects:[{delay:2,effects:{carbon:20,ecology:-10},desc:'大规模伐林导致水土流失，碳汇减少，气候进一步恶化'}],
+        result:'火堆日夜燃烧。人们活了下来，但森林大面积消失。短期的温暖，换来了长期的碳债务。'},
+      {title:'集中供暖配给',desc:'建立公共避难所，严格配给食物和燃料',effects:{carbon:20,happiness:-25,ecology:5},
+        result:'避难所里挤满了人，食物按克分配。很多人不理解为什么要节省。但森林保住了，碳排放可控。痛苦，但有序。'},
+      {title:'地下迁徙',desc:'迁移到地热资源丰富的地区，利用地热取暖',effects:{carbon:5,happiness:-15,tech:10,ecology:10},
+        result:'人类涌向地热活跃区。温泉取代了柴火，地热取代了煤炭。火山冬天成了人类发现新能源的契机。'}
+    ]},
   {id:'cyber_attack',name:'💻 全球网络崩溃',minEra:10,maxEra:11,baseChance:0.25,cat:'history',
     cond:()=>STATE.stats.tech>200,
     narrative:`一场精心策划的网络攻击摧毁了全球互联网。
@@ -2977,12 +2982,16 @@ AI没有发动战争——
 海啸高达200米，横扫了整个亚洲东海岸。
 撞击产生的尘埃遮蔽了阳光长达三年。
 
-全球饥荒，文明倒退。
-碳排放？撞击本身释放的碳，
-相当于人类工业革命以来所有排放的总和。
-
-大自然的碳循环，从来不只是人类的事。`,
-    effects:{carbon:80,tech:-25,happiness:-25,ecology:-30},percentEffects:{population:55,happiness:45,ecology:40}},
+全球饥荒即将来临。你必须立刻做出反应：`,
+    effects:{carbon:80,tech:-25,happiness:-25,ecology:-30},
+    choices:[
+      {title:'全力救灾',desc:'动员一切资源，建造地下避难所，储备粮食',effects:{carbon:40,tech:-10,happiness:-15,ecology:-15},
+        result:'你倾尽国力建造避难所。三年的暗无天日后，人类艰难地活了下来。文明倒退了一个世纪，但火种未灭。'},
+      {title:'精英避难',desc:'只保护科学家和技术人员，放弃大多数人',effects:{carbon:20,tech:5,happiness:-40,ecology:-10},
+        result:'精英们活了下来，但大多数人在黑暗中死去。文明保留了技术，但失去了灵魂。幸存者的眼中，只剩下了愧疚。'},
+      {title:'自生自灭',desc:'不采取任何措施，让自然选择',effects:{carbon:0,tech:-40,happiness:-30,ecology:20},
+        result:'你选择了放手。90%的人口在饥荒中死去。但大自然开始了自我修复。几百年后，幸存者从废墟中重新站起——这一次，他们学会了敬畏。'}
+    ]},
   {id:'sea_level_rise',name:'🌊 海平面剧变',minEra:10,maxEra:11,baseChance:0.32,cat:'environment',
     cond:()=>STATE.stats.carbon>500,
     narrative:`格陵兰冰盖和西南极冰盖同时崩塌。
@@ -2992,12 +3001,17 @@ AI没有发动战争——
 这些曾经的国际大都市，
 如今只剩下摩天大楼的顶部露出水面。
 
-十亿人成为气候难民。
-人类文明的重心被迫向内陆转移。
-
-碳排放反而增加了——
-因为重建需要更多的能源。`,
-    effects:{carbon:40,happiness:-20,ecology:-15},percentEffects:{population:40,happiness:35}},
+十亿人成为气候难民。你如何应对？`,
+    effects:{carbon:40,happiness:-20,ecology:-15},
+    choices:[
+      {title:'建造海堤城市',desc:'用巨大的海堤保护沿海城市，不惜代价',effects:{carbon:50,happiness:-10,tech:10},
+        delayedEffects:[{delay:2,effects:{carbon:30,happiness:-15},desc:'海堤维护成本飙升，内陆居民不满加剧，社会动荡'}],
+        result:'海堤建成了。沿海城市暂时保住了。但维护成本是天文数字，内陆居民的愤怒在积累。这是一场注定输不起的战争。'},
+      {title:'有计划迁移',desc:'组织内陆迁移，建造新城市',effects:{carbon:20,happiness:-20,tech:5,ecology:5},
+        result:'十亿人踏上了迁徙之路。新城市在高地拔地而起。痛苦，但有序。曾经的海滨城市成了潜水员的乐园。'},
+      {title:'浮动文明',desc:'建造浮动城市，让人类适应海洋生活',effects:{carbon:15,tech:20,happiness:-5,ecology:10},
+        result:'你选择了最激进的方案——让人类回到海洋。浮动城市在洋流上漂浮，用海水淡化和潮汐发电。人类成为了海洋生物。'}
+    ]},
   {id:'nuclear_accident',name:'☢️ 核泄漏连锁',minEra:9,maxEra:11,baseChance:0.28,cat:'history',
     cond:()=>STATE.unlockedTechs.includes('核裂变'),
     narrative:`一场大地震导致全球三座核电站同时泄漏。
@@ -4867,6 +4881,22 @@ function chooseEventOption(eventId,optIdx){
   if(opt.flag)STATE.gameFlags[opt.flag]=true;
   STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:event.name,option:opt.title,effects:{...e},timestamp:Date.now()});
   updateDashboard();
+  // Check catastrophe ending: if stats are critically bad after this event
+  const catCatastrophes=['asteroid_impact','volcanic_winter','sea_level_rise','supervolcano','deep_ocean_methane'];
+  if(catCatastrophes.includes(event.id)){
+    const cs=STATE.stats;
+    if(cs.happiness<15&&cs.tech<50){
+      // Instant extinction ending
+      STATE.lastEndingKey='extinction';
+      setTimeout(()=>showEnding('extinction'),2000);
+      return;
+    }
+    if(cs.happiness<25&&cs.ecology<15){
+      STATE.lastEndingKey='decline';
+      setTimeout(()=>{showEnding('decline')},2000);
+      return;
+    }
+  }
   // Show result
   const container=document.getElementById('gameContent');
   const resultText=opt.result||'你的选择产生了影响。';
@@ -4900,6 +4930,21 @@ function applyEventAndContinue(eventId){
     if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
     if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,safeAdd(STATE.stats.knowledge,e.knowledge)));
     if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
+  }
+  // Check catastrophe ending for non-choice catastrophic events
+  const catNonChoice=['flood','industrial_smog','asteroid_impact','volcanic_winter','supervolcano'];
+  if(event&&catNonChoice.includes(event.id)){
+    const cs=STATE.stats;
+    if(cs.happiness<15&&cs.tech<50){
+      STATE.lastEndingKey='extinction';
+      setTimeout(()=>showEnding('extinction'),1500);
+      return;
+    }
+    if(cs.happiness<25&&cs.ecology<15){
+      STATE.lastEndingKey='decline';
+      setTimeout(()=>showEnding('decline'),1500);
+      return;
+    }
   }
   // Check if event triggers a branch
   if(event&&event.triggerBranch){
