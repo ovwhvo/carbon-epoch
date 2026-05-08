@@ -463,7 +463,7 @@ const ERAS = [
             result:`你教导人们轮作的方法。
 土地得到了恢复，产量稳定增长。
 智慧，有时候比蛮力更有价值。`,
-            effects:{carbon:10,tech:5,population:20,happiness:5,knowledge:5,ecology:3}},
+            effects:{carbon:10,tech:5,population:20,happiness:5,knowledge:5,ecology:3},unlocks:['农业轮作']},
           {id:'b',title:'大规模开垦',desc:'砍伐森林，扩大农田',
             result:`斧头砍倒了千年古树，田野像潮水一样蔓延。
 人口爆发了，村庄变成了城镇。
@@ -606,7 +606,7 @@ const ERAS = [
           {id:'a',title:'技术革新',desc:'研发更高效的冶炼炉',
             result:`高炉的出现改变了冶炼效率。
 铁器开始普及到千家万户。`,
-            effects:{carbon:20,tech:20,population:30,happiness:5,knowledge:10,ecology:-5}},
+            effects:{carbon:20,tech:20,population:30,happiness:5,knowledge:10,ecology:-5},unlocks:['高炉技术']},
           {id:'b',title:'无限制扩张',desc:'大规模开采铁矿和森林',
             result:`矿山日夜轰鸣，森林大面积倒下。
 人口爆发，城市扩张，但生态在崩溃的边缘。`,
@@ -616,8 +616,8 @@ const ERAS = [
 废铁回收、木炭替代、矿渣利用。
 碳排放大幅减少，生态得到保护。`,
             effects:{carbon:5,tech:18,population:15,happiness:8,knowledge:15,ecology:12},
-            requirements:{ecology:40,tech:40}},
-          {id:'d',title:'铁器改良',desc:'研发更耐用的铁器，减少更换频率',
+            requirements:{ecology:50,tech:50}},
+          {id:'d',title:'铁器改良',desc:'研发更耐用的铁器，减少更换频率',requirements:{techs:['高炉技术']},
             result:`你鼓励工匠打造更耐用的铁器。
 虽然研发消耗了碳，但铁器寿命延长三倍，
 长期来看总碳排放反而减少。
@@ -672,7 +672,7 @@ const ERAS = [
             result:`瘟疫过后，人们开始质疑一切。
 大学兴起了，印刷术传播了知识。
 文艺复兴的曙光，从黑死病的废墟中升起。`,
-            effects:{carbon:15,tech:12,population:10,happiness:5,knowledge:25,ecology:0}},
+            effects:{carbon:15,tech:12,population:10,happiness:5,knowledge:25,ecology:0},unlocks:['文艺复兴']},
           {id:'b',title:'快速恢复',desc:'大规模开垦，恢复人口',
             result:`幸存者疯狂地生育和开垦。
 森林被砍伐，农田扩张到每一寸土地。`,
@@ -704,13 +704,13 @@ const ERAS = [
             result:`皇帝下令：片板不许下海。
 宝船被焚毁，航海图被销毁。
 世界错过了一个可能不同的未来。`,
-            effects:{carbon:5,tech:-15,population:0,happiness:-3,knowledge:-12,ecology:5}},
+            effects:{carbon:5,tech:-15,population:0,happiness:-3,knowledge:-12,ecology:5},unlocks:['海禁政策']},
           {id:'c',title:'🚢 海上丝路',desc:'🔒 隐藏选项 — 需要幸福 ≥ 60 且科技 ≥ 50',isHidden:true,
             result:`你建立了一个横跨太平洋和印度洋的贸易网络。
 丝绸、瓷器、茶叶、香料在大洋上流动。
 和平贸易带来了前所未有的繁荣。`,
             effects:{carbon:15,tech:20,population:50,happiness:18,knowledge:20,ecology:-3},
-            requirements:{happiness:60,tech:50}},
+            requirements:{happiness:60,tech:65}},
           {id:'d',title:'选择性开放',desc:'有限度地与外界交流，保持技术优势',
             result:`你没有完全关闭国门，也没有全面开放。
 选择性地引进技术，限制资源出口。
@@ -754,7 +754,7 @@ const ERAS = [
 没有征服，没有奴役，只有互利的交换。
 原住民的知识和欧洲的技术相互融合。`,
             effects:{carbon:15,tech:18,population:40,happiness:15,knowledge:22,ecology:5},
-            requirements:{happiness:60,knowledge:55}},
+            requirements:{happiness:60,knowledge:65}},
           {id:'d',title:'科学考察',desc:'以科学研究为目的探索新大陆',
             result:`你派出的不是征服者，而是博物学家和地理学家。
 他们记录物种、绘制地图、研究气候。
@@ -782,8 +782,8 @@ const ERAS = [
 将自然资源的价值计入经济成本。
 这改变了人类看待发展的方式。`,
             effects:{carbon:3,tech:20,population:10,happiness:8,knowledge:25,ecology:12},
-            requirements:{ecology:35,tech:60}},
-          {id:'d',title:'泥炭过渡',desc:'使用泥炭作为木材和煤炭之间的过渡能源',
+            requirements:{ecology:40,tech:80}},
+          {id:'d',title:'泥炭过渡',desc:'使用泥炭作为木材和煤炭之间的过渡能源',requirements:{techs:['农业轮作']},
             result:`你选择了泥炭——比木材能量密度高，
 比煤炭开采容易。这是一种务实的折中。
 碳排放适中，为未来的能源转型赢得了时间。`,
@@ -827,8 +827,8 @@ const ERAS = [
 建立了工人保护法、公共教育体系和医疗保险。
 工业革命不再是血与泪的代名词。`,
             effects:{carbon:20,tech:25,population:40,happiness:15,knowledge:20,ecology:3},
-            requirements:{happiness:65,tech:80}},
-          {id:'d',title:'工厂法规',desc:'制定工厂排放标准和工人保护法',
+            requirements:{happiness:65,tech:120}},
+          {id:'d',title:'工厂法规',desc:'制定工厂排放标准和工人保护法',requirements:{techs:['文艺复兴']},
             result:`你颁布了世界上第一部工厂法。
 限制了工作时间和排放量，保护了工人权益。
 发展速度稍慢，但社会更加稳定。
@@ -855,7 +855,7 @@ const ERAS = [
 法拉第的电磁感应、特斯拉的交流电——
 电力革命提前到来。`,
             effects:{carbon:15,tech:28,population:10,happiness:5,knowledge:25,ecology:10},
-            requirements:{knowledge:70}},
+            requirements:{knowledge:90}},
           {id:'d',title:'混合能源',desc:'同时发展煤炭、石油和早期可再生能源',
             result:`你没有押注单一能源。
 煤炭提供基础动力，石油驱动交通，
@@ -921,7 +921,7 @@ const ERAS = [
 公共交通为主，私人汽车为辅，
 智能调度减少拥堵和排放。`,
             effects:{carbon:35,tech:18,population:25,happiness:18,knowledge:12,ecology:5},
-            requirements:{tech:120,happiness:55}},
+            requirements:{tech:200,happiness:55}},
           {id:'d',title:'电动交通',desc:'发展电动汽车和电气化铁路',
             result:`你选择了电气化而非燃油。
 电动列车连接城市，电动车进入家庭。
@@ -947,12 +947,12 @@ const ERAS = [
             result:`你选择了安全，放弃了可能。
 人类继续依赖煤炭和石油。`,
             effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}},
-          {id:'d',title:'国际监督',desc:'建立国际机构监督核技术使用',
+          {id:'d',title:'国际监督',desc:'建立国际机构监督核技术使用',requirements:{techs:['国际合作']},
             result:`你推动建立了国际原子能机构。
 核技术在严格监督下和平发展。
 碳排放适中，科技稳步提升，安全得到保障。
 制度，比技术本身更重要。`,
-            effects:{carbon:15,tech:20,population:3,happiness:8,knowledge:12,ecology:3}}
+            effects:{carbon:15,tech:20,population:3,happiness:8,knowledge:12,ecology:3},unlocks:['国际合作']}
         ]
       }
     ]
@@ -988,7 +988,7 @@ const ERAS = [
 从臭氧层到气候变化，从海洋污染到生物多样性。
 人类第一次作为一个整体，保护自己的家园。`,
             effects:{carbon:-20,tech:15,population:0,happiness:18,knowledge:20,ecology:35},
-            requirements:{ecology:50,happiness:65}},
+            requirements:{ecology:65,happiness:70}},
           {id:'d',title:'分阶段禁令',desc:'给企业时间转型，逐步淘汰有害物质',
             result:`你采取了渐进式禁令。
 企业有时间寻找替代品，经济没有剧烈波动。
@@ -1015,8 +1015,8 @@ const ERAS = [
 虽然短期内看不到成果，
 但这项研究将在几十年后改变世界。`,
             effects:{carbon:5,tech:25,population:0,happiness:0,knowledge:25,ecology:8},
-            requirements:{tech:150,techs:['核裂变']}},
-          {id:'d',title:'小型反应堆',desc:'发展小型模块化核反应堆，降低风险',
+            requirements:{tech:220,techs:['核裂变']}},
+          {id:'d',title:'小型反应堆',desc:'发展小型模块化核反应堆，降低风险',requirements:{techs:['核裂变']},
             result:`你选择了小型化路线。
 每个反应堆功率小，但安全性极高。
 即使发生事故，影响也有限。
@@ -1043,7 +1043,7 @@ const ERAS = [
 用信息技术监测和保护地球环境。
 卫星遥感、环境大数据、全球预警系统。`,
             effects:{carbon:10,tech:25,population:15,happiness:12,knowledge:30,ecology:15},
-            requirements:{knowledge:100,tech:160}},
+            requirements:{knowledge:150,tech:250}},
           {id:'d',title:'边缘计算',desc:'推动边缘计算，减少大型数据中心需求',
             result:`你推动了计算能力的去中心化。
 每个设备都参与计算，大型数据中心减少。
@@ -1074,7 +1074,7 @@ const ERAS = [
           {id:'a',title:'激进转型',desc:'大力发展可再生能源，逐步淘汰化石燃料',
             result:`你按下了加速键。
 短期阵痛是剧烈的，但长期来看，这是正确的方向。`,
-            effects:{carbon:-25,tech:15,population:0,happiness:-8,knowledge:12,ecology:22}},
+            effects:{carbon:-25,tech:15,population:0,happiness:-8,knowledge:12,ecology:22},unlocks:['可再生能源']},
           {id:'b',title:'渐进过渡',desc:'缓慢转型，保持经济稳定',
             result:`你选择了温和的路线。
 经济没有剧烈波动，但转型的速度可能不够快。`,
@@ -1085,8 +1085,8 @@ const ERAS = [
 GDP不再是唯一的衡量标准，
 幸福指数和生态指数成为了新的指南针。`,
             effects:{carbon:-35,tech:22,population:0,happiness:20,knowledge:20,ecology:30},
-            requirements:{ecology:55,happiness:70}},
-          {id:'d',title:'碳交易市场',desc:'建立全球碳交易市场，用经济手段减排',
+            requirements:{ecology:70,happiness:75}},
+          {id:'d',title:'碳交易市场',desc:'建立全球碳交易市场，用经济手段减排',requirements:{techs:['可再生能源']},
             result:`你建立了碳排放交易体系。
 排放需要购买配额，减排可以出售。
 市场机制推动了技术创新。
@@ -1113,7 +1113,7 @@ GDP不再是唯一的衡量标准，
 森林、湿地、海草床、红树林。
 大自然是最好的碳捕获机器。`,
             effects:{carbon:-20,tech:5,population:0,happiness:10,knowledge:8,ecology:30},
-            requirements:{ecology:60}},
+            requirements:{ecology:75}},
           {id:'d',title:'自然碳汇',desc:'投资森林和海洋恢复，用自然方式吸收碳',
             result:`你选择了最古老的方法——让自然来做。
 大规模植树造林，海洋生态修复。
@@ -1141,7 +1141,7 @@ GDP不再是唯一的衡量标准，
 气候变化、贫困、疾病——
 这些全球性问题，终于有了全球性的解决方案。`,
             effects:{carbon:-40,tech:20,population:0,happiness:25,knowledge:25,ecology:20},
-            requirements:{happiness:75,knowledge:120}},
+            requirements:{happiness:80,knowledge:180}},
           {id:'d',title:'技术联盟',desc:'与志同道合的国家组建技术联盟',
             result:`你没有等待全球共识，而是先与盟友行动。
 技术共享、联合研发、统一标准。
@@ -1177,15 +1177,15 @@ GDP不再是唯一的衡量标准，
           {id:'b',title:'缓慢推广',desc:'逐步建设，不急于替代',
             result:`核聚变电站在发达国家缓慢建设。
 发展中国家仍然依赖化石燃料。`,
-            effects:{carbon:-18,tech:12,population:0,happiness:3,knowledge:10,ecology:12}},
+            effects:{carbon:-18,tech:12,population:0,happiness:3,knowledge:10,ecology:12},unlocks:['核聚变改良']},
           {id:'c',title:'🌟 无限能源时代',desc:'🔒 隐藏选项 — 需要科技 ≥ 250 且知识 ≥ 150',isHidden:true,
             result:`你不仅普及了核聚变，
 还开发了太空太阳能和反物质能源。
 能源不再是限制人类发展的瓶颈。
 碳排放归零，人类进入了无限能源时代。`,
             effects:{carbon:-80,tech:35,population:0,happiness:20,knowledge:30,ecology:40},
-            requirements:{tech:250,knowledge:150}},
-          {id:'d',title:'混合方案',desc:'核聚变与可再生能源并行发展',
+            requirements:{tech:350,knowledge:250}},
+          {id:'d',title:'混合方案',desc:'核聚变与可再生能源并行发展',requirements:{techs:['核聚变改良']},
             result:`你没有把所有希望押在核聚变上。
 太阳能、风能、核聚变同时推进。
 虽然效率不如专精一路，但风险最低。
@@ -1210,7 +1210,7 @@ GDP不再是唯一的衡量标准，
 太阳能供电，海水淡化，自给自足的海洋社区。
 人类的创造力，在危机中绽放了光芒。`,
             effects:{carbon:5,tech:25,population:30,happiness:15,knowledge:15,ecology:8},
-            requirements:{tech:260,happiness:65}},
+            requirements:{tech:350,happiness:70}},
           {id:'d',title:'内陆迁移',desc:'帮助气候移民迁移到内陆安全地区',
             result:`你组织了大规模的内陆迁移。
 新城市在高地和内陆平原拔地而起。
@@ -1233,7 +1233,7 @@ GDP不再是唯一的衡量标准，
 才能将升温控制在1.5°C以内。
 你做到了。`,
             effects:{carbon:-100,tech:20,population:0,happiness:12,knowledge:18,ecology:35},
-            requirements:{tech:250,ecology:50}},
+            requirements:{tech:350,ecology:60}},
           {id:'b',title:'技术赌注',desc:'🔒 需要知识 ≥ 120 — 寄希望于未来技术突破',
             result:`你把赌注压在了尚未成熟的技术上——
 碳捕获、太阳辐射管理、海洋施肥……
@@ -1243,7 +1243,7 @@ GDP不再是唯一的衡量标准，
 而现有碳捕获工厂每年仅能移除0.01亿吨。
 也许能拯救人类，也许不能。`,
             effects:{carbon:-25,tech:12,population:0,happiness:0,knowledge:10,ecology:8},
-            requirements:{knowledge:120}},
+            requirements:{knowledge:200}},
           {id:'c',title:'放弃挣扎',desc:'认为气候危机无法逆转',
             result:`你耸了耸肩。"反正已经来不及了。"
 碳排放继续飙升，生态系统在崩溃。`,
@@ -1303,7 +1303,7 @@ GDP不再是唯一的衡量标准，
 五十年后，这些区域变成了地球上最健康的生态系统。
 碳排放自然下降，但速度很慢。`,
             effects:{carbon:-15,ecology:35,knowledge:20,happiness:15,population:-5},
-            requirements:{ecology:50,knowledge:150}}
+            requirements:{ecology:60,knowledge:220}}
         ]
       },
       {
@@ -1335,7 +1335,7 @@ GDP不再是唯一的衡量标准，
 当AI的决策与人类的意愿冲突时——
 谁才是这个星球的主人？`,
             effects:{carbon:-50,tech:30,happiness:-10,knowledge:25,ecology:15},
-            requirements:{tech:280,knowledge:180}}
+            requirements:{tech:380,knowledge:250}}
         ]
       },
       {
@@ -1369,7 +1369,7 @@ GDP不再是唯一的衡量标准，
 碳排放？每个亚种都有自己的解决方案。
 但"人类"这个概念，从此不再单一。`,
             effects:{carbon:-10,tech:35,knowledge:40,happiness:-5,population:10,ecology:10},
-            requirements:{tech:300,knowledge:200}}
+            requirements:{tech:400,knowledge:280}}
         ]
       }
     ]
@@ -1428,7 +1428,7 @@ GDP不再是唯一的衡量标准，
 这是人类第一次以星球为单位思考问题。
 碳不再是诅咒，而是星际文明的粘合剂。`,
             effects:{carbon:-10,tech:30,population:40,happiness:25,knowledge:35,ecology:10},
-            requirements:{tech:350,happiness:60}}
+            requirements:{tech:450,happiness:70}}
         ]
       },
       {
@@ -1465,7 +1465,7 @@ GDP不再是唯一的衡量标准，
 
 碳排放？当能源无限时，碳排放不再是一个问题。`,
             effects:{carbon:-100,tech:50,knowledge:40,happiness:15,population:20,ecology:20},
-            requirements:{tech:400,knowledge:250}}
+            requirements:{tech:500,knowledge:300}}
         ]
       }
     ]
@@ -1519,7 +1519,7 @@ GDP不再是唯一的衡量标准，
 碳纪元结束了。
 不是因为碳被征服，而是因为碳的载体——肉体——被超越了。`,
             effects:{carbon:-200,tech:50,knowledge:60,happiness:-50,ecology:30,population:-100},
-            requirements:{knowledge:300,tech:450}}
+            requirements:{knowledge:400,tech:550}}
         ]
       },
       {
@@ -1551,7 +1551,7 @@ GDP不再是唯一的衡量标准，
 
 这是碳纪元的终章。也是新纪元的序章。`,
             effects:{carbon:-150,tech:60,knowledge:50,happiness:20,ecology:25,population:20},
-            requirements:{knowledge:350,tech:500}}
+            requirements:{knowledge:450,tech:600}}
         ]
       }
     ]
@@ -2068,7 +2068,14 @@ const TECH_DATA = {
   '碳捕获':{icon:'🌿',carbonReduction:15,desc:'大气碳移除'},
   '核聚变':{icon:'🌟',carbonReduction:25,desc:'无限清洁能源'},
   '风力发电':{icon:'💨',carbonReduction:6,desc:'风能利用'},
-  '负能源':{icon:'✨',carbonReduction:40,desc:'超越碳中和'}
+  '负能源':{icon:'✨',carbonReduction:40,desc:'超越碳中和'},
+  '农业轮作':{icon:'🌾',carbonReduction:2,desc:'可持续农业'},
+  '高炉技术':{icon:'🏭',carbonReduction:3,desc:'高效冶炼'},
+  '文艺复兴':{icon:'📖',carbonReduction:0,desc:'知识复兴'},
+  '国际合作':{icon:'🤝',carbonReduction:5,desc:'全球治理'},
+  '可再生能源':{icon:'⚡',carbonReduction:10,desc:'清洁电力'},
+  '核聚变改良':{icon:'💎',carbonReduction:15,desc:'聚变效率提升'},
+  '海禁政策':{icon:'🚢',carbonReduction:0,desc:'封闭发展'}
 };
 
 // ===========================
@@ -2927,6 +2934,9 @@ const ALIEN_SCENARIOS={
 // GAME STATE
 // ===========================
 
+function safeNum(v,def){return(typeof v==='number'&&!isNaN(v))?v:(def||0);}
+function safeAdd(cur,val){return safeNum(cur,0)+safeNum(val,0);}
+
 const STATE = {
   currentEraIndex:0,phase:'narrative',
   stats:{carbon:0,tech:0,population:10,happiness:50,knowledge:5,ecology:50},
@@ -3012,7 +3022,7 @@ function loadEra(eraIndex){
   }
 
   // Set population to era base
-  if(era.population>0)STATE.stats.population=Number(era.population);
+  if(era.population>0)STATE.stats.population=safeNum(era.population,10);
 
   document.getElementById('eraLabel').textContent=era.eraLabel;
   document.getElementById('eraName').textContent=era.name;
@@ -3227,7 +3237,7 @@ function makeChoice(eraId,decisionIndex,optionId){
   for(const k of Object.keys(STATE.stats)){if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0;}
   STATE.stats.carbon=Number(STATE.stats.carbon)+Number(e.carbon||0);
   STATE.stats.tech=Math.min(1000,Number(STATE.stats.tech)+Number(e.tech||0));
-  STATE.stats.population=Math.max(0,Math.min(5000000,Number(STATE.stats.population||0)+Number(e.population||0)));
+  STATE.stats.population=Math.max(0,Math.min(5000000,safeAdd(STATE.stats.population,e.population)));
   STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness)+Number(e.happiness||0)));
   STATE.stats.knowledge=Math.min(600,Number(STATE.stats.knowledge)+Number(e.knowledge||0));
   STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology)+Number(e.ecology||0)));
@@ -3280,14 +3290,14 @@ function handleCrisisChoice(choice){
     STATE.gameFlags.foughtCrisis=true;
     STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'背水一战',effects:{happiness:10,ecology:10,carbon:-50,knowledge:10},timestamp:Date.now()});
   }else if(choice==='scattered'){
-    STATE.stats.population=Math.round(Number(STATE.stats.population||0)*0.5);
+    STATE.stats.population=Math.round(safeNum(STATE.stats.population,10)*0.5);
     STATE.stats.ecology+=5;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-30);
     STATE.stats.happiness+=5;
     STATE.gameFlags.scattered=true;
     STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'分散撤离',effects:{population:-50,ecology:5,carbon:-30,happiness:5},timestamp:Date.now()});
   }else if(choice==='preserve'){
-    STATE.stats.knowledge=Number(STATE.stats.knowledge||0)+30;
+    STATE.stats.knowledge=safeAdd(STATE.stats.knowledge,30);
     STATE.stats.tech-=10;
     STATE.stats.happiness-=5;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-20);
@@ -3906,9 +3916,9 @@ function handleBranchChoice(branchId,choiceIdx,optIdx){
   const e=opt.effects;
   STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon||0));
   STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech||0)));
-  STATE.stats.population=Math.max(0,Math.min(2000000,Number(STATE.stats.population||0)+Number(e.population||0)));
+  STATE.stats.population=Math.max(0,Math.min(2000000,safeAdd(STATE.stats.population,e.population)));
   STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness||0)));
-  STATE.stats.knowledge=Math.max(0,Math.min(400,Number(STATE.stats.knowledge||0)+Number(e.knowledge||0)));
+  STATE.stats.knowledge=Math.max(0,Math.min(400,safeAdd(STATE.stats.knowledge,e.knowledge)));
   STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology||0)));
   
   STATE.history.push({era:'⚠️ 文明分支',eraId:branchId,decision:opt.title,option:opt.title,effects:{...e},timestamp:Date.now()});
@@ -4056,7 +4066,7 @@ function handleStellarChoice(choice){
   if(choice==='dyson'){
     STATE.gameFlags.dysonBuilt=true;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-50);
-    STATE.stats.tech=Number(STATE.stats.tech||0)+50;
+    STATE.stats.tech=safeAdd(STATE.stats.tech,50);
     STATE.stats.knowledge+=30;
     STATE.history.push({era:isEn?'Stellar Chain':'星际之路',eraId:'stellar',decision:isEn?'Dyson Sphere':'戴森球',option:isEn?'Build Dyson Sphere':'建造戴森球',effects:{carbon:-50,tech:50,knowledge:30},timestamp:Date.now()});
   }else if(choice==='ship'){
@@ -4517,9 +4527,9 @@ function applyEventAndContinue(eventId){
     // Apply flat effects
     if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
     if(e.tech)STATE.stats.tech=Math.max(0,Math.min(1000,Number(STATE.stats.tech||0)+Number(e.tech)));
-    if(e.population)STATE.stats.population=Math.max(0,Math.min(5000000,Number(STATE.stats.population||0)+Number(e.population)));
+    if(e.population)STATE.stats.population=Math.max(0,Math.min(5000000,safeAdd(STATE.stats.population,e.population)));
     if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
-    if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,Number(STATE.stats.knowledge||0)+Number(e.knowledge)));
+    if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,safeAdd(STATE.stats.knowledge,e.knowledge)));
     if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
   }
   // Check if event triggers a branch
@@ -4569,7 +4579,7 @@ function chooseAlienOption(alienType,optionId){
   const e=option.effects;
   if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
   if(e.tech)STATE.stats.tech=Math.max(0,Number(STATE.stats.tech||0)+Number(e.tech));
-  if(e.population)STATE.stats.population=Math.max(0,Number(STATE.stats.population||0)+Number(e.population));
+  if(e.population)STATE.stats.population=Math.max(0,safeAdd(STATE.stats.population,e.population));
   if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
   if(e.knowledge)STATE.stats.knowledge=Math.max(0,Number(STATE.stats.knowledge||0)+Number(e.knowledge));
   if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
