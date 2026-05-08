@@ -2945,6 +2945,9 @@ function startGame(){
   STATE.currentEraIndex=0;
   STATE.phase='narrative';
   STATE.stats={carbon:0,tech:0,population:10,happiness:50,knowledge:5,ecology:50};
+  // Ensure all values are numbers
+  Object.keys(STATE.stats).forEach(k=>{if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0});
+  STATE.stats.happiness=50;STATE.stats.ecology=50;STATE.stats.knowledge=5;STATE.stats.population=10;
   STATE.history=[];STATE.unlockedTechs=[];
   STATE.carbonHistory=[{era:'起点',value:0}];
   STATE.triggeredEvents=[];STATE.gameFlags={};
@@ -3009,7 +3012,7 @@ function loadEra(eraIndex){
   }
 
   // Set population to era base
-  if(era.population>0)STATE.stats.population=era.population;
+  if(era.population>0)STATE.stats.population=Number(era.population);
 
   document.getElementById('eraLabel').textContent=era.eraLabel;
   document.getElementById('eraName').textContent=era.name;
@@ -3066,11 +3069,11 @@ function checkRequirements(opt){
   if(!opt.requirements)return true;
   const r=opt.requirements;
   const s=STATE.stats;
-  if(r.carbon!==undefined&&s.carbon>r.carbon)return false;
-  if(r.tech!==undefined&&s.tech<r.tech)return false;
-  if(r.happiness!==undefined&&s.happiness<r.happiness)return false;
-  if(r.knowledge!==undefined&&s.knowledge<r.knowledge)return false;
-  if(r.ecology!==undefined&&s.ecology<r.ecology)return false;
+  if(r.carbon!==undefined&&Number(s.carbon)>Number(r.carbon))return false;
+  if(r.tech!==undefined&&Number(s.tech)<Number(r.tech))return false;
+  if(r.happiness!==undefined&&Number(s.happiness)<Number(r.happiness))return false;
+  if(r.knowledge!==undefined&&Number(s.knowledge)<Number(r.knowledge))return false;
+  if(r.ecology!==undefined&&Number(s.ecology)<Number(r.ecology))return false;
   if(r.population!==undefined&&s.population<r.population)return false;
   if(r.techs){
     for(const t of r.techs){
@@ -3156,7 +3159,9 @@ function buildEffectHints(effects){
 function applyDynamicModifiers(option){
   const s=STATE.stats;
   // Population scaling: higher pop = more impact from choices
-  const pop=Math.max(0,s.population||0);
+  // Ensure all stats are valid numbers
+  for(const k of Object.keys(s)){if(typeof s[k]!=='number'||isNaN(s[k]))s[k]=0;}
+  const pop=Math.max(0,Number(s.population||0));
   let popScale=1.0;
   if(pop<50)popScale=0.7;
   else if(pop<500)popScale=0.9;
@@ -3218,13 +3223,15 @@ function makeChoice(eraId,decisionIndex,optionId){
   if(!checkRequirements(option))return;
 
   const {effects:e,modifiers}=applyDynamicModifiers(option);
-  STATE.stats.carbon+=e.carbon;
-  STATE.stats.tech=Math.min(1000,STATE.stats.tech+e.tech);
-  STATE.stats.population=Math.max(0,Math.min(5000000,(STATE.stats.population||0)+e.population));
-  STATE.stats.happiness=Math.max(0,Math.min(100,STATE.stats.happiness+e.happiness));
-  STATE.stats.knowledge=Math.min(600,STATE.stats.knowledge+e.knowledge);
-  STATE.stats.ecology=Math.max(0,Math.min(100,STATE.stats.ecology+e.ecology));
-  STATE.stats.carbon=Math.max(0,STATE.stats.carbon);
+  // Ensure all current stats are valid numbers before applying
+  for(const k of Object.keys(STATE.stats)){if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0;}
+  STATE.stats.carbon=Number(STATE.stats.carbon)+Number(e.carbon||0);
+  STATE.stats.tech=Math.min(1000,Number(STATE.stats.tech)+Number(e.tech||0));
+  STATE.stats.population=Math.max(0,Math.min(5000000,Number(STATE.stats.population||0)+Number(e.population||0)));
+  STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness)+Number(e.happiness||0)));
+  STATE.stats.knowledge=Math.min(600,Number(STATE.stats.knowledge)+Number(e.knowledge||0));
+  STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology)+Number(e.ecology||0)));
+  STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon));
 
   STATE.history.push({era:era.name,eraId:era.id,decision:decision.title,option:option.title,effects:{...e},timestamp:Date.now()});
 
@@ -3273,14 +3280,14 @@ function handleCrisisChoice(choice){
     STATE.gameFlags.foughtCrisis=true;
     STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'背水一战',effects:{happiness:10,ecology:10,carbon:-50,knowledge:10},timestamp:Date.now()});
   }else if(choice==='scattered'){
-    STATE.stats.population=Math.round(STATE.stats.population*0.5);
+    STATE.stats.population=Math.round(Number(STATE.stats.population||0)*0.5);
     STATE.stats.ecology+=5;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-30);
     STATE.stats.happiness+=5;
     STATE.gameFlags.scattered=true;
     STATE.history.push({era:'⚠️ 文明危机',eraId:'crisis',decision:'文明存亡',option:'分散撤离',effects:{population:-50,ecology:5,carbon:-30,happiness:5},timestamp:Date.now()});
   }else if(choice==='preserve'){
-    STATE.stats.knowledge+=30;
+    STATE.stats.knowledge=Number(STATE.stats.knowledge||0)+30;
     STATE.stats.tech-=10;
     STATE.stats.happiness-=5;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-20);
@@ -3897,12 +3904,12 @@ function handleBranchChoice(branchId,choiceIdx,optIdx){
   }
   
   const e=opt.effects;
-  STATE.stats.carbon=Math.max(0,STATE.stats.carbon+(e.carbon||0));
-  STATE.stats.tech=Math.max(0,Math.min(600,STATE.stats.tech+(e.tech||0)));
-  STATE.stats.population=Math.max(0,Math.min(2000000,STATE.stats.population+(e.population||0)));
-  STATE.stats.happiness=Math.max(0,Math.min(100,STATE.stats.happiness+(e.happiness||0)));
-  STATE.stats.knowledge=Math.max(0,Math.min(400,STATE.stats.knowledge+(e.knowledge||0)));
-  STATE.stats.ecology=Math.max(0,Math.min(100,STATE.stats.ecology+(e.ecology||0)));
+  STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon||0));
+  STATE.stats.tech=Math.max(0,Math.min(600,Number(STATE.stats.tech||0)+Number(e.tech||0)));
+  STATE.stats.population=Math.max(0,Math.min(2000000,Number(STATE.stats.population||0)+Number(e.population||0)));
+  STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness||0)));
+  STATE.stats.knowledge=Math.max(0,Math.min(400,Number(STATE.stats.knowledge||0)+Number(e.knowledge||0)));
+  STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology||0)));
   
   STATE.history.push({era:'⚠️ 文明分支',eraId:branchId,decision:opt.title,option:opt.title,effects:{...e},timestamp:Date.now()});
   updateDashboard();
@@ -4049,7 +4056,7 @@ function handleStellarChoice(choice){
   if(choice==='dyson'){
     STATE.gameFlags.dysonBuilt=true;
     STATE.stats.carbon=Math.max(0,STATE.stats.carbon-50);
-    STATE.stats.tech+=50;
+    STATE.stats.tech=Number(STATE.stats.tech||0)+50;
     STATE.stats.knowledge+=30;
     STATE.history.push({era:isEn?'Stellar Chain':'星际之路',eraId:'stellar',decision:isEn?'Dyson Sphere':'戴森球',option:isEn?'Build Dyson Sphere':'建造戴森球',effects:{carbon:-50,tech:50,knowledge:30},timestamp:Date.now()});
   }else if(choice==='ship'){
@@ -4128,6 +4135,8 @@ function continueToNextEra(){
 
 function determineEnding(){
   STATE.phase='ended';
+  // Ensure all stats are valid numbers
+  for(const k of Object.keys(STATE.stats)){if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0;}
   const s=STATE.stats;
   const f=STATE.gameFlags;
   const hasNuclearFusion=STATE.unlockedTechs.includes('\u6838\u805A\u53D8');
@@ -4251,8 +4260,8 @@ function updateDashboard(){
   if(s.carbon>=1000)overlay.classList.add('critical');
   else if(s.carbon>=600)overlay.classList.add('danger');
 
-  const era=ERAS[STATE.currentEraIndex];
-  const popDisplay=formatPop(s.population,era?.popUnit||'万');
+  const era=getEras()[STATE.currentEraIndex];
+  const popDisplay=formatPop(Number(s.population||0),era?.popUnit||'万');
 
   const statsData=[
     {icon:'🔬',name:'科技',value:s.tech,max:600,color:'#8b5cf6'},
@@ -4278,6 +4287,7 @@ function updateDashboard(){
 }
 
 function formatPop(val,unit){
+  val=Number(val)||0;
   if(!unit)unit='万';
   if(unit==='万'){
     if(val>=10000)return(val/10000).toFixed(1)+'亿';
@@ -4297,7 +4307,7 @@ function drawCarbonChart(){
   const data=STATE.carbonHistory;
   if(data.length<2)return;
   const padding=40,chartW=w-padding*2,chartH=h-padding*2;
-  const maxVal=Math.max(100,...data.map(d=>d.value))*1.2;
+  const maxVal=Math.max(100,...data.map(d=>Number(d.value)||0))*1.2;
 
   ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1;
   for(let i=0;i<=4;i++){const y=padding+(chartH/4)*i;ctx.beginPath();ctx.moveTo(padding,y);ctx.lineTo(w-padding,y);ctx.stroke()}
@@ -4496,20 +4506,21 @@ function applyEventAndContinue(eventId){
     if(event.percentEffects){
       const pe=event.percentEffects;
       const s=STATE.stats;
-      if(pe.population)s.population=Math.max(1,Math.round(s.population*(1-pe.population/100)));
-      if(pe.happiness)s.happiness=Math.max(0,Math.min(100,Math.round(s.happiness*(1-pe.happiness/100))));
-      if(pe.tech)s.tech=Math.max(0,Math.round(s.tech*(1-pe.tech/100)));
-      if(pe.knowledge)s.knowledge=Math.max(0,Math.round(s.knowledge*(1-pe.knowledge/100)));
-      if(pe.ecology)s.ecology=Math.max(0,Math.min(100,Math.round(s.ecology*(1-pe.ecology/100))));
-      if(pe.carbon)STATE.stats.carbon=Math.round(STATE.stats.carbon*(1+pe.carbon/100));
+      for(const k of Object.keys(s)){if(typeof s[k]!=='number'||isNaN(s[k]))s[k]=0;}
+      if(pe.population)s.population=Math.max(1,Math.round(Number(s.population)*(1-pe.population/100)));
+      if(pe.happiness)s.happiness=Math.max(0,Math.min(100,Math.round(Number(s.happiness)*(1-pe.happiness/100))));
+      if(pe.tech)s.tech=Math.max(0,Math.round(Number(s.tech)*(1-pe.tech/100)));
+      if(pe.knowledge)s.knowledge=Math.max(0,Math.round(Number(s.knowledge)*(1-pe.knowledge/100)));
+      if(pe.ecology)s.ecology=Math.max(0,Math.min(100,Math.round(Number(s.ecology)*(1-pe.ecology/100))));
+      if(pe.carbon)STATE.stats.carbon=Math.round(Number(STATE.stats.carbon)*(1+pe.carbon/100));
     }
     // Apply flat effects
-    if(e.carbon)STATE.stats.carbon=Math.max(0,STATE.stats.carbon+e.carbon);
-    if(e.tech)STATE.stats.tech=Math.max(0,Math.min(1000,STATE.stats.tech+e.tech));
-    if(e.population)STATE.stats.population=Math.max(0,Math.min(5000000,(STATE.stats.population||0)+e.population));
-    if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,STATE.stats.happiness+e.happiness));
-    if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,STATE.stats.knowledge+e.knowledge));
-    if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,STATE.stats.ecology+e.ecology));
+    if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
+    if(e.tech)STATE.stats.tech=Math.max(0,Math.min(1000,Number(STATE.stats.tech||0)+Number(e.tech)));
+    if(e.population)STATE.stats.population=Math.max(0,Math.min(5000000,Number(STATE.stats.population||0)+Number(e.population)));
+    if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
+    if(e.knowledge)STATE.stats.knowledge=Math.max(0,Math.min(600,Number(STATE.stats.knowledge||0)+Number(e.knowledge)));
+    if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
   }
   // Check if event triggers a branch
   if(event&&event.triggerBranch){
@@ -4556,12 +4567,12 @@ function chooseAlienOption(alienType,optionId){
   if(!option)return;
   if(option.requirements&&!checkRequirements(option))return;
   const e=option.effects;
-  if(e.carbon)STATE.stats.carbon=Math.max(0,STATE.stats.carbon+e.carbon);
-  if(e.tech)STATE.stats.tech=Math.max(0,STATE.stats.tech+e.tech);
-  if(e.population)STATE.stats.population=Math.max(0,STATE.stats.population+e.population);
-  if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,STATE.stats.happiness+e.happiness));
-  if(e.knowledge)STATE.stats.knowledge=Math.max(0,STATE.stats.knowledge+e.knowledge);
-  if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,STATE.stats.ecology+e.ecology));
+  if(e.carbon)STATE.stats.carbon=Math.max(0,Number(STATE.stats.carbon||0)+Number(e.carbon));
+  if(e.tech)STATE.stats.tech=Math.max(0,Number(STATE.stats.tech||0)+Number(e.tech));
+  if(e.population)STATE.stats.population=Math.max(0,Number(STATE.stats.population||0)+Number(e.population));
+  if(e.happiness)STATE.stats.happiness=Math.max(0,Math.min(100,Number(STATE.stats.happiness||0)+Number(e.happiness)));
+  if(e.knowledge)STATE.stats.knowledge=Math.max(0,Number(STATE.stats.knowledge||0)+Number(e.knowledge));
+  if(e.ecology)STATE.stats.ecology=Math.max(0,Math.min(100,Number(STATE.stats.ecology||0)+Number(e.ecology)));
   if(option.flag)STATE.gameFlags[option.flag]=true;
   STATE.history.push({era:'👽 外星事件',eraId:'alien',decision:decision.title,option:option.title,effects:{...e},timestamp:Date.now()});
   updateDashboard();
@@ -4586,6 +4597,8 @@ function buildEffectCards(effects){
 // ===========================
 
 function generateJourneySummary(){
+  // Ensure all stats are valid numbers
+  for(const k of Object.keys(STATE.stats)){if(typeof STATE.stats[k]!=='number'||isNaN(STATE.stats[k]))STATE.stats[k]=0;}
   const s=STATE.stats;
   const h=STATE.history;
   const f=STATE.gameFlags;
