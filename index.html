@@ -5981,7 +5981,12 @@ Children slept peacefully by the fire for the first time.
 But settlement means more firewood,
 more felling, more carbon.
 This is humanity’s first carbon debt.`,
-            effects:{carbon:20,tech:5,population:8,happiness:8,knowledge:3,ecology:-5}}
+            effects:{carbon:20,tech:5,population:8,happiness:8,knowledge:3,ecology:-5}},
+          {id:'d',title:'Preserve the Flame',desc:'Establish a fire preservation system, ensuring fire never dies out but is never overused',
+            result:`You established a fire management system. Designated keepers tended the fire while others stayed away.
+Fire was preserved but not abused. Carbon emissions were minimal, technology accumulated slowly.
+This was the first seed of governance—using rules to harness power.`,
+            effects:{carbon:3,tech:5,population:2,happiness:3,knowledge:4,ecology:2}}
         ]},
       {id:'d1_2',title:'Spreading Fire',
         desc:'Fire transformed these creatures. But worries spread: "The flames devour too many trees."',
@@ -6005,7 +6010,11 @@ the fire-users rose, the fire-rejecters were marginalized.
 But those who refused the flame preserved an ancient wisdom—
 the wisdom of living in harmony with nature.`,
             effects:{carbon:-3,tech:-8,population:-5,happiness:-2,knowledge:-3,ecology:12},
-            requirements:{knowledge:3}}
+            requirements:{knowledge:3}},
+          {id:'d',title:'Explore Alternatives',desc:'Search for cleaner fuels than wood',
+            result:`You sent tribespeople to find alternative fuels. Dried grass, animal bones, minerals... though ineffective,
+the very process of exploration was technological progress. Carbon emissions were minimal, knowledge accumulated the most.`,
+            effects:{carbon:1,tech:4,population:0,happiness:0,knowledge:6,ecology:4}}
         ]}
     ]},
   {id:'era02',name:'Age of Agriculture',subtitle:'Dawn of Settlement',year:'~8,000 BCE',eraLabel:'Chapter 2',
@@ -6047,7 +6056,11 @@ achieving a dynamic balance between humanity and nature through seasonal migrati
 This system lasted millennia,
 becoming the prototype for sustainable development.`,
             effects:{carbon:5,tech:8,population:30,happiness:10,knowledge:10,ecology:8},
-            requirements:{happiness:55}}
+            requirements:{happiness:55}},
+          {id:'d',title:'Crop Rotation Experiment',desc:'Try rotating different crops to balance yields and soil recovery',
+            result:`You had different tribes alternate between planting and fallowing. Yields were moderate, but the soil retained its fertility.
+Carbon was limited, technology accumulated through practice. Balance, sometimes, is more enduring than extremes.`,
+            effects:{carbon:8,tech:6,population:8,happiness:4,knowledge:5,ecology:2}}
         ]},
       {id:'d2_2',title:'Pottery & Kiln Fire',
         desc:'Kiln fires exceed 500°C—far hotter than campfires. Each kiln is a small carbon emitter.',
@@ -6065,7 +6078,11 @@ But the carbon from chimneys climbed day and night too.`,
 Not just pottery—they began experimenting with smelting metals.
 This was the harbinger of the Bronze Age.`,
             effects:{carbon:15,tech:20,population:10,happiness:3,knowledge:15,ecology:-3},
-            requirements:{tech:15}}
+            requirements:{tech:15}},
+          {id:'d',title:'Pottery Trade',desc:'Trade existing pottery with other tribes instead of producing more',
+            result:`You didn't increase kiln numbers, but used existing pottery for trade. Carbon stayed flat,
+but resources and knowledge grew through exchange. Trade—a path to prosperity without increasing carbon.`,
+            effects:{carbon:5,tech:4,population:5,happiness:6,knowledge:5,ecology:0}}
         ]}
     ]},
   {id:'era03',name:'Bronze Age',subtitle:'Dawn of Civilization',year:'~3,000 BCE',eraLabel:'Chapter 3',
@@ -6116,7 +6133,12 @@ Population soared, carbon exploded, happiness plummeted under war’s shadow.`,
 Libraries replaced barracks, scholars replaced generals.
 Territory was drawn not by swords but connected by knowledge and trade.`,
             effects:{carbon:5,tech:15,population:20,happiness:15,knowledge:25,ecology:5},
-            requirements:{happiness:60,knowledge:20}}
+            requirements:{happiness:60,knowledge:20}},
+          {id:'d',title:'City-State Alliance',desc:'Multiple city-states form an alliance, sharing resources and knowledge',
+            result:`You brokered alliances between city-states. Resource sharing reduced redundant mining,
+knowledge exchange accelerated innovation. Carbon was moderate, tech and happiness both rose.
+Cooperation is more efficient than conquest.`,
+            effects:{carbon:12,tech:10,population:15,happiness:10,knowledge:10,ecology:-3}}
         ]}
     ]},
   {id:'era04',name:'Iron Age',subtitle:'Glory of Classical Civilization',year:'~1,000 BCE',eraLabel:'Chapter 4',
@@ -6148,7 +6170,12 @@ Population exploded, cities expanded, but ecology teetered on the brink.`,
 Scrap recycling, charcoal alternatives, slag utilization.
 Carbon emissions dropped dramatically, ecology was protected.`,
             effects:{carbon:5,tech:18,population:15,happiness:8,knowledge:15,ecology:12},
-            requirements:{ecology:40,tech:40}}
+            requirements:{ecology:40,tech:40}},
+          {id:'d',title:'Iron Improvement',desc:'Develop more durable iron tools that last longer and need less replacing',
+            result:`You encouraged craftsmen to forge more durable iron tools. Though R&D consumed carbon,
+tool lifespan tripled—long-term total emissions actually decreased.
+Quality over quantity—sustainable wisdom.`,
+            effects:{carbon:20,tech:20,population:5,happiness:5,knowledge:12,ecology:-3}}
         ]},
       {id:'d4_2',title:'Legacy of Classical Civilization',
         desc:'After the fall of Rome, where should civilization go?',
@@ -6164,7 +6191,11 @@ Society stabilized, but science was imprisoned in the cage of faith.`,
           {id:'c',title:'📉 Technological Regression',desc:'Abandon some technology, return to simpler life',
             result:`People returned to the fields.
 Carbon did drop—but at the cost of civilizational regression.`,
-            effects:{carbon:-15,tech:-25,population:-100,happiness:-5,knowledge:-15,ecology:10}}
+            effects:{carbon:-15,tech:-25,population:-100,happiness:-5,knowledge:-15,ecology:10}},
+          {id:'d',title:'East-West Fusion',desc:'Combine Eastern and Western knowledge',
+            result:`The Silk Road became a road of knowledge. Eastern compasses met Western geometry,
+Chinese papermaking spread to Rome. Carbon was moderate, but knowledge exploded.`,
+            effects:{carbon:12,tech:10,population:5,happiness:5,knowledge:20,ecology:0}}
         ]}
     ]},
   {id:'era05',name:'Medieval Age',subtitle:'A Millennium of Night and Awakening',year:'500-1500 CE',eraLabel:'Chapter 5',
@@ -6196,7 +6227,11 @@ Forests were felled, farmland expanded to every inch.`,
 Clean water, quarantine wards, systematic medical education.
 The Black Death was no longer terrifying—because humanity learned prevention.`,
             effects:{carbon:10,tech:18,population:20,happiness:15,knowledge:30,ecology:5},
-            requirements:{knowledge:50}}
+            requirements:{knowledge:50}},
+          {id:'d',title:'Mixed Reconstruction',desc:'Combine science and faith to gently rebuild society',
+            result:`You didn't abandon faith, nor neglect science. Monasteries became research centers,
+shepherds and scholars explored the world together. Carbon moderate, society rebuilt in harmony.`,
+            effects:{carbon:12,tech:10,population:10,happiness:10,knowledge:10,ecology:0}}
         ]},
       {id:'d5_2',title:'The Eastern Choice',
         desc:`1405: Zheng He’s treasure fleet on its seventh voyage. Continue exploring or close the borders?`,
@@ -6216,7 +6251,12 @@ The world missed a different possible future.`,
 Silk, porcelain, tea, and spices flowed across the seas.
 Peaceful trade brought unprecedented prosperity.`,
             effects:{carbon:15,tech:20,population:50,happiness:18,knowledge:20,ecology:-3},
-            requirements:{happiness:60,tech:50}}
+            requirements:{happiness:60,tech:50}},
+          {id:'d',title:'Selective Opening',desc:'Limited engagement with the outside world, maintain technological advantage',
+            result:`You neither fully closed borders nor fully opened. Selectively importing technology,
+restricting resource exports. Carbon moderate, tech steadily improving.
+Moderate opening is the most pragmatic strategy.`,
+            effects:{carbon:10,tech:12,population:5,happiness:3,knowledge:12,ecology:-2}}
         ]}
     ]},
   {id:'era06',name:'Age of Exploration',subtitle:'Dawn of Globalization',year:'1500-1700',eraLabel:'Chapter 6',
@@ -6249,7 +6289,12 @@ Carbon soared, happiness plummeted.`,
             result:`You built a cross-continental trade system based on equality.
 No conquest, no slavery—only mutually beneficial exchange.`,
             effects:{carbon:15,tech:18,population:40,happiness:15,knowledge:22,ecology:5},
-            requirements:{happiness:60,knowledge:55}}
+            requirements:{happiness:60,knowledge:55}},
+          {id:'d',title:'Scientific Expedition',desc:'Explore the New World for scientific research, not conquest',
+            result:`You sent not conquerors but naturalists and geographers. They cataloged species,
+mapped territories, studied climates. Carbon was limited, but knowledge exploded.
+Exploration's value lies in understanding, not possession.`,
+            effects:{carbon:18,tech:12,population:8,happiness:8,knowledge:20,ecology:0}}
         ]},
       {id:'d6_2',title:'Eve of Energy Transition',
         desc:`Britain's forests are vanishing. Coal sleeps underground, waiting to be awakened.`,
@@ -6268,7 +6313,11 @@ Development slowed, but the forests survived.`,
 factoring natural resource value into economic costs.
 This changed how humanity views development.`,
             effects:{carbon:3,tech:20,population:10,happiness:8,knowledge:25,ecology:12},
-            requirements:{ecology:35,tech:60}}
+            requirements:{ecology:35,tech:60}},
+          {id:'d',title:'Peat Transition',desc:'Use peat as a transitional fuel between wood and coal',
+            result:`You chose peat—more energy-dense than wood, easier to mine than coal. A pragmatic compromise.
+Carbon was moderate, buying time for future energy transitions.`,
+            effects:{carbon:15,tech:12,population:5,happiness:3,knowledge:8,ecology:-2}}
         ]}
     ]},
   {id:'era07',name:'Industrial Revolution',subtitle:'Age of Steam & Steel',year:'1700-1900',eraLabel:'Chapter 7',
@@ -6303,7 +6352,12 @@ Prosperous? Of course. Workers' life expectancy? Under 30.`,
 you established worker protection laws, public education, and healthcare.
 The Industrial Revolution was no longer synonymous with blood and tears.`,
             effects:{carbon:20,tech:25,population:40,happiness:15,knowledge:20,ecology:3},
-            requirements:{happiness:65,tech:80}}
+            requirements:{happiness:65,tech:80}},
+          {id:'d',title:'Factory Regulations',desc:'Establish factory emission standards and worker protection laws',
+            result:`You promulgated the world's first factory act. Limiting work hours and emissions,
+protecting workers' rights. Development was slower, but society more stable.
+Carbon controlled, technology still advancing.`,
+            effects:{carbon:20,tech:15,population:10,happiness:12,knowledge:8,ecology:5}}
         ]},
       {id:'d7_2',title:'Discovery of Oil',
         desc:'1859: The first oil well. More efficient and convenient than coal.',
@@ -6322,7 +6376,11 @@ Carbon grew moderately, but you missed oil's technological revolution.`,
 Faraday's electromagnetic induction, Tesla's alternating current—
 the electrical revolution arrived early.`,
             effects:{carbon:15,tech:28,population:10,happiness:5,knowledge:25,ecology:10},
-            requirements:{knowledge:70}}
+            requirements:{knowledge:70}},
+          {id:'d',title:'Mixed Energy',desc:'Develop coal, oil, and early renewables simultaneously',
+            result:`You didn't bet on a single energy source. Coal powered industry, oil drove transport,
+early hydroelectric stations began operating. Carbon moderate, technology developed comprehensively.`,
+            effects:{carbon:35,tech:20,population:8,happiness:5,knowledge:15,ecology:-5}}
         ]},
       {id:'d7_3',title:'Awakening of Electricity',
         desc:'1879: Edison lights the first practical lamp. But where does electricity come from?',
@@ -6340,7 +6398,12 @@ Carbon was effectively controlled.`,
 Coal, hydro, wind, solar—every method was researched.
 In the long run, this was the wisest choice.`,
             effects:{carbon:25,tech:22,population:12,happiness:8,knowledge:18,ecology:5},
-            requirements:{ecology:30,techs:['蒸汽机改良']}}
+            requirements:{ecology:30,techs:['蒸汽机改良']}},
+          {id:'d',title:'Regional Grid',desc:'Build regional power networks to optimize electricity generation',
+            result:`You connected multiple cities with power networks. Shared electricity reduced redundant construction,
+efficiency improved dramatically. Carbon moderate, tech and knowledge grew together.
+Interconnection is infrastructure for civilizational progress.`,
+            effects:{carbon:25,tech:18,population:8,happiness:8,knowledge:12,ecology:-3}}
         ]}
     ]},
   {id:'era08',name:'Age of Electricity',subtitle:'Century of War & Peace',year:'1900-1950',eraLabel:'Chapter 8',
@@ -6370,7 +6433,12 @@ Carbon dropped sharply, but people lost the freedom of driving.`,
 public transit as the backbone, private cars supplementary,
 smart scheduling to reduce congestion and emissions.`,
             effects:{carbon:35,tech:18,population:25,happiness:18,knowledge:12,ecology:5},
-            requirements:{tech:120,happiness:55}}
+            requirements:{tech:120,happiness:55}},
+          {id:'d',title:'Electric Transport',desc:'Develop electric vehicles and electrified railways',
+            result:`You chose electrification over fuel. Electric trains connected cities, EVs entered homes.
+Carbon was lower than the fossil fuel path, tech investment higher.
+Early electrification laid the foundation for the future.`,
+            effects:{carbon:30,tech:18,population:10,happiness:10,knowledge:10,ecology:5}}
         ]},
       {id:'d8_2',title:'The Nuclear Dilemma',
         desc:'1945: The mushroom cloud rises. Nuclear energy can also serve peace—power, medicine, exploration.',
@@ -6386,7 +6454,12 @@ The Cuban Missile Crisis brought humanity to the brink of annihilation.`,
           {id:'c',title:'⚛️ Nuclear Ban',desc:'Completely ban nuclear research',
             result:`You chose safety over possibility.
 Humanity continued relying on coal and oil.`,
-            effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}}
+            effects:{carbon:15,tech:-15,population:0,happiness:8,knowledge:-10,ecology:0}},
+          {id:'d',title:'International Oversight',desc:'Establish international bodies to monitor nuclear technology use',
+            result:`You pushed to establish the International Atomic Energy Agency. Nuclear technology developed
+peacefully under strict oversight. Carbon moderate, tech steady, security ensured.
+Institutions matter more than technology itself.`,
+            effects:{carbon:15,tech:20,population:3,happiness:8,knowledge:12,ecology:3}}
         ]}
     ]},
   {id:'era09',name:'Nuclear Age',subtitle:'Cold War & Environmental Awakening',year:'1950-2000',eraLabel:'Chapter 9',
@@ -6417,7 +6490,12 @@ The ozone hole continued to expand.`,
 You launched a global environmental movement.
 Humanity acted as one to protect its home for the first time.`,
             effects:{carbon:-20,tech:15,population:0,happiness:18,knowledge:20,ecology:35},
-            requirements:{ecology:50,happiness:65}}
+            requirements:{ecology:50,happiness:65}},
+          {id:'d',title:'Phased Ban',desc:'Give industries time to transition, gradually phase out harmful substances',
+            result:`You adopted a phased ban. Industries had time to find alternatives, no economic shock.
+Ozone protection was slower, but social acceptance highest.
+Pragmatic environmentalism is more sustainable than radical bans.`,
+            effects:{carbon:8,tech:8,population:0,happiness:5,knowledge:8,ecology:12}}
         ]},
       {id:'d9_2',title:'The Future of Nuclear Power',
         desc:'1986: Chernobyl explodes. The world is gripped by nuclear fear.',
@@ -6434,7 +6512,11 @@ Coal and gas filled the gap. Carbon surged.`,
             result:`You set your sights further—nuclear fusion.
 No short-term results, but this research would change the world decades later.`,
             effects:{carbon:5,tech:25,population:0,happiness:0,knowledge:25,ecology:8},
-            requirements:{tech:150,techs:['核裂变']}}
+            requirements:{tech:150,techs:['核裂变']}},
+          {id:'d',title:'Small Reactors',desc:'Develop small modular nuclear reactors, reduce risk',
+            result:`You chose miniaturization. Each reactor had limited power but extreme safety.
+Even if an accident occurred, impact would be minimal. Carbon low, tech innovation active.`,
+            effects:{carbon:-8,tech:18,population:0,happiness:3,knowledge:12,ecology:8}}
         ]},
       {id:'d9_3',title:'Birth of the Internet',
         desc:'1991: The World Wide Web opens to the public. But the internet needs data centers, needs power.',
@@ -6452,7 +6534,12 @@ The internet exploded, and so did carbon.`,
 you launched the "Digital Earth" initiative.
 Satellite remote sensing, environmental big data, global early warning systems.`,
             effects:{carbon:10,tech:25,population:15,happiness:12,knowledge:30,ecology:15},
-            requirements:{knowledge:100,tech:160}}
+            requirements:{knowledge:100,tech:160}},
+          {id:'d',title:'Edge Computing',desc:'Push computing power to the edge, reduce need for large data centers',
+            result:`You pushed decentralized computing. Every device participated in computation,
+large data centers decreased. Carbon low, tech innovation active.
+Distributed is the future.`,
+            effects:{carbon:12,tech:15,population:3,happiness:3,knowledge:12,ecology:3}}
         ]}
     ]},
   {id:'era10',name:'Information Age',subtitle:'Climate Change & AI',year:'2000-2030',eraLabel:'Chapter 10',
@@ -6483,7 +6570,11 @@ not just energy transition, but reforming the entire economic system.
 GDP was no longer the sole metric—
 happiness and ecology indices became the new compass.`,
             effects:{carbon:-35,tech:22,population:0,happiness:20,knowledge:20,ecology:30},
-            requirements:{ecology:55,happiness:70}}
+            requirements:{ecology:55,happiness:70}},
+          {id:'d',title:'Carbon Trading Market',desc:'Establish a global carbon trading market, use economics to drive emission reduction',
+            result:`You built a carbon emissions trading system. Emissions required purchasing quotas,
+reductions could be sold. Market mechanisms drove innovation. Carbon began declining, tech accelerated through competition.`,
+            effects:{carbon:-8,tech:12,population:0,happiness:3,knowledge:8,ecology:10}}
         ]},
       {id:'d10_2',title:'Carbon Capture Technology',
         desc:`Scientists propose: capture the carbon we've already released.`,
@@ -6502,7 +6593,11 @@ massive restoration of natural ecosystems—
 forests, wetlands, seagrass beds, mangroves.
 Nature is the best carbon capture machine.`,
             effects:{carbon:-20,tech:5,population:0,happiness:10,knowledge:8,ecology:30},
-            requirements:{ecology:60}}
+            requirements:{ecology:60}},
+          {id:'d',title:'Natural Carbon Sinks',desc:'Invest in forest and ocean restoration, use nature to absorb carbon',
+            result:`You chose the oldest method—let nature do it. Massive reforestation, ocean ecosystem repair.
+Carbon slightly decreased, ecosystems significantly improved. Sometimes the best technology is nature itself.`,
+            effects:{carbon:-10,tech:5,population:0,happiness:5,knowledge:5,ecology:15}}
         ]},
       {id:'d10_3',title:'Global Cooperation vs Nationalism',
         desc:'Climate change is a global problem. But the world is fragmenting.',
@@ -6522,7 +6617,12 @@ Not abolishing nations, but coordinating action globally.
 Climate change, poverty, disease—
 global problems finally had global solutions.`,
             effects:{carbon:-40,tech:20,population:0,happiness:25,knowledge:25,ecology:20},
-            requirements:{happiness:75,knowledge:120}}
+            requirements:{happiness:75,knowledge:120}},
+          {id:'d',title:'Technology Alliance',desc:'Form technology alliances with like-minded nations',
+            result:`You didn't wait for global consensus, but acted first with allies. Tech sharing,
+joint R&D, unified standards. Carbon decreased somewhat, tech accelerated through cooperation.
+Small steps fast, more effective than waiting for a perfect agreement.`,
+            effects:{carbon:-5,tech:12,population:0,happiness:5,knowledge:8,ecology:5}}
         ]}
     ]},
   {id:'era11',name:'Climate Threshold',subtitle:'Humanity’s Crossroads',year:'2030-2100',eraLabel:'Chapter 11',
@@ -6554,7 +6654,11 @@ you developed space-based solar and antimatter energy.
 Energy was no longer humanity’s bottleneck.
 Carbon hit zero. Welcome to the Age of Infinite Energy.`,
             effects:{carbon:-80,tech:35,population:0,happiness:20,knowledge:30,ecology:40},
-            requirements:{tech:250,knowledge:150}}
+            requirements:{tech:250,knowledge:150}},
+          {id:'d',title:'Mixed Approach',desc:'Parallel development of fusion and renewables',
+            result:`You didn't bet everything on fusion. Solar, wind, and fusion advanced simultaneously.
+Less efficient than focusing on one, but lowest risk. Carbon steadily declining, energy security ensured.`,
+            effects:{carbon:-25,tech:18,population:0,happiness:8,knowledge:12,ecology:15}}
         ]},
       {id:'d11_2',title:'Climate Refugees',
         desc:'2060: Sea levels rise one meter. Hundreds of millions become climate refugees.',
@@ -6572,7 +6676,11 @@ A humanitarian crisis erupted.`,
 Solar-powered, desalination, self-sufficient marine communities.
 Human creativity blossomed in crisis.`,
             effects:{carbon:5,tech:25,population:30,happiness:15,knowledge:15,ecology:8},
-            requirements:{tech:260,happiness:65}}
+            requirements:{tech:260,happiness:65}},
+          {id:'d',title:'Inland Migration',desc:'Help climate refugees relocate to safe inland areas',
+            result:`You organized large-scale inland migration. New cities rose on highlands and inland plains.
+Carbon moderate, society stable. The most pragmatic adaptation strategy.`,
+            effects:{carbon:5,tech:8,population:5,happiness:8,knowledge:5,ecology:0}}
         ]},
       {id:'d11_3',title:'The Final Choice',
         desc:`2080: Global temperature +2.5°C. This is humanity’s last chance.`,
@@ -6601,7 +6709,11 @@ Maybe it saves humanity. Maybe not.`,
           {id:'c',title:'Give Up',desc:'Decide the climate crisis is irreversible',
             result:`You shrugged. "It's too late anyway."
 Carbon continued to soar. Ecosystems collapsed.`,
-            effects:{carbon:60,tech:-10,population:-100,happiness:-25,knowledge:-10,ecology:-35}}
+            effects:{carbon:60,tech:-10,population:-100,happiness:-25,knowledge:-10,ecology:-35}},
+          {id:'d',title:'Gradual Reduction',desc:'Set a 30-year emission reduction plan, steadily achieve carbon neutrality',
+            result:`You set a gradual emission reduction roadmap. 3% annual reduction, giving the economy time to transition.
+Not as radical as full sprint, but highest social acceptance. 30 years later, carbon neutrality was finally achieved.`,
+            effects:{carbon:-50,tech:15,population:0,happiness:8,knowledge:10,ecology:15}}
         ]}
     ]},
   {id:'era12',name:'Stellar Age',subtitle:'Finale',year:'2100+',eraLabel:'Finale',
