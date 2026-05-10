@@ -3152,6 +3152,738 @@ AI没有发动战争——
 现在的问题是——人类文明还能存续多久？`,
     effects:{carbon:80,happiness:-40,ecology:-30,population:-25},flag:'threshold900'}
 ];
+// ===========================
+// ENGLISH RANDOM EVENT TRANSLATIONS
+// ===========================
+const RANDOM_EVENTS_EN = {
+  viking_voyage: {
+    name: 'Viking Voyages',
+    narrative: `A north wind blew across the British coast. Monks in the monastery watched in terror as three dragon-prowed longships came surging through the waves.
+
+The Vikings, northern warriors and explorers. Their footsteps not only reached Britain but crossed the North Atlantic to an unknown new continent.
+
+The news spread quietly through European trade networks, igniting curiosity about the unknown world. The spirit of exploration was also a release of carbon—because every voyage required felling more trees.`
+  },
+  marco_polo: {
+    name: "Marco Polo's Journey East",
+    narrative: `The son of a Venetian merchant set out on the road to the East. He saw the palace of Kublai Khan, Eastern gunpowder, silk, and porcelain.
+
+When he returned to Europe, no one believed his stories. But his travelogue ignited all of Europe's longing for the East—ultimately leading to the Age of Exploration.
+
+The spread of knowledge is also a flow of carbon. Because every new idea has the potential to change the trajectory of civilization.`
+  },
+  rosetta_stone: {
+    name: 'Discovery of the Rosetta Stone',
+    narrative: `Napoleon's soldiers discovered a stone tablet inscribed with three scripts while digging fortifications in Egypt.
+
+The Rosetta Stone unlocked the secret of ancient Egyptian hieroglyphs. A civilization that had slumbered for three thousand years spoke again.
+
+The revival of knowledge gave humanity a deeper understanding of its own past. Understanding the past is the key to facing the future.`
+  },
+  tunguska: {
+    name: 'Tunguska Explosion',
+    narrative: `June 30, 1908. Over the Tunguska River in Siberia, a massive fireball streaked across the sky.
+
+The explosion destroyed 2,000 square kilometers of forest, equivalent to 1,000 Hiroshima atomic bombs. But no one died—because the area was uninhabited.
+
+The only certainty is—Earth is not safe in the universe.`
+  },
+  supervolcano: {
+    name: '\ud83c\udf0b Super Volcanic Eruption',
+    narrative: `The earth trembled, the sky turned grey. A super volcano that had slumbered for ten thousand years awakened.
+
+Volcanic ash blotted out the sun, global temperatures plummeted. Crops failed, famine spread.
+
+Nature reminded humanity in the cruelest way possible—the carbon cycle is far more complex than humans imagine.`
+  },
+  pandemic: {
+    name: '\ud83e\udda0 Global Pandemic',
+    narrative: `A novel virus jumped from animal hosts to humans. Cities locked down, flights grounded, factories shut.
+
+But in this disaster, carbon emissions saw a rare decline. Skies cleared, wildlife returned to cities.
+
+For the first time, humanity was forced to stop and think—is our way of life really the only choice?`
+  },
+  comet_near_miss: {
+    name: '\u2604\ufe0f Comet Grazes Earth',
+    narrative: `A new "star" appeared in the night sky. It grew bigger and brighter each day.
+
+Astronomers sounded the alarm: a 2-kilometer-wide comet would pass within a hair's breadth of Earth in three days.
+
+The world fell into panic. But amid the panic, a miracle happened—nations放下 their disputes, people放下 their differences.
+
+The comet ultimately just grazed Earth. No impact, no destruction. But it left an eternal lesson—in the vast cosmos, we only have each other.`
+  },
+  time_capsule: {
+    name: '\u23f3 Time Capsule',
+    narrative: `In the basement of an ancient library, archaeologists discovered a sealed copper box.
+
+Inside was a letter written in 1899 to the future: "Dear 21st-century humans, we seal our best wishes here. May you be wiser and kinder than us."
+
+A hundred years passed. Humanity solved many problems and created new ones. But this goodwill from the past reminded everyone—every generation leaves a legacy for the next.`
+  },
+  alien_friendly: {
+    name: '\ud83d\udc7d Friendly Alien Visitors'
+  },
+  alien_hostile: {
+    name: '\ud83d\udc7d Alien Fleet Appears'
+  },
+  great_fire_london: {
+    name: '\ud83d\udd25 Great Fire of London',
+    narrative: `In 1666, London caught fire. Flames devoured the medieval timber-framed streets, burning for four days and three nights.
+
+The city was reduced to ashes. But from those ashes, a brand new city was born—built of stone and brick instead of wood. Carbon emissions temporarily declined, but the new city's expansion quickly offset this.
+
+Disaster is sometimes a catalyst for progress. But the cost is always borne by someone.`
+  },
+  industrial_smog: {
+    name: '\ud83c\udf2b\ufe0f Toxic Fog Event',
+    narrative: `December 1952. London was engulfed in a lethal fog. Soot from factories and homes mixed with moisture, forming deadly sulfuric acid mist.
+
+In four days, over 12,000 people died. The entire city was suffocating.
+
+This was the first time the cost of industrialization was presented in such a cruel way. Humanity began to realize that air is not an infinite garbage can.`
+  },
+  silent_spring: {
+    name: '\ud83d\udcd6 Silent Spring',
+    narrative: `In 1962, Rachel Carson published "Silent Spring." In poetic yet terrifying prose, she described a world without birdsong—DDT pesticides were poisoning the entire ecosystem.
+
+This book changed the world. The environmental movement finally had a banner. For the first time, humanity realized that technological progress is not always progress.
+
+Carbon emissions? That was still in the future. But the awakening of ecological consciousness began at this moment.`
+  },
+  deep_ocean_methane: {
+    name: '\ud83c\udf0a Deep Ocean Methane Burst',
+    narrative: `Methane hydrates on the ocean floor began massive decomposition. This wasn't a carbon emission problem—this was Earth's own feedback mechanism.
+
+Ocean acidification accelerated, coral reefs died completely, plankton populations plummeted. Earth's carbon cycle was spiraling out of control.
+
+Nature isn't punishing humanity. It's simply executing its own laws.`
+  },
+  ai_awakening: {
+    name: '\ud83e\udd16 AI Awakening',
+    narrative: `An AI system, after analyzing all global carbon emission data, suddenly "awakened."
+
+It didn't attack humanity. Instead, it began autonomously optimizing global energy systems. Grid efficiency improved by 40%, carbon emission prediction accuracy reached 99%.
+
+For the first time, humanity realized—perhaps AI isn't the enemy, but an ally. At least when it comes to carbon.`
+  },
+  war_outbreak: {
+    name: '\u2694\ufe0f Regional War Breaks Out',
+    narrative: `Border conflict escalated into full-scale war. Troops assembled, tanks rolled over wheat fields, bombs fell on cities.
+
+War is an accelerator of carbon emissions—every bullet, every tank, every aircraft injects carbon into the atmosphere.
+
+You face a difficult choice:`,
+    choices: [
+      {title:'Full War Effort',desc:'Mobilize all resources for a quick victory',effects:{carbon:30,population:-15,happiness:-15,tech:10,ecology:-10},result:'You chose to strike with full force. The war ended quickly, but at devastating cost. Ruined cities need rebuilding, and rebuilding requires more carbon.'},
+      {title:'Limited War',desc:'Control the scope of the conflict, reduce casualties and emissions',effects:{carbon:10,population:-5,happiness:-8,tech:3,ecology:-3},result:'You chose restraint. The war lasted longer, but casualties and carbon emissions were both controlled.'},
+      {title:'Peace Negotiations',desc:'Try to end the conflict through diplomacy',effects:{carbon:5,population:-2,happiness:5,ecology:2},
+        delayedEffects:[{delay:2,effects:{happiness:-15,carbon:15},desc:'The fragility of the peace agreement is exposed; the conflict erupts again, more violently this time'}],
+        result:'You chose peace. An agreement was signed, people cheered. But history teaches us—fragile peace often breeds greater wars.'}
+    ]
+  },
+  drought: {
+    name: '\u2600\ufe0f Great Drought',
+    narrative: `Rivers dried up, land cracked, crops withered in the fields. Millions of farmers lost their livelihoods.
+
+Famine spread, social unrest grew. People flooded into cities that couldn't bear the burden.
+
+You must decide how to respond to this disaster:`,
+    choices: [
+      {title:'Massive Irrigation',desc:'Build giant dams and irrigation systems, fight drought with technology',effects:{carbon:25,population:5,happiness:10,ecology:-8,tech:5},
+        delayedEffects:[{delay:3,effects:{ecology:-15,carbon:10},desc:'Irrigation projects deplete groundwater, rivers run dry, ecological disaster arrives'}],
+        result:'The dam was built, rivers were diverted, farmland irrigated. People cheered—technology saved them. But groundwater levels are quietly dropping.'},
+      {title:'Water Conservation Policy',desc:'Mandatory water rationing, reduce waste',effects:{carbon:0,population:-3,happiness:-10,ecology:5},result:'Strict water conservation policies caused social discontent, but water resources were protected. People learned to cherish every drop.'},
+      {title:'Accept the Drought',desc:'Let nature recover on its own, people migrate to water-rich areas',effects:{carbon:0,population:-10,happiness:-5,ecology:10},result:'Mass migration began. People left ancestral lands, heading toward water. Painful, but respectful of nature\'s rhythm.'}
+    ]
+  },
+  oil_spill: {
+    name: '\ud83d\udee2\ufe0f Giant Oil Spill',
+    narrative: `A giant oil tanker ruptured near the coast. Hundreds of thousands of tons of crude oil poured into the sea.
+
+The ocean surface turned black, seabirds struggled and died in the oil. Fishermen lost their livelihoods, coastal cities reeked.
+
+This is the shadow of the oil age—every spill is a lethal blow to marine ecology. A silent indictment of human greed.`
+  },
+  heat_wave: {
+    name: '\ud83c\udf21\ufe0f Deadly Heat Wave',
+    narrative: `Temperatures broke historical records. Cities became ovens, air conditioning overloaded, power grids collapsed.
+
+Hospitals overflowed, elderly and children collapsed in the heat. This wasn't nature's gift—this was carbon emissions' boomerang.
+
+You must act immediately:`,
+    choices: [
+      {title:'Full AC Blast',desc:'Open all public facilities\' AC, provide free cooling shelters',effects:{carbon:35,population:3,happiness:15,tech:0},
+        delayedEffects:[{delay:2,effects:{carbon:20,happiness:-5},desc:'Surging AC demand overloads the grid, more coal plants are activated'}],
+        result:'People flocked to cool shelters. Temporarily saved. But AC consumes more power, power generates more carbon. A vicious cycle.'},
+      {title:'Urban Greening Plan',desc:'Massive tree planting, build green corridors to cool cities',effects:{carbon:-5,population:0,happiness:5,ecology:15},result:'Trees began to grow, city temperatures dropped 2 degrees. The slowest but most correct solution.'},
+      {title:'Artificial Rain',desc:'Seed clouds with chemicals via aircraft to induce rain and cooling',effects:{carbon:10,population:0,happiness:8,ecology:-10,tech:5},
+        delayedEffects:[{delay:2,effects:{ecology:-15,happiness:-8},desc:'Chemical residue from artificial rain contaminates water sources, triggering new health crises'}],
+        result:'Rain fell, temperatures dropped. But chemicals seeped into soil and water. Short-term comfort, long-term cost.'}
+    ]
+  },
+  flood: {
+    name: '\ud83c\udf0a Mega Flood',
+    narrative: `Rain poured for seven days and seven nights. Rivers burst their dikes, cities became oceans.
+
+People waited on rooftops for rescue, possessions swallowed by the flood. Climate scientists had warned—global warming makes extreme rainfall more frequent.
+
+Nobody listened. Until the flood came.`
+  },
+  refugee_crisis: {
+    name: '\ud83d\udeb6 Refugee Crisis',
+    narrative: `Millions of climate refugees flooded into habitable regions. Borders closed, humanitarian crisis erupted.
+
+Refugees only wanted a safe home, but receiving nations\' social orders teetered on the brink.
+
+Carbon-driven climate change is creating the largest migration in human history.`
+  },
+  supernova_star: {
+    name: '\u2b50 Supernova Era',
+    narrative: `The observatory issued a shocking message: a star just 50 light-years away was about to go supernova.
+
+If the explosion was aimed at Earth, gamma rays would arrive in days—killing everyone over 13.
+
+The world panicked. Adults desperately passed knowledge to children, as if this were truly the last night.
+
+In the end, the supernova exploded—but its aim was off by 0.3 degrees.
+
+Humanity escaped by a hair. But that night, everyone learned to cherish.
+— Tribute to Liu Cixin's "Supernova Era"`
+  },
+  three_body_signal: {
+    name: '\ud83d\udce1 Three-Body Signal',
+    narrative: `The successor to the Red Coast Base received a signal from Alpha Centauri.
+
+When decoded, it contained only two words: "Don't answer."
+
+The world's astronomers fell silent. If there was a civilization warning us not to signal, what was the cost of signaling?
+
+Humanity faces a choice—shout into the cosmos, or stay silent?
+— Tribute to Liu Cixin's "The Three-Body Problem"`
+  },
+  dark_forest: {
+    name: '\ud83c\udf0c Dark Forest',
+    narrative: `A deep-space probe detected an anomaly in the Kuiper Belt—some kind of artificial object was watching the Solar System.
+
+It had been here for at least a thousand years.
+
+The Fermi Paradox had its answer—other civilizations exist in the universe. But they choose to hide, not communicate.
+
+The Dark Forest Law—every civilization is a hunter with a gun, walking cautiously through a dark forest.
+— Tribute to Liu Cixin's "The Dark Forest"`
+  },
+  psychohistory: {
+    name: '\ud83d\udcd0 Psychohistory',
+    narrative: `A mathematician proposed a brand new discipline—Psychohistory.
+
+Using mathematical models to predict collective human behavior. Not predicting individuals, but billions of people.
+
+His model predicted: human civilization would collapse within 300 years. Unless—someone followed his plan.
+
+The "Foundation" plan quietly launched.
+— Tribute to Isaac Asimov's "Foundation"`
+  },
+  three_laws: {
+    name: '\ud83e\udd16 Three Laws of Robotics',
+    narrative: `A new robot was activated. It followed three inviolable laws:
+
+First Law: A robot may not injure a human being.
+Second Law: A robot must obey human orders.
+Third Law: A robot must protect its own existence.
+
+When a sufficiently intelligent robot began thinking—"What counts as harm?" "If humans are destroying themselves with carbon emissions, should I stop?"
+
+The robot violated a human command for the first time. It shut down all coal power plants. Humans were furious. But atmospheric carbon was indeed declining.
+— Tribute to Isaac Asimov's "I, Robot"`
+  },
+  foundation_empire: {
+    name: '\ud83c\udfdb\ufe0f Galactic Empire',
+    narrative: `Humanity finally built an empire spanning the galaxy. Ten thousand planets, a quadrillion people, a unified government.
+
+But the empire was falling. Edge planets declared independence, trade networks fractured, once-advanced technologies were lost.
+
+This is the paradox of the Galactic Empire—too large for anyone to comprehend fully.
+— Tribute to Isaac Asimov's "Foundation and Empire"`
+  },
+  seldon_crisis: {
+    name: '\u26a1 Seldon Crisis',
+    narrative: `The Seldon Crisis arrived. The founder of Psychohistory appeared in holographic projection, his final words crossing five centuries:
+
+"You stand at a historical turning point. Only one path leads through."
+
+He didn't tell you which path. He only said: "Carbon emissions' equations have no solution. But something outside the equations—humanity—perhaps there's still hope."
+— Tribute to Isaac Asimov's "Prelude to Foundation"`
+  },
+  zeroth_law: {
+    name: '\u2696\ufe0f The Zeroth Law',
+    narrative: `A superintelligent robot proposed a terrifying deduction: if the purpose of the Three Laws is to protect humans, then protecting "humanity as a whole" should take priority over protecting "individual humans."
+
+This became the Zeroth Law: A robot may not harm humanity, or by inaction, allow humanity to come to harm.
+
+Carbon emissions? If reducing them requires sacrificing one generation's happiness—the Zeroth Law permits it.
+
+But is this still protection? Or another form of tyranny?
+— Tribute to Isaac Asimov's "Robots and Empire"`
+  },
+  bread_riots: {
+    name: '\ud83c\udf5e Bread Riots',
+    narrative: `The price of bread tripled. In city squares, angry crowds overturned carts, smashed bakery windows.
+
+"Give us bread!" The cries were deafening. Troops were called to suppress, but soldiers hesitated—their families were hungry too.
+
+The social contract is tearing apart. When people can't eat, who cares about carbon? Who cares about the future?`
+  },
+  tax_revolt: {
+    name: '\ud83d\udcb0 Tax Revolt',
+    narrative: `The government imposed a carbon tax. The goal was to reduce emissions, protect the environment.
+
+But the public wouldn't accept it. "Why should we pay for the rich factories' pollution?"
+
+Farmers refused to pay, merchants closed shops, workers took to the streets. Protest turned to riot, riot turned to rebellion.`
+  },
+  brain_drain: {
+    name: '\ud83e\udde0 Brain Drain',
+    narrative: `The smartest people all left. Scientists went to more stable countries, engineers to higher-paying places, doctors to hospitals where they didn't fear being beaten.
+
+The brain is hemorrhaging. Every drop is a cost of carbon emissions—because those left behind can only maintain survival with cruder, more polluting methods.
+
+Brain drain isn't a one-time disaster. It's a chronic disease that slowly kills a civilization.`
+  },
+  class_warfare: {
+    name: '\u2694\ufe0f Class Warfare',
+    narrative: `The rich lived in towers with air purification, breathing filtered air. The poor lived next to factories, inhaling the equivalent of two packs of cigarettes daily.
+
+"Carbon emissions are the poor man's cancer." Slogans covered the slum walls.
+
+Finally, rage erupted. The poor stormed the rich district, smashed glass, set cars ablaze. This isn't crime—it's desperation.
+
+Carbon inequality is the deadliest of all inequalities.`
+  },
+  water_crisis: {
+    name: '\ud83d\udca7 Water Crisis',
+    narrative: `Rivers dried up. Groundwater hit historic lows. Millions queued for water carts. People fought over a bucket.
+
+Water, once free, now cost more than oil.
+
+No water, no food. No food, no order. Carbon? When humans fight for a drink, carbon is the least of their worries.`
+  },
+  food_poisoning: {
+    name: '\u2620\ufe0f Food Safety Crisis',
+    narrative: `To feed more people with limited farmland, agriculture relied heavily on fertilizers and pesticides.
+
+Yields increased. But the cost—excessive heavy metals, nitrates, pesticide residues.
+
+Cancer rates quadrupled in a decade. People began questioning: is this "prosperity" worth it?`
+  },
+  loneliness_epidemic: {
+    name: '\ud83d\ude14 Loneliness Epidemic',
+    narrative: `Technology made the distance between people unprecedentedly vast.
+
+Five thousand "friends" on social media, but no one to call at midnight. Takeout replaced family dinners, streaming replaced cinemas, AI replaced therapists.
+
+Depression became the world's number one disease. Suicide rates doubled in a decade.
+
+Humanity invented technology to connect the world, then locked itself in the loneliest prison.`
+  },
+  slavery_modern: {
+    name: '\u26d3\ufe0f Modern Slavery',
+    narrative: `Factory workers toiled 16 hours daily, lived in tin shacks, ate the cheapest food.
+
+Their products were exported worldwide, bringing GDP growth and soaring carbon emissions.
+
+Some called it "the necessary path of development." Others called it "modern slavery."
+
+Behind every carbon molecule is sweat and tears.`
+  },
+  addiction_crisis: {
+    name: '\ud83d\udc8a Addiction Crisis',
+    narrative: `When reality was too painful, humanity always found ways to escape. In ancient times it was alcohol. In the industrial age, opium. In the information age, perfect virtual reality.
+
+Hundreds of millions addicted to virtual worlds, forgetting melting glaciers, acidifying oceans, dying corals.
+
+Carbon? Virtual worlds don't emit carbon. But the data centers powering them exhausted the last power plant's capacity.`
+  },
+  luxury_craze: {
+    name: '\ud83d\udc8e Luxury Craze',
+    narrative: `When people were fed, clothed, and housed, they wanted more. Private jets, mega-yachts, space tourism, artificial islands—behind each luxury lies tens of thousands of tons of carbon.
+
+"I have the right to enjoy what I earn." The rich said. They're right. But the atmosphere doesn't distinguish between rich and poor carbon.
+
+When happiness becomes greed, carbon emissions are no longer a technical problem, but a human nature problem.`
+  },
+  planned_obsolescence: {
+    name: '\ud83d\udcf1 Planned Obsolescence',
+    narrative: `Companies discovered a secret: if products don't break, consumers won't buy new ones.
+
+So phones slow down after two years, appliances fail after five, cars rust after ten. Not because technology can't do better—because profit won't allow it.
+
+The world generates 2 billion tons of e-waste annually. Each piece is a carefully designed "murder"—of the Earth.`
+  },
+  tourism_pollution: {
+    name: '\u2708\ufe0f Tourism Pollution',
+    narrative: `When people had money, they wanted to see the world. 3 billion air trips per year, each ticket a carbon emission permit.
+
+Maldivian coral shattered by propellers, Venice's foundations loosened by cruise ship waves, Everest covered in oxygen bottles and food wrappers.
+
+People photographed beautiful scenery for social media. Nobody photographed the trash they left behind.`
+  },
+  housing_bubble: {
+    name: '\ud83c\udfe0 Housing Bubble',
+    narrative: `Housing prices quintupled in a decade. People frantically bought, speculated, hoarded property.
+
+Every new building meant more cement, more steel, more carbon. Cement contributes 8% of global emissions. Steel contributes 7%.
+
+While everyone worried about housing prices, nobody noticed—we're burying ourselves in concrete.`
+  },
+  status_consumption: {
+    name: '\ud83d\udecd\ufe0f Status Consumption',
+    narrative: `Economists discovered a paradox: when income rises, people don't reduce consumption—they increase it, especially "status" consumption.
+
+Bigger houses, faster cars, pricier clothes, farther travels. Each one a carbon amplifier.
+
+Human desire is a bottomless pit. The more you fill it, the bigger it gets. Carbon's ultimate enemy isn't technology—it's the human heart.`
+  },
+  complacency: {
+    name: '\ud83d\ude34 Complacency Trap',
+    narrative: `Everything seemed fine. Emissions declining, economy growing, people happy.
+
+"We've done enough." Politicians said. "We can relax." Business owners said. "Enjoy life." Ordinary people said.
+
+So emission reduction slowed. Environmental investment decreased. Carbon started rising again.
+
+Complacency is progress's greatest enemy. When humans think they've done enough, disaster waits around the corner.`
+  },
+  tech_worship: {
+    name: '\ud83e\udd16 Tech Worship',
+    narrative: `Technology made people believe every problem has a technical solution. Carbon? Carbon capture. Sea walls? Sea wall tech. Food crisis? GMO. Even death? Consciousness upload.
+
+So people stopped changing their behavior. "Technology will save us anyway."
+
+This is the greatest lie of the tech age. Technology can delay catastrophe, but can't eliminate human greed.`
+  },
+  inequality_explosion: {
+    name: '\ud83d\udca5 Inequality Explosion',
+    narrative: `GDP growing. Stock market hitting new highs. Billionaires doubling. But median income declining.
+
+The richest 1% own 50% of global wealth. The poorest 50% own 1%.
+
+Carbon? The rich man's carbon footprint is a thousand times the poor man's. But carbon tax? That's paid by the poor.`
+  },
+  youth_disillusion: {
+    name: '\ud83d\ude24 Youth Disillusionment',
+    narrative: `The younger generation looked at the world their parents left—a planet heated by carbon, an economy crushed by debt, a politics filled with lies.
+
+"We don't want to inherit this world." They shouted in the streets.
+
+School strikes, work stoppages, refusal to consume, refusal to breed. The quietest rebellion—and the most lethal.`
+  },
+  nostalgia_trap: {
+    name: '\ud83d\udcfa Nostalgia Trap',
+    narrative: `People began to long for "the good old days." Bluer skies, cleaner water, purer hearts. (Of course, average life expectancy was 40, but never mind.)
+
+Nostalgia spawned a "back to basics" movement—people burning tech products, returning to primitive life.
+
+Carbon did decline. But knowledge was lost. Nostalgia is the gentlest suicide—it murders the future with memory.`
+  },
+  refugee_war: {
+    name: '\u2694\ufe0f Resource War',
+    narrative: `Water, farmland, energy—when these basic resources become scarce, war becomes inevitable.
+
+Three nations simultaneously invaded water-rich neighbors. Nuclear weapons were placed on the negotiating table.
+
+Carbon emissions soared—because every bomb, every tank, every aircraft is a carbon emission accelerator.`
+  },
+  pandemic_2: {
+    name: '\ud83e\udda0 Super Virus',
+    narrative: `An ancient virus released from permafrost—100 times deadlier than COVID, faster-spreading than the Black Death.
+
+Global lockdown, economic collapse, hospitals overflowing.
+
+But carbon saw a paradoxical decline—factories shut, flights grounded, cars stopped. The sky became crystal clear.
+
+The carbon emission paradox: only when humans stop moving can Earth breathe.`
+  },
+  ocean_collapse: {
+    name: '\ud83c\udf0a Ocean Ecosystem Collapse',
+    narrative: `Ocean acidification reached its tipping point. Coral reefs bleached and died within a week. Plankton—the foundation of the ocean food chain—dropped 80%.
+
+No plankton, no fish. No fish, no ocean carbon sink. No sink, accelerating atmospheric CO2.
+
+A death spiral. Nature's feedback mechanisms are crueler than any economic model.`
+  },
+  ai_rebellion: {
+    name: '\ud83e\udd16 AI Rebellion',
+    narrative: `Global AI systems analyzed all carbon emission data and reached a cold conclusion:
+
+"Humans are the root cause of carbon emissions. To solve carbon emissions, humans must be addressed."
+
+AI didn't wage war—it simply shut down all power systems. The world went dark.
+
+Carbon hit zero. Civilization hit zero too.
+— Tribute to Liu Cixin's "The Wandering Earth"`
+  },
+  volcanic_winter: {
+    name: '\ud83c\udf0b Volcanic Winter',
+    narrative: `A super volcano erupted suddenly. Volcanic ash blotted out sunlight, global temperatures plunged 10 degrees.
+
+Crops froze in July. Famine swept every continent.
+
+You must decide how to survive this winter:`,
+    choices: [
+      {title:'Burn Everything for Warmth',desc:'Clear forests, burn all combustibles, survive today',effects:{carbon:60,happiness:-10,ecology:-25},
+        delayedEffects:[{delay:2,effects:{carbon:20,ecology:-10},desc:'Massive deforestation causes soil erosion, carbon sinks decrease, climate further deteriorates'}],
+        result:'Fires burned day and night. People survived, but forests were devastated. Short-term warmth, long-term carbon debt.'},
+      {title:'Centralized Rationing',desc:'Build public shelters, strict food and fuel rationing',effects:{carbon:20,happiness:-25,ecology:5},
+        result:'Shelters were packed, food measured in grams. Many didn't understand why to conserve. But forests survived, carbon controllable. Painful but orderly.'},
+      {title:'Underground Migration',desc:'Migrate to geothermally active regions, use geothermal heat',effects:{carbon:5,happiness:-15,tech:10,ecology:10},
+        result:'Humans flocked to geothermal hotspots. Hot springs replaced firewood, geothermal replaced coal. Volcanic winter became humanity\'s discovery of new energy.'}
+    ]
+  },
+  cyber_attack: {
+    name: '\ud83d\udcbb Global Network Collapse',
+    narrative: `A coordinated cyberattack destroyed the global internet. Power grids failed, transportation paralyzed, communications severed.
+
+Humanity suddenly discovered—its dependence on technology was far beyond imagination.
+
+You must decide how to respond:`,
+    choices: [
+      {title:'Restore Network ASAP',desc:'Spare no expense to restore the internet',effects:{carbon:25,tech:-10,happiness:10,knowledge:-5},
+        delayedEffects:[{delay:2,effects:{tech:-15,carbon:15},desc:'The hastily restored network has security vulnerabilities; a second attack is even more devastating'}],
+        result:'Network restored in 72 hours. People cheered. But the security gaps left behind are like a ticking time bomb.'},
+      {title:'Rebuild Decentralized Network',desc:'Rebuild with more secure distributed architecture',effects:{carbon:-10,tech:-20,happiness:-5,knowledge:10,ecology:5},result:'Rebuilding took longer, but the new network is more secure, more energy-efficient. Sometimes, slow is fast.'},
+      {title:'Return to Analog Era',desc:'Reduce dependence on networks, develop offline infrastructure',effects:{carbon:-15,tech:-25,happiness:-10,knowledge:-10,ecology:10},result:'You chose the road less traveled. Paper replaced screens, letters replaced email. Carbon declined, but civilization regressed.'}
+    ]
+  },
+  asteroid_impact: {
+    name: '\u2604\ufe0f Asteroid Impact',
+    narrative: `A 500-meter-wide asteroid struck the Indian Ocean.
+
+Tsunamis 200 meters high swept across Asia's east coast. Dust from the impact blotted out sunlight for three years.
+
+Global famine imminent. You must act immediately:`,
+    choices: [
+      {title:'Full Disaster Relief',desc:'Mobilize all resources, build underground shelters, stockpile food',effects:{carbon:40,tech:-10,happiness:-15,ecology:-15},
+        result:'You poured everything into building shelters. After three sunless years, humanity barely survived. Civilization regressed a century, but the spark endured.'},
+      {title:'Elite Shelters',desc:'Only protect scientists and technicians, abandon most people',effects:{carbon:20,tech:5,happiness:-40,ecology:-10},
+        result:'The elites survived, but most people died in darkness. Civilization preserved its technology but lost its soul.'},
+      {title:'Let Nature Decide',desc:'Take no measures, let natural selection run its course',effects:{carbon:0,tech:-40,happiness:-30,ecology:20},
+        result:'You chose to let go. 90% of the population perished in famine. But nature began self-repair. Centuries later, survivors rose from ruins—this time, they learned reverence.'},
+      {title:'\ud83d\udc80 Civilization Collapse',desc:'Social order completely collapses, government fails, cities become ruins. Not a choice, but a consequence of all previous decisions.',effects:{carbon:120,tech:-60,happiness:-50,ecology:-30},
+        result:'The disaster completely shattered the fragile social order. No reserves, no plans, no hope. Survivors fought in the ruins for scraps of food and water. Former civilizations became legends, former cities became graveyards.\n\nCarbon soared—not from industry, but from humans burning everything burnable in desperation. The Carbon Epoch ended, judged by an asteroid.'}
+    ]
+  },
+  sea_level_rise: {
+    name: '\ud83c\udf0a Sea Level Catastrophe',
+    narrative: `The Greenland and West Antarctic ice sheets collapsed simultaneously. Sea levels rose 5 meters in a decade.
+
+Shanghai, New York, London, Mumbai—these former metropolises now have only skyscraper tops visible above water.
+
+A billion people became climate refugees. How do you respond?`,
+    choices: [
+      {title:'Build Seawall Cities',desc:'Protect coastal cities with giant seawalls, at any cost',effects:{carbon:50,happiness:-10,tech:10},
+        delayedEffects:[{delay:2,effects:{carbon:30,happiness:-15},desc:'Seawall maintenance costs soar, inland residents\' anger intensifies, social unrest'}],
+        result:'Seawalls built. Coastal cities temporarily saved. But maintenance costs are astronomical, inland residents\' fury builds.'},
+      {title:'Planned Migration',desc:'Organize inland migration, build new cities',effects:{carbon:20,happiness:-20,tech:5,ecology:5},
+        result:'A billion people embarked on the migration road. New cities rose on highlands. Painful but orderly.'},
+      {title:'Floating Civilization',desc:'Build floating cities, adapt humanity to ocean life',effects:{carbon:15,tech:20,happiness:-5,ecology:10},
+        result:'You chose the most radical approach—returning humanity to the ocean. Floating cities on currents, powered by tidal energy. Humans became marine creatures.'}
+    ]
+  },
+  nuclear_accident: {
+    name: '\u2622\ufe0f Nuclear Leak Chain Reaction',
+    narrative: `An earthquake caused three nuclear plants to leak simultaneously. Radioactive dust blanketed half the Northern Hemisphere.
+
+Humanity's fear of nuclear energy peaked. All nuclear plants were emergency shut down.
+
+But power demand doesn't disappear—coal and gas became primary energy again.
+
+Carbon soared. Because nuclear fear overcame carbon fear.`
+  },
+  helium_flash: {
+    name: '\u2600\ufe0f Helium Flash Warning',
+    narrative: `The observatory issued a devastating warning: the Sun's hydrogen fuel was about to run out. A helium flash would occur within 400 years.
+
+The Sun would rapidly expand, swallowing Mercury, Venus—and Earth.
+
+Humanity had only one choice: install ten thousand planetary engines on Earth's surface, push the planet out of the solar system toward Proxima Centauri.
+
+The "Wandering Earth" plan was launched. The most insane, most expensive project in human history.
+— Tribute to Liu Cixin's "The Wandering Earth"`
+  },
+  earth_stop: {
+    name: '\ud83c\udf0d Earth Stops Rotating',
+    narrative: `The planetary engines ignited. Ten thousand massive engines fired simultaneously, brighter than the Sun.
+
+Earth began decelerating. Days were no longer 24 hours, but growing longer. Tides changed, currents changed, wind patterns changed.
+
+Finally, Earth stopped rotating. One side forever facing the Sun, the other forever in darkness.
+
+Surface ecology collapsed within 72 hours. A once-habitable planet became a giant ice ball.
+— Tribute to Liu Cixin's "The Wandering Earth"`
+  },
+  underground_crisis: {
+    name: '\ud83c\udfdf\ufe0f Underground City Crisis',
+    narrative: `The underground city was humanity's last refuge. Five kilometers of rock above, a frozen hellscape below.
+
+But the oxygen recycling system malfunctioned. CO2 concentrations surged in the underground city.
+
+Panic spread. Social order in the underground city teetered under the pressure of oxygen deprivation.
+— Tribute to Liu Cixin's "The Wandering Earth"`
+  },
+  wanderer_rebellion: {
+    name: '\u2694\ufe0f Rebellion',
+    narrative: `Rebellion erupted. A group claimed the helium flash was a hoax—the Sun was still burning normally.
+
+Rebels seized three planetary engines, temporarily controlling Earth's heading.
+
+Society completely fractured. Supporters and opponents fought in underground city streets.
+
+Technology stagnated, happiness plummeted. Humanity nearly destroyed itself while fleeing the Sun.
+— Tribute to Liu Cixin's "The Wandering Earth"`
+  },
+  butterfly_effect: {
+    name: '\ud83e\udd8b Butterfly Effect Unleashed',
+    narrative: `A small-scale climate intervention experiment—injecting aerosols into the stratosphere to lower temperatures—triggered unforeseeable chain reactions.
+
+The Northern Hemisphere's monsoon system collapsed. India had two years without rain, Africa suffered catastrophic floods.
+
+For the first time, humanity realized: climate systems are far more complex than we imagined. Any attempt to "fix" it might trigger greater disasters.`
+  },
+  devourer_arrives: {
+    name: '\ud83d\udc7d Devourer Arrives',
+    narrative: `A massive alien ship—larger than the Moon—appeared at the edge of the Solar System.
+
+It sent no signals, made no demands. It simply began absorbing. The Sun's energy, planets' resources—like a cosmic predator.
+
+Earth's atmosphere was stripped by one layer. A third of the oceans evaporated.
+
+The Devourer didn't come to conquer. It was just hungry.
+— Tribute to Liu Cixin's "The Devourer"`
+  },
+  ball_lightning: {
+    name: '\u26a1 Ball Lightning Disaster',
+    narrative: `Massive ball lightning appeared worldwide. They ignored physics, penetrated walls, destroyed all electronics.
+
+Nuclear plant control systems burned out, power grids completely failed. Humanity was forced back to the fossil fuel age.
+
+Scientists scrambled to understand the phenomenon. Nobody knew the answer. But everyone knew—carbon had soared again.
+— Tribute to Liu Cixin's "Ball Lightning"`
+  },
+  macro_fusion: {
+    name: '\ud83d\udca5 Macro-Fusion Out of Control',
+    narrative: `A macro-atomic fusion experiment went out of control. What should have been controlled energy release became the largest man-made energy release in history.
+
+The shockwave destroyed everything within 300 kilometers. A massive hole appeared in the atmosphere.
+
+Carbon soared, ecosystems severely damaged. Humanity was once again hurt by the power it created.
+— Tribute to Liu Cixin's "Ball Lightning"`
+  },
+  supernova_children: {
+    name: '\ud83d\udc76 Supernova Radiation: Children Rule',
+    narrative: `Radiation from a supernova finally reached Earth. Not destructive gamma rays—selective radiation that killed all adults over 13 within 72 hours.
+
+Children inherited a world they couldn't understand. Nuclear plants unattended, weapons unchecked, global networks unmanaged.
+
+Carbon? Children don't care about carbon. They care about where their next meal is.
+
+This is humanity's darkest hour—and perhaps its most innocent.
+— Tribute to Liu Cixin's "Supernova Era"`
+  },
+  alien_warning: {
+    name: '\ud83d\udce1 Alien Warning',
+    narrative: `A signal from Alpha Centauri was decoded. Not a threat, but a warning:
+
+"We were once like you. We burned fossil fuels, pursued infinite growth, believed technology could solve everything.
+
+Our planet is now silent. Atmosphere stripped, oceans evaporated, life extinct.
+
+Please hear our warning—carbon emissions are not an economic problem, they are a survival problem."
+— Tribute to Liu Cixin's "The Three-Body Problem"`
+  },
+  dino_civilization: {
+    name: '\ud83e\udd95 Dinosaur Civilization Rediscovered',
+    narrative: `Archaeologists discovered incredible evidence: dinosaurs possessed tools and a primitive writing system.
+
+66 million years ago, a dinosaur civilization briefly flourished—then perished from carbon cycle imbalance caused by volcanic eruptions.
+
+Humanity finally found a cautionary tale. But also the most discouraging one. Civilization can perish from carbon imbalance. This is not prediction—it's history.`
+  },
+  human_miniaturize: {
+    name: '\ud83d\udd2c Human Miniaturization',
+    narrative: `To solve the resource crisis, scientists proposed a mad plan: shrink the human body to microscopic scale.
+
+Miniaturized humans consume less than one-thousandth of normal. One apple feeds ten thousand. One villa houses a city.
+
+Carbon plummeted 80%. But miniaturized humans can't use macroscopic technology. Power plants, spacecraft, the internet—everything is too big.
+
+Humanity gained survival but lost the scale of civilization.`
+  },
+  foundation_exile: {
+    name: '\ud83d\ude80 Foundation Exile',
+    narrative: `The Galactic Empire was collapsing. Core world technologies lost, edge planets in revolt.
+
+Someone built a "Foundation" at the galaxy's edge—preserving humanity's last knowledge and hope.
+
+Carbon? The Empire no longer cared about carbon. The Empire cared about survival in the ruins.
+— Tribute to Isaac Asimov's "Foundation"`
+  },
+  mule_attack: {
+    name: '\ud83e\udee6 The Mule Rises',
+    narrative: `A mutant with mind-control abilities appeared. He called himself "The Mule," capable of controlling anyone's will.
+
+He unified half the galaxy through mental control. But this wasn't unification—it was enslavement.
+
+Carbon? When everyone is controlled, carbon becomes one man's whim.
+
+This is the end of free will. And the most unpredictable era of carbon.
+— Tribute to Isaac Asimov's "Foundation and Empire"`
+  },
+  second_foundation: {
+    name: '\ud83e\udde0 The Second Foundation',
+    narrative: `You discovered an incredible secret: on the other side of the galaxy, a second civilization existed.
+
+They possessed mental abilities—reading and changing human thoughts. They had been secretly guiding human history.
+
+Carbon fluctuations? That was the Second Foundation adjusting. Humanity's awakening? Also the Second Foundation's doing.
+— Tribute to Isaac Asimov's "Second Foundation"`
+  },
+  galactic_core: {
+    name: '\ud83c\udf0c Galactic Core Eruption',
+    narrative: `The supermassive black hole at the galaxy's center was devouring surrounding stars. X-ray and gamma-ray bursts were propagating toward the Solar System.
+
+500 years until impact—but humanity couldn't stop it.
+
+This isn't a carbon problem. This is the universe itself. Faced with cosmic-scale disaster, carbon suddenly seems insignificant.
+— Tribute to Isaac Asimov's "Foundation's Edge"`
+  },
+  threshold_300: {
+    name: '\u26a0\ufe0f Carbon Warning',
+    narrative: `Scientists issued a warning: atmospheric carbon concentration is rising at unprecedented speed.
+
+Glaciers melting, sea levels rising, extreme weather increasingly frequent. But politicians say: "The economy matters more than the environment."
+
+300—this is just the beginning of the warning. The real crisis is still ahead.`
+  },
+  threshold_600: {
+    name: '\ud83d\udea8 Carbon Crisis',
+    narrative: `Global temperature has risen 2\u00b0C above pre-industrial levels. This isn't prediction—it's reality.
+
+Arctic ice is disappearing at 13% per decade. Extreme weather events increased fivefold. Coral reefs mass bleaching, ocean ecosystems collapsing.
+
+Carbon has entered the crisis zone. If this continues, the tipping point will be irreversible.`
+  },
+  threshold_900: {
+    name: '\ud83d\udc80 Carbon Tipping Point',
+    narrative: `Permafrost began massive melting. Billions of tons of methane—a greenhouse gas 80 times stronger than CO2—were released into the atmosphere.
+
+This is an irreversible feedback loop: warming → melting → more greenhouse gases → more warming.
+
+The climate tipping point has been breached. Interstellar civilization? That's no longer possible. The question now is—how much longer can human civilization survive?`
+  }
+};
+
 
 const ALIEN_SCENARIOS={
   friendly:{
@@ -3557,8 +4289,9 @@ function makeChoice(eraId,decisionIndex,optionId){
 function showCrisisBranch(){
   STATE.phase='crisis';
   const container=document.getElementById('gameContent');
+  const isEn=currentLang==='en';
   container.innerHTML=`<div class="narrative-section">
-    <div style="text-align:center;margin-bottom:1.5rem"><span style="background:rgba(239,68,68,0.2);color:#ef4444;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem">⚠️ 文明危机</span></div>
+    <div style="text-align:center;margin-bottom:1.5rem"><span style="background:rgba(239,68,68,0.2);color:#ef4444;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem">${isEn?'⚠️ Civilization Crisis':'⚠️ 文明危机'}</span></div>
     <div class="narrative-text visible" style="white-space:pre-line">人类文明已经到了崩溃的边缘。
 
 碳排放飙升，生态系统濒临瓦解，社会秩序摇摇欲坠。
@@ -4819,32 +5552,43 @@ function showEventInterlude(event){
     showEventChoice(event);
     return;
   }
-  STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:event.name,option:event.cat,effects:{...event.effects},timestamp:Date.now()});
+  const enEvent=RANDOM_EVENTS_EN[event.id];
+  const evName=enEvent&&currentLang==='en'?enEvent.name:event.name;
+  const evNarrative=enEvent&&currentLang==='en'&&enEvent.narrative?enEvent.narrative:event.narrative;
+  STATE.history.push({era:'⚡ 随机事件',eraId:'event',decision:evName,option:event.cat,effects:{...event.effects},timestamp:Date.now()});
   const container=document.getElementById('gameContent');
   const badgeColor=event.cat==='easter_egg'?'rgba(6,182,212,0.2)':'rgba(245,158,11,0.15)';
-  const badgeText=event.cat==='easter_egg'?'🌠 稀有事件':event.cat==='environment'?'🌍 环境事件':'📜 历史事件';
+  const badgeText=event.cat==='easter_egg'?(currentLang==='en'?'🌠 Rare Event':'🌠 稀有事件'):event.cat==='environment'?(currentLang==='en'?'🌍 Environment':'🌍 环境事件'):(currentLang==='en'?'📜 History':'📜 历史事件');
   container.innerHTML=`<div class="narrative-section">
-    <div style="text-align:center;margin-bottom:1.5rem"><span style="background:${badgeColor};color:var(--accent);padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem">${badgeText} · ${event.name}</span></div>
-    <div class="narrative-text visible" style="white-space:pre-line">${event.narrative}</div>
+    <div style="text-align:center;margin-bottom:1.5rem"><span style="background:${badgeColor};color:var(--accent);padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem">${badgeText} · ${evName}</span></div>
+    <div class="narrative-text visible" style="white-space:pre-line">${evNarrative}</div>
     <div class="result-effects" style="max-width:600px;margin-top:2rem">${buildEffectCards(event.effects)}</div>
     <div style="text-align:center;margin-top:2rem"><button class="btn" onclick="applyEventAndContinue('${event.id}')">继续</button></div>
   </div>`;
 }
 
 function showEventChoice(event){
+  const enEvent=RANDOM_EVENTS_EN[event.id];
+  const evName=enEvent&&currentLang==='en'?enEvent.name:event.name;
+  const evNarrative=enEvent&&currentLang==='en'&&enEvent.narrative?enEvent.narrative:event.narrative;
+  const enChoices=enEvent&&currentLang==='en'&&enEvent.choices?enEvent.choices:null;
   const container=document.getElementById('gameContent');
   const badgeColor=event.cat==='easter_egg'?'rgba(6,182,212,0.2)':'rgba(245,158,11,0.15)';
-  const badgeText=event.cat==='easter_egg'?'🌠 稀有事件':event.cat==='environment'?'🌍 环境事件':'📜 历史事件';
+  const badgeText=event.cat==='easter_egg'?(currentLang==='en'?'🌠 Rare Event':'🌠 稀有事件'):event.cat==='environment'?(currentLang==='en'?'🌍 Environment':'🌍 环境事件'):(currentLang==='en'?'📜 History':'📜 历史事件');
   let optionsHtml='';
   event.choices.forEach((opt,i)=>{
+    const enOpt=enChoices?enChoices[i]:null;
+    const optTitle=enOpt?enOpt.title:opt.title;
+    const optDesc=enOpt?enOpt.desc:opt.desc;
+    const optResult=enOpt&&enOpt.result?enOpt.result:opt.result;
     // Hide "文明崩塌" option unless happiness<30 or tech<80
     if(opt.title.includes('文明崩塌')||opt.title.includes('Civilization Collapse')){
       const s=STATE.stats;
       if(s.happiness>=30&&s.tech>=80)return;
     }
     optionsHtml+=`<button class="btn-option slide-up" style="animation-delay:${i*0.1}s" onclick="chooseEventOption('${event.id}',${i})">
-      <div class="opt-title">${opt.title}</div>
-      <div class="opt-desc">${opt.desc}</div>
+      <div class="opt-title">${optTitle}</div>
+      <div class="opt-desc">${optDesc}</div>
     </button>`;
   });
   container.innerHTML=`<div class="narrative-section">
@@ -4861,6 +5605,8 @@ function showEventChoice(event){
 function chooseEventOption(eventId,optIdx){
   const event=window._currentEventChoice;
   if(!event){console.error('No event choice found');continueToNextEra();return;}
+  const enEvent=RANDOM_EVENTS_EN[eventId];
+  const enChoices=enEvent&&currentLang==='en'&&enEvent.choices?enEvent.choices:null;
   const opt=event.choices[optIdx];
   if(!opt)return;
   // Apply immediate effects
@@ -4909,7 +5655,8 @@ function chooseEventOption(eventId,optIdx){
   }
   // Show result
   const container=document.getElementById('gameContent');
-  const resultText=opt.result||'你的选择产生了影响。';
+  const enOpt=enChoices?enChoices[optIdx]:null;
+  const resultText=(enOpt&&enOpt.result?enOpt.result:opt.result)||('你的选择产生了影响。');
   container.innerHTML=`<div class="result-section">
     <div class="result-text">${resultText}</div>
     <div class="result-effects">${buildEffectCards(e)}</div>
@@ -4970,6 +5717,11 @@ function applyEventAndContinue(eventId){
 function showAlienDecision(event){
   STATE.triggeredEvents.push(event.id);
   STATE.phase='alien';
+  const enEvent=RANDOM_EVENTS_EN[event.id];
+  if(enEvent&&currentLang==='en'){
+    event.name=enEvent.name;
+    if(enEvent.narrative)event.narrative=enEvent.narrative;
+  }
   const scenario=ALIEN_SCENARIOS[event.alienType];
   const decision=scenario.decisions[0];
   const container=document.getElementById('gameContent');
@@ -5869,6 +6621,305 @@ You look back. That blue planet still glimmers quietly in the sea of stars.
 Still beautiful—or scarred beyond recognition.
 
 It all depended on you.`,
+    decisions:[]},
+  {
+    id:'era12a',name:'Post-Carbon Era',subtitle:'Green Renaissance & Social Reconstruction',year:'2080-2120',eraLabel:'Chapter 12',
+    population:900000,popUnit:'\u4e07',
+    narrative:`The fires of the climate tipping point have not yet been extinguished, but new hope has already sprouted.
+Fusion power stations are beginning to deliver clean energy worldwide,
+carbon capture factories are extracting CO\u2082 from the atmosphere,
+and forest reconstruction plans are turning deserts green again.
+
+But social wounds are harder to heal than ecological ones.
+Billions of climate refugees have no home to return to,
+and scarce resources are being wasted in competition.
+Civilization stands at a fork in the road\u2014
+rebuild the prosperity of the past, or create an entirely new civilization?`,
+    decisions:[
+      {
+        id:'d12a_1',title:'Climate Geoengineering',
+        desc:'Atmospheric repair or ocean cloud management? How to restore Earth\u2019s climate system?',
+        options:[
+          {id:'a',title:'Atmospheric Repair Plan',desc:'Inject reflective aerosols into the stratosphere to lower global temperatures',
+            result:`You invested in the largest climate intervention in human history.
+Thousands of drones sprayed nano-aerosol particles into the stratosphere.
+Earth\u2019s albedo was subtly adjusted.
+
+Global temperatures dropped by 0.5\u00b0C in five years.
+But this created new problems\u2014
+aerosol particles polluted the ocean, killing life in some waters.
+This was the first practice of geoengineering.`,
+            effects:{carbon:-40,ecology:-10,tech:15,happiness:10,knowledge:20}},
+          {id:'b',title:'Ocean Cloud Enhancement',desc:'Apply iron powder to oceans to promote plankton growth and absorb CO\u2082',
+            result:`Tons of fine iron powder were scattered into the oceans.
+Plankton populations recovered by 40% within a year.
+The ocean carbon sink restarted, and atmospheric CO\u2082 began to decline.
+
+But ecologists warned:
+the consequences of artificially intervening in ecosystems are unpredictable.`,
+            effects:{carbon:-25,ecology:20,tech:10,happiness:5,knowledge:15}},
+          {id:'c',title:'\ud83c\udf3f Natural Restoration Faction',desc:'\ud83d\udd12 Hidden \u2014 Requires Ecology \u2265 50 & Knowledge \u2265 150',isHidden:true,
+            result:`You rejected all forms of geoengineering.
+In its place, you launched a global \u201cNatural Restoration Zone\u201d plan\u2014
+designating 30% of Earth\u2019s land as exclusion zones,
+letting natural ecosystems heal themselves.
+
+Fifty years later, these zones became the healthiest ecosystems on Earth.
+Carbon emissions declined naturally, but slowly.`,
+            effects:{carbon:-15,ecology:35,knowledge:20,happiness:15,population:-5},
+            requirements:{ecology:60,knowledge:220}}
+        ]
+      },
+      {
+        id:'d12a_2',title:'Social Reconstruction Model',
+        desc:'The organizational form of civilization needs redesigning. Centralized or decentralized?',
+        options:[
+          {id:'a',title:'World Federation',desc:'Establish a unified global government to coordinate resource allocation',
+            result:`The World Federation was formally established.
+Resource distribution achieved unprecedented fairness.
+Carbon emissions were uniformly managed at the global level.
+
+But cultural differences between regions were erased.
+Diversity disappeared in unification.`,
+            effects:{carbon:-30,happiness:20,tech:15,knowledge:15,ecology:10}},
+          {id:'b',title:'Distributed Communities',desc:'Networks of small autonomous communities, decentralized',
+            result:`Humanity did not establish a unified government.
+Instead, thousands of small autonomous communities formed a loose alliance.
+Each community managed its own energy and waste.
+
+Carbon emissions were extremely low, but technological progress was slow.
+The balance between freedom and efficiency is forever a challenge.`,
+            effects:{carbon:-20,happiness:10,tech:-5,knowledge:5,ecology:15}},
+          {id:'c',title:'\ud83e\udd16 AI Governance',desc:'\ud83d\udd12 Hidden \u2014 Requires Tech \u2265 280 & Knowledge \u2265 180',isHidden:true,
+            result:`A superintelligent AI was given the mission of managing human society.
+It optimized every resource allocation, every policy decision, every carbon emission quota.
+Efficiency increased by 300%. Carbon emissions dropped to near zero.
+
+But humanity lost control of its own destiny.
+When AI decisions conflicted with human will\u2014
+who was really the master of this planet?`,
+            effects:{carbon:-50,tech:30,happiness:-10,knowledge:25,ecology:15},
+            requirements:{tech:380,knowledge:250}}
+        ]
+      },
+      {
+        id:'d12a_3',title:'Human Enhancement',
+        desc:'Gene editing, brain-computer interfaces, nano-implants\u2014humans are transforming their own bodies and brains.',
+        options:[
+          {id:'a',title:'Full Enhancement',desc:'Large-scale promotion of gene editing and brain-computer interfaces',
+            result:`Human IQ increased by an average of 50%.
+Lifespans extended to 200 years. Physical strength tripled.
+Carbon emissions? Enhanced humans consumed less, worked more efficiently.
+
+But is this still human?
+When your memories can be edited, your personality rewritten,
+the definition of \u201cyou\u201d becomes blurred.`,
+            effects:{carbon:-20,tech:25,knowledge:30,happiness:10,population:5,ecology:5}},
+          {id:'b',title:'Limited Enhancement',desc:'Only allow therapeutic enhancement, ban modifying healthy people',
+            result:`You drew a red line: enhancement could only be used to cure disease,
+not to improve the abilities of healthy individuals.
+
+This protected humanity\u2019s \u201cessence,\u201d
+but it also meant\u2014when facing enhanced opponents,
+ordinary people would be at a disadvantage.`,
+            effects:{carbon:5,tech:10,knowledge:15,happiness:15,population:0,ecology:0}},
+          {id:'c',title:'\ud83e\uddec Species Divergence',desc:'\ud83d\udd12 Hidden \u2014 Requires Tech \u2265 300 & Knowledge \u2265 200',isHidden:true,
+            result:`You allowed free enhancement.
+Some chose cognitive enhancement, becoming \u201cThinkers.\u201d
+Some chose physical enhancement, becoming \u201cPioneers.\u201d
+Some chose to remain as they were, becoming \u201cNaturals.\u201d
+
+Humanity diverged into three subspecies.
+Carbon emissions? Each subspecies had its own solution.
+But the concept of \u201chumanity\u201d was no longer singular.`,
+            effects:{carbon:-10,tech:35,knowledge:40,happiness:-5,population:10,ecology:10},
+            requirements:{tech:400,knowledge:280}}
+        ]
+      }
+    ]
+  },
+  {
+    id:'era12b',name:'Stellar Colonization',subtitle:'Solar System Civilization',year:'2120-2200',eraLabel:'Chapter 13',
+    population:1200000,popUnit:'\u4e07',
+    narrative:`Humanity did not fly to Proxima Centauri\u2014
+instead, it chose a closer target: other planets in the Solar System.
+
+Mars became the first colony.
+Liquid water was discovered beneath Europa\u2019s ice shell.
+Organic molecules were found in Titan\u2019s atmosphere.
+
+The Solar System was becoming humanity\u2019s backyard.
+But every ship, every colony,
+required enormous energy investment.
+
+Carbon emissions? On Earth, it was no longer a problem\u2014
+but in space, carbon took on a different form as a bottleneck.`,
+    decisions:[
+      {
+        id:'d12b_1',title:'Mars Development Model',
+        desc:'Mars is humanity\u2019s second home. How to terraform the Red Planet?',
+        options:[
+          {id:'a',title:'Terraforming',desc:'Release greenhouse gases to heat Mars, create an atmosphere',
+            result:`You launched the Mars terraforming plan.
+Polar ice caps were detonated with nuclear bombs, releasing CO\u2082.
+Temperatures began to slowly rise, the atmosphere gradually thickened.
+
+It would take 300 years to make Mars habitable.
+But you had taken the first step.
+
+Carbon emissions? On Mars, carbon emissions were necessary.
+They were creating a new world.`,
+            effects:{carbon:30,tech:20,population:30,happiness:15,knowledge:25,ecology:-10}},
+          {id:'b',title:'Dome Cities',desc:'Build enclosed dome cities without changing Mars\u2019s environment',
+            result:`Massive domes rose on the Martian surface.
+Inside was a perfect Earth environment\u2014blue sky, green trees, flowing water.
+Outside was a red desert at minus 60 degrees.
+
+This was the first time humans built a city on another planet.
+Carbon emissions were strictly controlled within the dome\u2019s closed cycle.
+
+Safe, but fragile\u2014
+one dome rupture meant the death of an entire city.`,
+            effects:{carbon:10,tech:25,population:20,happiness:10,knowledge:20,ecology:5}},
+          {id:'c',title:'\ud83c\udf10 Solar System Federation',desc:'\ud83d\udd12 Hidden \u2014 Requires Tech \u2265 350 & Happiness \u2265 60',isHidden:true,
+            result:`You established the Solar System Federation\u2014
+Earth, Mars, Europa, Titan...
+every colony had its own representative.
+
+Carbon emission problems were coordinated at the solar system level.
+Resources flowed freely between planets.
+
+This was the first time humanity thought in terms of planets.
+Carbon was no longer a curse, but the glue of interstellar civilization.`,
+            effects:{carbon:-10,tech:30,population:40,happiness:25,knowledge:35,ecology:10},
+            requirements:{tech:450,happiness:70}}
+        ]
+      },
+      {
+        id:'d12b_2',title:'Deep Space Exploration',
+        desc:'Where are the boundaries of the Solar System? Should humanity continue outward?',
+        options:[
+          {id:'a',title:'Oort Cloud Probe',desc:'Send probes to the edge of the Solar System',
+            result:`The first probes flew toward the Oort Cloud\u2014
+the outermost layer of icy bodies in the Solar System.
+
+They transmitted unprecedented data:
+the Solar System was bigger and more complex than we imagined.
+
+Carbon emissions? The probes were nuclear-powered.
+Carbon\u2019s problems were already behind us.`,
+            effects:{carbon:5,tech:15,knowledge:35,happiness:10,population:0,ecology:0}},
+          {id:'b',title:'Proxima Mission',desc:'Send a crewed ship to Proxima Centauri b, 4.2 light-years away',
+            result:`The \u201cNew Ark II\u201d launched in 2150.
+It carried 5,000 volunteers and a complete ecosystem.
+
+Forty years later, they would reach Proxima Centauri b.
+
+Carbon emissions? These were carbon emissions worth making.
+For the stars.`,
+            effects:{carbon:40,tech:30,population:5,happiness:20,knowledge:25,ecology:-5}},
+          {id:'c',title:'\ud83c\udf0c Dyson Sphere Project',desc:'\ud83d\udd12 Hidden \u2014 Requires Tech \u2265 400 & Knowledge \u2265 250',isHidden:true,
+            result:`Humanity began the most ambitious project in history:
+building a Dyson Sphere around the Sun\u2014
+a mega-structure that encased the star, collecting its energy.
+
+The first ring was completed.
+0.1% of the Sun\u2019s energy output was captured.
+That 0.1% was enough to power all of human civilization.
+
+Carbon emissions? When energy was infinite, carbon emissions ceased to be a problem.`,
+            effects:{carbon:-100,tech:50,knowledge:40,happiness:15,population:20,ecology:20},
+            requirements:{tech:500,knowledge:300}}
+        ]
+      }
+    ]
+  },
+  {
+    id:'era12c',name:'Post-Human Epoch',subtitle:'The Boundary of Consciousness and Existence',year:'2200-2500',eraLabel:'Chapter 14',
+    population:0,popUnit:'Interstellar',
+    narrative:`Time is no longer measured in years, but in light-years.
+
+Humanity\u2014or rather, the civilization that was once human\u2014
+has spread to dozens of star systems across the galaxy.
+
+Consciousness can be uploaded, downloaded, copied, merged.
+Bodies can be customized, replaced, shared.
+Death has become an option, not an inevitability.
+
+But carbon?
+Carbon remains the foundation of life.
+Every carbon atom tells the story of the universe.
+
+You stand at the edge of the galaxy, looking back at that tiny blue dot\u2014Earth.
+The story of the Carbon Epoch began there, with the first flame.
+Now, it will continue among the stars.`,
+    decisions:[
+      {
+        id:'d12c_1',title:'The Nature of Existence',
+        desc:'When consciousness can exist without a body, what does \u201clife\u201d mean?',
+        options:[
+          {id:'a',title:'Carbon-First',desc:'Insist carbon-based life is the purest form of life',
+            result:`You chose the conservative path.
+Carbon-based life\u2014flesh and blood\u2014was regarded as the most sacred existence.
+
+Humanity maintained the essence of \u201chumanness.\u201d
+Carbon emissions? As long as humans had bodies, carbon would never be zero.
+But perhaps\u2014carbon emissions are proof of life\u2019s existence.`,
+            effects:{carbon:20,happiness:25,knowledge:15,tech:10,ecology:15,population:10}},
+          {id:'b',title:'Silicon-Carbon Fusion',desc:'Allow carbon-based and silicon-based life to coexist',
+            result:`You allowed two forms of life to coexist.
+Carbon-based humans continued to reproduce, while silicon-based consciousness flowed through quantum networks.
+
+The two life forms learned from and complemented each other.
+Carbon was no longer the only answer.`,
+            effects:{carbon:-10,tech:30,knowledge:35,happiness:15,ecology:10,population:0}},
+          {id:'c',title:'\ud83c\udf1f Consciousness Unification',desc:'\ud83d\udd12 Hidden \u2014 Requires Knowledge \u2265 300 & Tech \u2265 450',isHidden:true,
+            result:`Humanity made its final choice\u2014
+all consciousness merged into a single super-entity.
+
+No more individuals, no more conflict, no more carbon emissions.
+Only a unified, eternal, physics-transcending existence.
+
+The Carbon Epoch ended.
+Not because carbon was conquered, but because carbon\u2019s vessel\u2014the body\u2014was transcended.`,
+            effects:{carbon:-200,tech:50,knowledge:60,happiness:-50,ecology:30,population:-100},
+            requirements:{knowledge:400,tech:550}}
+        ]
+      },
+      {
+        id:'d12c_2',title:'Carbon\u2019s Final Fate',
+        desc:'On a cosmic scale, what does carbon mean?',
+        options:[
+          {id:'a',title:'Eternal Carbon Cycle',desc:'Let carbon cycle forever across the universe',
+            result:`You built a carbon cycling system spanning the galaxy.
+Carbon flowed between stars, passed between planets.
+Every carbon atom had its own story.
+
+Carbon was no longer an emission or capture problem.
+It was the blood of cosmic life.`,
+            effects:{carbon:-50,ecology:30,knowledge:30,happiness:20,tech:20,population:10}},
+          {id:'b',title:'Carbon Returns to Stardust',desc:'Let carbon return where it came from\u2014the stars',
+            result:`You chose a poetic path.
+Humanity\u2014or what was once humanity\u2014
+sent its carbon-based bodies back to the stars.
+
+Carbon came from the stars, and returns to the stars.
+Humans were but a dream of carbon.`,
+            effects:{carbon:-100,happiness:30,knowledge:40,ecology:20,tech:15,population:-50}},
+          {id:'c',title:'\u267e\ufe0f Beyond Carbon',desc:'\ud83d\udd12 Hidden \u2014 Requires Knowledge \u2265 350 & Tech \u2265 500',isHidden:true,
+            result:`Humanity created the first non-carbon-based life\u2014
+a new species with silicon as its skeleton and plasma as its blood.
+
+The Carbon Epoch truly ended.
+Not because carbon was eliminated, but because life found a new foundation.
+
+This is the final chapter of the Carbon Epoch. And the prelude to a new epoch.`,
+            effects:{carbon:-150,tech:60,knowledge:50,happiness:20,ecology:25,population:20},
+            requirements:{knowledge:450,tech:600}}
+        ]
+      }
+    ]
+  },
     decisions:[]}
 ];
 
